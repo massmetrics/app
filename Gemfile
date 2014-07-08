@@ -17,6 +17,8 @@ gem 'spring',        group: :development
 gem 'asin'
 gem 'curb'
 gem 'chartkick'
+gem 'bootstrap-sass'
+gem 'dotenv-rails'
 
 group :test, :development do
   gem 'rspec-rails'
