@@ -35,6 +35,8 @@ GEM
       hashie (>= 1.1)
       httpi (>= 0.9)
       rash (>= 0.4)
+    bootstrap-sass (3.2.0.0)
+      sass (~> 3.2)
     builder (3.2.2)
     capybara (2.4.1)
       mime-types (>= 1.16)
@@ -55,6 +57,11 @@ GEM
       safe_yaml (~> 1.0.0)
     curb (0.8.5)
     diff-lcs (1.2.5)
+    dotenv (0.11.1)
+      dotenv-deployment (~> 0.0.2)
+    dotenv-deployment (0.0.2)
+    dotenv-rails (0.11.1)
+      dotenv (= 0.11.1)
     erubis (2.7.0)
     execjs (2.2.1)
     hashie (2.0.5)
@@ -162,10 +169,12 @@ PLATFORMS
 
 DEPENDENCIES
   asin
+  bootstrap-sass
   capybara
   chartkick
   coffee-rails (~> 4.0.0)
   curb
+  dotenv-rails
   jbuilder (~> 2.0)
   jquery-rails
   launchy
