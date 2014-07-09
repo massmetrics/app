@@ -18,7 +18,9 @@ gem 'asin'
 gem 'curb'
 gem 'chartkick'
 gem 'bootstrap-sass'
+gem 'autoprefixer-rails'
 gem 'dotenv-rails'
+gem 'money'
 
 group :test, :development do
   gem 'rspec-rails'
