@@ -10,7 +10,7 @@
             <div class="lib-row lib-header">
               <%= truncate(product.title, length: 45, omission: '...') %>
               <div class="lib-header-seperator"></div>
-              <small>Current Price: <%= product.current_price %></small>
+              <small>Current Price: <%= ProductCurrency.format_money(product.current_price) %></small>
               <div class="lib-header-seperator"></div>
             </div>
             <div class="lib-row lib-desc">
