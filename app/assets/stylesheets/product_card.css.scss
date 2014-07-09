@@ -2,6 +2,7 @@
 .lib-panel img {
   width: 100%;
   background-color: transparent;
+  padding-top:10px;
 }
 
 .lib-panel .row,
@@ -48,6 +49,7 @@
 .box-shadow {
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, .10);
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, .10);
+  height: 250px;
 }
 
 .no-padding {
@@ -60,4 +62,8 @@
 
 .product-odd {
   margin-right: 15px;
+}
+
+.lib-panel{
+  height: 270px;
 }

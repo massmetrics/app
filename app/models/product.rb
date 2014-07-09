@@ -42,7 +42,7 @@ class Product < ActiveRecord::Base
     logs_hash = {}
     logs = get_prices(days)
     logs.each do |log|
-      logs_hash[log.created_at.to_s] = log.price
+      logs_hash[log.created_at.to_s] = (log.price.to_i/100).to_s + "." + (log.price.to_i%100).to_s
     end
     logs_hash
   end
