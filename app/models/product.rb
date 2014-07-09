@@ -38,4 +38,12 @@ class Product < ActiveRecord::Base
     price_logs.where("created_at >= ?", days.days.ago)
   end
 
+  def price_log_hash(days = 30)
+    logs_hash = {}
+    logs = get_prices(days)
+    logs.each do |log|
+      logs_hash[log.created_at.to_s] = log.price
+    end
+    logs_hash
+  end
 end

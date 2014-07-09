@@ -20,7 +20,8 @@ module ObjectCreation
 
   def self.create_price_log(attributes = {})
     default = {
-      product: Product.last
+      product: Product.last,
+      price: "100"
     }
     default.merge!(attributes)
     PriceLog.create(

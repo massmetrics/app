@@ -23,5 +23,16 @@ describe Product do
 
     expect(new_item.get_prices(5).length).to eq(3)
     expect(new_item.get_prices(5)).not_to include(excluded_log)
+
+  end
+
+  it 'converts price logs to a hash' do
+    new_time = Time.local(2014, 6, 1, 12, 0, 0)
+    Timecop.freeze(new_time) do
+      new_item = ObjectCreation.create_product
+      ObjectCreation.create_price_log(product: new_item, created_at: "Fri, 04 Jul 2014 22:24:46 UTC +00:00")
+      ObjectCreation.create_price_log(product: new_item, created_at: "Mon, 07 Jul 2014 22:23:06 UTC +00:00")
+      expect(new_item.price_log_hash(7)).to eq({"2014-07-07 22:23:06 UTC"=>"100", "2014-07-04 22:24:46 UTC"=>"100"})
+    end
   end
 end
