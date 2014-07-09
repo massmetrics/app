@@ -5,3 +5,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+new_item = Product.find_by_sku("B002DYJ0OI")
+price_logs = [
+  [product: new_item, created_at: 1.day.ago, price: rand(100000).to_s],
+  [product: new_item, created_at: 2.day.ago, price: rand(100000).to_s],
+  [product: new_item, created_at: 3.day.ago, price: rand(100000).to_s],
+  [product: new_item, created_at: 4.day.ago, price: rand(100000).to_s],
+  [product: new_item, created_at: 5.day.ago, price: rand(100000).to_s],
+  [product: new_item, created_at: 6.day.ago, price: rand(100000).to_s],
+  [product: new_item, created_at: 7.day.ago, price: rand(100000).to_s],
+  [product: new_item, created_at: 8.day.ago, price: rand(100000).to_s],
+  [product: new_item, created_at: 9.day.ago, price: rand(100000).to_s]
+]
+price_logs.each do |log|
+  PriceLog.create(log)
+end

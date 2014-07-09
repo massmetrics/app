@@ -32,7 +32,7 @@ describe Product do
       new_item = ObjectCreation.create_product
       ObjectCreation.create_price_log(product: new_item, created_at: "Fri, 04 Jul 2014 22:24:46 UTC +00:00")
       ObjectCreation.create_price_log(product: new_item, created_at: "Mon, 07 Jul 2014 22:23:06 UTC +00:00")
-      expect(new_item.price_log_hash(7)).to eq({"2014-07-07 22:23:06 UTC"=>"100", "2014-07-04 22:24:46 UTC"=>"100"})
+      expect(new_item.price_log_hash(7)).to eq({"2014-07-07 22:23:06 UTC"=>"1.0", "2014-07-04 22:24:46 UTC"=>"1.0"})
     end
   end
 end
