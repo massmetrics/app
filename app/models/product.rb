@@ -33,4 +33,9 @@ class Product < ActiveRecord::Base
       brand: item.brand
     )
   end
+
+  def get_prices(days = 30)
+    price_logs.where("created_at >= ?", days.days.ago)
+  end
+
 end
