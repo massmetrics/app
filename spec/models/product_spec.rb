@@ -35,4 +35,12 @@ describe Product do
       expect(new_item.price_log_hash(7)).to eq({"2014-07-07 22:23:06 UTC"=>"1.0", "2014-07-04 22:24:46 UTC"=>"1.0"})
     end
   end
+
+  it "gets the average of all of the price logs for a given product" do
+    new_item = ObjectCreation.create_product
+    ObjectCreation.create_price_log(product: new_item, price: "1000")
+    ObjectCreation.create_price_log(product: new_item, price: "2000")
+
+    expect(new_item.get_average(30)).to eq(1500)
+  end
 end
