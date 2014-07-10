@@ -13,13 +13,13 @@
       <div class="lib-panel <%= margin %>">
         <div class="row box-shadow">
           <div class="col-xs-4">
-            <img class="lib-img-show" src="<%= product.large_image_url %>">
+            <img class="lib-img-show" src="<%= product[0].large_image_url %>">
           </div>
           <div class="col-xs-8">
             <div class="lib-row lib-header">
-              <%= link_to truncate(product.title, length: 45, omission: '...'), product, id: "#title" %>
+              <%= link_to truncate(product[0].title, length: 45, omission: '...'), product[0], id: "#title" %>
               <div class="lib-header-seperator"></div>
-              <small>Current Price: <%= ProductCurrency.format_money(product.current_price) %></small>
+              <small>Current Price: <%= ProductCurrency.format_money(product[0].current_price) %></small>
               <div class="lib-header-seperator"></div>
             </div>
             <div class="lib-row lib-desc">
