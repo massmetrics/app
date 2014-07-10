@@ -21,6 +21,8 @@ gem 'autoprefixer-rails'
 gem 'dotenv-rails'
 gem 'money'
 
+gem 'rails_12factor', group: :production
+
 group :test, :development do
   gem 'rspec-rails'
   gem 'capybara'
