@@ -19,23 +19,26 @@ class Product < ActiveRecord::Base
     )
   end
 
-  def self.averages(number_of_products)
+  def self.averages(days = 30)
     averages = []
     all.each do |product|
-      averages << product.get_average
+      averages << [product, product.get_average(days)]
     end
-    averages.sort!
-    averages[0..number_of_products]
+    averages
   end
 
-  def get_average(days)
+  def get_average(days = 30)
     sum = 0
     all_prices = get_prices(days)
     length = all_prices.length
     all_prices.each do |price|
       sum += price.price.to_i
     end
-    sum / length
+    if length == 0
+      sum
+    else
+      sum / length
+    end
   end
 
   def update_from_sku
