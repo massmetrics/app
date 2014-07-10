@@ -1,16 +1,15 @@
 require 'rails_helper'
 
 describe Product do
-  before do
-    @product = ObjectCreation.create_product(sku: "B0047Y6I24")
-  end
   it 'can add a new product from an SKU - Myotein Chocolate' do
-    expect(@product.sku).to eq("B0047Y6I24")
-    expect(@product.valid?).to eq(true)
+    product = ObjectCreation.create_product(sku: "B0047Y6I24")
+    expect(product.sku).to eq("B0047Y6I24")
+    expect(product.valid?).to eq(true)
   end
 
   it 'wont create an item if sku is already in db' do
-    invalid_item = ObjectCreation.create_product(sku: @product.sku)
+    product = ObjectCreation.create_product(sku: "B0047Y6I24")
+    invalid_item = ObjectCreation.create_product(sku: product.sku)
     expect(invalid_item.valid?).to eq(false)
   end
 
@@ -42,5 +41,17 @@ describe Product do
     ObjectCreation.create_price_log(product: new_item, price: "2000")
 
     expect(new_item.get_average(30)).to eq(1500)
+  end
+
+  it "returns all products and their average prices over a given period" do
+    new_item = ObjectCreation.create_product
+    ObjectCreation.create_price_log(product: new_item, price: "1000")
+    ObjectCreation.create_price_log(product: new_item, price: "2000")
+    new_item2 = ObjectCreation.create_product(sku: "item_2")
+    ObjectCreation.create_price_log(product: new_item2, price: "5000")
+    ObjectCreation.create_price_log(product: new_item2, price: "10000")
+
+
+    expect(Product.averages).to eq([[new_item, 1500],[new_item2, 7500]])
   end
 end
