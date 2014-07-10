@@ -19,6 +19,25 @@ class Product < ActiveRecord::Base
     )
   end
 
+  def self.averages(number_of_products)
+    averages = []
+    all.each do |product|
+      averages << product.get_average
+    end
+    averages.sort!
+    averages[0..number_of_products]
+  end
+
+  def get_average(days)
+    sum = 0
+    all_prices = get_prices(days)
+    length = all_prices.length
+    all_prices.each do |price|
+      sum += price.price.to_i
+    end
+    sum / length
+  end
+
   def update_from_sku
     item = ItemLookup.new(self.sku)
     self.update(
