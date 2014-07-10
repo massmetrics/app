@@ -27,6 +27,14 @@ class Product < ActiveRecord::Base
     averages
   end
 
+  def self.percent_discounts(items = 10, days = 30)
+    percentages = []
+    averages(days).each do |product|
+      percentages << [product[0], (product[1].to_f - product[0].current_price.to_f)/product[1]]
+    end
+    percentages.sort_by {|product| product[1]}.reverse[0..items]
+  end
+
   def get_average(days = 30)
     sum = 0
     all_prices = get_prices(days)

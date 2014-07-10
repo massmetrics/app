@@ -1,7 +1,6 @@
 class WelcomeController < ApplicationController
 
   def index
-    @products = Product.all
-    @currency = ProductCurrency.new
+    @products = Product.percent_discounts(10, 30)
   end
 end
