@@ -28,4 +28,5 @@ group :test, :development do
   gem 'capybara'
   gem 'launchy'
   gem 'timecop'
+  gem 'jazz_hands'
 end
