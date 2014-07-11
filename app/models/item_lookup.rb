@@ -30,27 +30,15 @@ class ItemLookup
   end
 
   def large_image_url
-    if item.first["image_sets"]["image_set"].first["large_image"]
-      item.first["image_sets"]["image_set"].first["large_image"]["url"]
-    else
-      medium_image_url
-    end
+    item.first["large_image"]["url"]
   end
 
   def small_image_url
-    if item.first["image_sets"]["image_set"].first["small_image"]
-      item.first["image_sets"]["image_set"].first["small_image"]["url"]
-    else
-      nil
-    end
+    item.first["small_image"]["url"]
   end
 
   def medium_image_url
-    if item.first["image_sets"]["image_set"].first["medium_image"]
-      item.first["image_sets"]["image_set"].first["medium_image"]["url"]
-    else
-      small_image_url
-    end
+    item.first["medium_image"]["url"]
   end
 
   def brand
