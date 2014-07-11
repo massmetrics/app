@@ -21,6 +21,13 @@ RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
   config.include(ObjectCreation)
+  VCR.configure do |c|
+    c.filter_sensitive_data("<ASIN_SECRET>") { ENV['ASIN_SECRET'] }
+    c.filter_sensitive_data("<ASIN_KEY>") { ENV['ASIN_KEY'] }
+    c.filter_sensitive_data("<ASIN_TAG>") { ENV['ASIN_TAG'] }
+    c.cassette_library_dir = 'spec/vcr_cassettes'
+    c.hook_into :webmock # or :fakeweb
+  end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false
