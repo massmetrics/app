@@ -63,6 +63,13 @@ describe Product do
     ObjectCreation.create_price_log(product: new_item2, price: "2000")
     ObjectCreation.create_price_log(product: new_item2, price: "1000")
     expect(Product.percent_discounts(2)).to eq([[new_item, 0.3333333333333333],[new_item2, -0.13333333333333333]])
+  end
 
+  it "returns the discount for a single product" do
+    new_item = ObjectCreation.create_product(current_price: "1000")
+    ObjectCreation.create_price_log(product: new_item, price: "2000")
+    ObjectCreation.create_price_log(product: new_item, price: "1000")
+
+    expect(new_item.percent_discount).to eq(0.3333333333333333)
   end
 end
