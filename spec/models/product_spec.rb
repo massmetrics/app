@@ -20,8 +20,8 @@ describe Product do
     ObjectCreation.create_price_log(product: new_item, created_at: 5.day.ago + 100)
     excluded_log = ObjectCreation.create_price_log(product: new_item, created_at: 6.day.ago)
 
-    expect(new_item.get_prices(5).length).to eq(3)
-    expect(new_item.get_prices(5)).not_to include(excluded_log)
+    expect(new_item.get_price_logs(5).length).to eq(3)
+    expect(new_item.get_price_logs(5)).not_to include(excluded_log)
 
   end
 
@@ -40,7 +40,7 @@ describe Product do
     ObjectCreation.create_price_log(product: new_item, price: "1000")
     ObjectCreation.create_price_log(product: new_item, price: "2000")
 
-    expect(new_item.get_average(30)).to eq(1500)
+    expect(new_item.average_price(30)).to eq(1500)
   end
 
   it "returns all products and their average prices over a given period" do
@@ -62,7 +62,7 @@ describe Product do
     new_item2 = ObjectCreation.create_product(current_price: "1700", sku: "item_2")
     ObjectCreation.create_price_log(product: new_item2, price: "2000")
     ObjectCreation.create_price_log(product: new_item2, price: "1000")
-    expect(Product.percent_discounts(2)).to eq([[new_item, 0.3333333333333333],[new_item2, -0.13333333333333333]])
+    expect(Product.percent_discounts(2)).to eq([new_item,new_item2])
   end
 
   it "returns the discount for a single product" do
