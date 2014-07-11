@@ -1,5 +1,6 @@
 class ItemLookup
   attr_accessor :client, :item
+
   def initialize(sku)
     @client = ASIN::Client.instance
     @item = client.lookup(sku)
@@ -18,30 +19,50 @@ class ItemLookup
   end
 
   def title
-    item.first["item_attributes"]["title"]
+    if item.first["item_attributes"].include?("title")
+      item.first["item_attributes"]["title"]
+    end
   end
 
   def features
-    item.first["item_attributes"]["feature"]
+    if item.first["item_attributes"].include?("feature")
+      item.first["item_attributes"]["feature"]
+    end
   end
 
   def current_price
-    item.first["offer_summary"]["lowest_new_price"]["amount"]
+    if item.first["offer_summary"].include?("lowest_new_price")
+      item.first["offer_summary"]["lowest_new_price"]["amount"]
+    end
   end
 
   def large_image_url
-    item.first["large_image"]["url"]
+    if item.first.include?("large_image")
+      item.first["large_image"]["url"]
+    end
   end
 
   def small_image_url
-    item.first["small_image"]["url"]
+    if item.first.include?("small_image")
+      item.first["small_image"]["url"]
+    end
   end
 
   def medium_image_url
-    item.first["medium_image"]["url"]
+    if item.first.include?("medium_image")
+      item.first["medium_image"]["url"]
+    end
   end
 
   def brand
-    item.first["item_attributes"]["brand"]
+    if item.first["item_attributes"].include?("brand")
+      item.first["item_attributes"]["brand"]
+    end
+  end
+
+  def description
+    if item.first["editorial_reviews"]["editorial_review"].include?("content")
+      item.first["editorial_reviews"]["editorial_review"]["content"]
+    end
   end
 end

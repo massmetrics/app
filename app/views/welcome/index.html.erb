@@ -1,4 +1,3 @@
-
 <div class="row">
   <h1 class="text-center header"><span class="well">Featured items</span></h1>
 </div>
@@ -20,11 +19,15 @@
               <%= link_to truncate(product[0].title, length: 45, omission: '...'), product[0], id: "#title" %>
               <div class="lib-header-seperator"></div>
               <small>Current Price: <%= ProductCurrency.format_money(product[0].current_price) %></small>
+              <small>Discount from average: <%= product %></small>
               <div class="lib-header-seperator"></div>
             </div>
             <div class="lib-row lib-desc">
-              Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum
-              dolor
+              <ul>
+                <% product[0].features[0..2].each do |feature, index| %>
+                  <li><%= truncate(feature, length: 50, omission: '...') %>
+                <% end %>
+              </ul>
             </div>
           </div>
         </div>

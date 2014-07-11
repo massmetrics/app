@@ -3,36 +3,43 @@ class Product < ActiveRecord::Base
   validates_uniqueness_of :sku
   has_many :price_logs
 
-  def self.create_from_sku(sku)
-    item = ItemLookup.new(sku)
-    create(
-      features: item.features,
-      sku: sku,
-      detail_page_url: item.detail_page_url,
-      review_url: item.review_url,
-      title: item.title,
-      current_price: item.current_price,
-      large_image_url: item.large_image_url,
-      medium_image_url: item.medium_image_url,
-      small_image_url: item.small_image_url,
-      brand: item.brand
-    )
+  class << self
+    def create_from_sku(sku)
+      item = ItemLookup.new(sku)
+      create(
+        features: item.features,
+        sku: sku,
+        detail_page_url: item.detail_page_url,
+        review_url: item.review_url,
+        title: item.title,
+        current_price: item.current_price,
+        large_image_url: item.large_image_url,
+        medium_image_url: item.medium_image_url,
+        small_image_url: item.small_image_url,
+        brand: item.brand
+      )
+    end
+
+    def averages(days = 30)
+      averages = []
+      all.each do |product|
+        averages << [product, product.get_average(days)]
+      end
+      averages
+    end
+
+    def percent_discounts(items = 10, days = 30)
+      percentages = []
+      averages(days).each do |product|
+        percentages << [product[0], (product[1].to_f - product[0].current_price.to_f)/product[1]]
+      end
+      percentages.sort_by { |product| product[1] }.reverse[0..items]
+    end
   end
 
-  def self.averages(days = 30)
-    averages = []
-    all.each do |product|
-      averages << [product, product.get_average(days)]
-    end
-    averages
-  end
 
-  def self.percent_discounts(items = 10, days = 30)
-    percentages = []
-    averages(days).each do |product|
-      percentages << [product[0], (product[1].to_f - product[0].current_price.to_f)/product[1]]
-    end
-    percentages.sort_by {|product| product[1]}.reverse[0..items]
+  def percent_discount(days = 30)
+    ((get_average(days)).to_f - current_price.to_i) / get_average(days)
   end
 
   def get_average(days = 30)
