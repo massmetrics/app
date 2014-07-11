@@ -10,7 +10,6 @@ feature "Homepage" do
     within "img" do
       expect(page).to have_xpath("//img[@src=\"#{product.large_image_url}\"]")
     end
-    expect(page).to have_content Product.percent_discounts[0][1]
-    expect(page).to have_content Product.percent_discounts[0][1]
+    expect(page).to have_content NumberFormatter.format_percentage(product.percent_discount)[0]
   end
 end
