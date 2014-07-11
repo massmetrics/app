@@ -19,7 +19,7 @@
               <%= link_to truncate(product[0].title, length: 45, omission: '...'), product[0], id: "#title" %>
               <div class="lib-header-seperator"></div>
               <small>Current Price: <%= ProductCurrency.format_money(product[0].current_price) %></small>
-              <small>Discount from average: <%= product %></small>
+              <small>Discount from average: <%= NumberFormatter.format_percentage(product[0].percent_discount)[0] %></small>
               <div class="lib-header-seperator"></div>
             </div>
             <div class="lib-row lib-desc">
