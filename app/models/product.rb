@@ -94,4 +94,6 @@ class Product < ActiveRecord::Base
       Category.create(product: self, category: category)
     end
   end
+
+
 end
