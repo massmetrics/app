@@ -29,6 +29,9 @@ group :test, :development do
   gem 'launchy'
   gem 'timecop'
   gem 'jazz_hands'
+end
+
+group :test do
   gem 'vcr'
   gem 'webmock'
 end
