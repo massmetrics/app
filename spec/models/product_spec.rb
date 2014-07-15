@@ -82,4 +82,16 @@ describe Product do
     new_item.reload
     expect(new_item.categories.map{|cat| cat.category}).to match_array(["Protein", "Pill", "blah"])
   end
+
+  it "returns a list of products for a given category" do
+    ObjectCreation.create_product_with_category({category: "protein"}, {sku: "123"})
+    ObjectCreation.create_product_with_category({category: "pre workout"}, {sku: "1234"})
+    ObjectCreation.create_product_with_category({category: "protein"}, {sku: "12345"})
+    first_product = Product.find_by_sku("123")
+    second_product = Product.find_by_sku("12345")
+    third_product = Product.find_by_sku("1234")
+
+    expect(Product.get_products_for("protein")).to match_array([first_product, second_product])
+    expect(Product.get_products_for("protein")).to_not include(third_product)
+  end
 end

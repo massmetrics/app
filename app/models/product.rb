@@ -36,8 +36,11 @@ class Product < ActiveRecord::Base
       end
       percentages.sort_by { |product| product[1] }.reverse[0..items].map { |product| product[0] }
     end
-  end
 
+    def get_products_for(category)
+      Category.where(category: category).includes(:product).map {|cat| cat.product}
+    end
+  end
 
   def percent_discount(days = 30)
     if get_price_logs.length > 0
