@@ -38,7 +38,7 @@ class Product < ActiveRecord::Base
     end
 
     def get_products_for(category)
-      Category.where(category: category).includes(:product).map {|cat| cat.product}
+      Category.where(category: category).includes(:product).map { |cat| cat.product }
     end
   end
 
@@ -98,5 +98,12 @@ class Product < ActiveRecord::Base
     end
   end
 
-
+  def self.category_discounts(category, days = 30, items = 10)
+    output = []
+    products = Product.get_products_for(category)
+    products.each do |product|
+      output << [product, (product.average_price(days).to_f - product.current_price.to_i)/ product.current_price.to_i]
+    end
+    output.sort_by{ |product| product[1] }.reverse[0..items].map { |product| product[0] }
+  end
 end
