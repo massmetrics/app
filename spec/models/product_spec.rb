@@ -55,14 +55,15 @@ describe Product do
     expect(Product.averages).to eq([[new_item, 1500],[new_item2, 7500]])
   end
 
-  it 'returns the best products buy value' do
-    new_item = ObjectCreation.create_product(current_price: '1000')
+  it 'returns the best products by value' do
+    new_item = ObjectCreation.create_product(current_price: '1700', sku: 'item_2')
     ObjectCreation.create_price_log(product: new_item, price: '2000')
     ObjectCreation.create_price_log(product: new_item, price: '1000')
-    new_item2 = ObjectCreation.create_product(current_price: '1700', sku: 'item_2')
+    new_item2 = ObjectCreation.create_product(current_price: '1000')
     ObjectCreation.create_price_log(product: new_item2, price: '2000')
     ObjectCreation.create_price_log(product: new_item2, price: '1000')
-    expect(Product.percent_discounts(2)).to eq([new_item,new_item2])
+
+    expect(Product.percent_discounts(2)).to eq([new_item2,new_item])
   end
 
   it 'returns the discount for a single product' do
@@ -93,5 +94,22 @@ describe Product do
 
     expect(Product.get_products_for('protein')).to match_array([first_product, second_product])
     expect(Product.get_products_for('protein')).to_not include(third_product)
+  end
+
+  it 'returns the best products by value for a category' do
+    new_item = ObjectCreation.create_product(current_price: '1700', sku: 'item_1')
+    ObjectCreation.create_price_log(product: new_item, price: '2000')
+    ObjectCreation.create_price_log(product: new_item, price: '1000')
+    new_item.add_categories(['protein'])
+    new_item2 = ObjectCreation.create_product(current_price: '1000')
+    ObjectCreation.create_price_log(product: new_item2, price: '2000')
+    ObjectCreation.create_price_log(product: new_item2, price: '1000')
+    new_item2.add_categories(['protein'])
+    new_item3 = ObjectCreation.create_product(current_price: '1000', sku: 'item_3')
+    ObjectCreation.create_price_log(product: new_item3, price: '2000')
+    ObjectCreation.create_price_log(product: new_item3, price: '1000')
+    new_item3.add_categories(['pre workout'])
+
+    expect(Product.category_discounts('protein', 2)).to eq([new_item2,new_item])
   end
 end
