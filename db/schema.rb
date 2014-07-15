@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140711190646) do
+ActiveRecord::Schema.define(version: 20140715172723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "categories", force: true do |t|
+    t.integer "product_id"
+    t.string  "category"
+  end
+
+  add_index "categories", ["product_id"], name: "index_categories_on_product_id", using: :btree
 
   create_table "price_logs", force: true do |t|
     t.string   "price"
