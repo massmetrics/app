@@ -2,6 +2,7 @@ class Product < ActiveRecord::Base
   serialize :features
   validates_uniqueness_of :sku
   has_many :price_logs
+  has_many :categories
 
   class << self
     def create_from_sku(sku)
@@ -86,5 +87,11 @@ class Product < ActiveRecord::Base
       logs_hash[log.created_at.to_s] = (log.price.to_i/100).to_s + "." + (log.price.to_i%100).to_s
     end
     logs_hash
+  end
+
+  def add_categories(category_array)
+    category_array.each do |category|
+      Category.create(product: self, category: category)
+    end
   end
 end
