@@ -31,8 +31,8 @@ class ItemLookup
   end
 
   def current_price
-    if item.first["item_attributes"]["list_price"].include?("amount")
-      item.first["item_attributes"]["list_price"]["amount"]
+    if item.first["offer_summary"]["lowest_new_price"].include?("amount")
+      item.first["offer_summary"]["lowest_new_price"]["amount"]
     end
   end
 
