@@ -8,4 +8,6 @@ describe Category do
 
     expect(Category.category_list).to match_array(["Protein", "Pre workout"])
   end
+
+
 end
