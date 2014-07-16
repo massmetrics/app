@@ -13,6 +13,5 @@ feature 'homepage' do
     expect(page).to have_content @category_2.category
     click_on @category_1.category
     expect(page).to have_content @product.title
-
   end
 end
