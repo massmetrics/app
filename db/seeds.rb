@@ -6,18 +6,33 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-new_item = Product.find_by_sku("B002DYJ0OI")
-price_logs = [
-  [product: new_item, created_at: 1.day.ago, price: rand(100000).to_s],
-  [product: new_item, created_at: 2.day.ago, price: rand(100000).to_s],
-  [product: new_item, created_at: 3.day.ago, price: rand(100000).to_s],
-  [product: new_item, created_at: 4.day.ago, price: rand(100000).to_s],
-  [product: new_item, created_at: 5.day.ago, price: rand(100000).to_s],
-  [product: new_item, created_at: 6.day.ago, price: rand(100000).to_s],
-  [product: new_item, created_at: 7.day.ago, price: rand(100000).to_s],
-  [product: new_item, created_at: 8.day.ago, price: rand(100000).to_s],
-  [product: new_item, created_at: 9.day.ago, price: rand(100000).to_s]
-]
-price_logs.each do |log|
-  PriceLog.create(log)
+
+# skus = ["B004EHXKU2", "B000QSNYGI", "B000QSNYGI", "B002HHREU8", "B003V5LXEI"]
+# skus.each do |sku|
+#   Product.create_from_sku(sku)
+# end
+
+
+def make_price_logs(item)
+  [
+    [product: item, created_at: 1.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 2.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 3.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 4.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 5.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 6.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 7.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 8.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 9.day.ago, price: rand(100000).to_s]
+  ]
+end
+
+# Product.all.each do |item|
+#   make_price_logs(item).each do |log|
+#     PriceLog.create(log)
+#   end
+# end
+
+Product.all.each do |item|
+  item.add_categories(["protein", "protein powder"])
 end
