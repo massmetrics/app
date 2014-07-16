@@ -4,6 +4,6 @@ class Category < ActiveRecord::Base
   def self.category_list
     all.map do |category|
       category.category
-    end.uniq!
+    end.uniq
   end
 end
