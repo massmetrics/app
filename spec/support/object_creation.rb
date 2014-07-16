@@ -37,7 +37,7 @@ module ObjectCreation
     )
   end
 
-  def self.create_product_with_category(category, product)
+  def self.create_product_with_category(category, product = {})
     new_product = self.create_product(product)
     self.create_category(category.merge!(product: new_product))
   end
