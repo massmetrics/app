@@ -1,0 +1,37 @@
+<div class="row row-margin-bottom">
+  <% @products.each_with_index do |product, index| %>
+    <% if index.even? %>
+      <% margin = "product-even" %>
+    <% else %>
+      <% margin = "product-odd" %>
+    <% end %>
+    <div class="col-xs-5 no-padding lib-item" data-category="view">
+      <div class="lib-panel <%= margin %>">
+        <div class="row box-shadow">
+          <div class="col-xs-4">
+            <img class="lib-img-show" src="<%= product.large_image_url %>">
+          </div>
+          <div class="col-xs-8">
+            <div class="lib-row lib-header">
+              <%= link_to truncate(product.title, length: 45, omission: '...'), product, id: "#title" %>
+              <div class="lib-header-seperator"></div>
+              <small>Current Price: <%= ProductCurrency.format_money(product.current_price) %></small>
+              <small>Discount from average: <%= NumberFormatter.format_percentage(product.percent_discount)[0] %></small>
+              <div class="lib-header-seperator"></div>
+            </div>
+            <div class="lib-row lib-desc">
+              <ul>
+                <% product.features[0..2].each do |feature, index| %>
+                  <li><%= truncate(feature, length: 50, omission: '...') %>
+                <% end %>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% if index.even? %>
+      <div class="col-xs-2"></div>
+    <% end %>
+  <% end %>
+</div>
