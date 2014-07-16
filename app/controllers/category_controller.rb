@@ -5,7 +5,7 @@ class CategoryController < ApplicationController
   end
 
   def show
-    @products = Product.get_products_for(params[:id])
+    @products = Product.category_discounts(params[:id])
   end
 
 end
