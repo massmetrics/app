@@ -1,3 +1,11 @@
-<% @products.each do |product| %>
-  <%= product.title %>
-<% end %>
+<div class="container-fluid cards-wrapper" style="background-color:#e8e8e8">
+  <div class="container container-pad" id="property-listings">
+
+    <div class="row">
+      <%= render partial: "category/category_card", collection: @products, as: :product %>
+      <!-- End Col -->
+    </div>
+    <!-- End row -->
+    <!-- End container -->
+  </div>
+</div>
