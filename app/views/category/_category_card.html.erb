@@ -12,28 +12,21 @@
         <a href="#" target="_parent"></a>
 
         <h4 class="media-heading">
-          <a href="#" target="_parent"><%= product.title.truncate(35) %>
-            <small class="pull-right">609 W Gravers Ln</small>
+          <a href="#" target="_parent"><%= product.title.truncate(45) %>
           </a></h4>
 
-
-        <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-          <li>4,820 SqFt</li>
-
-          <li style="list-style: none">|</li>
-
-          <li>5 Beds</li>
-
-          <li style="list-style: none">|</li>
-
-          <li>5 Baths</li>
-        </ul>
-
-        <p class="hidden-xs">Situated between fairmount
-          park and the prestigious philadelphia cricket
-          club, this beautiful 2+ acre property is truly
-          ...</p><span class="fnt-smaller fnt-lighter fnt-arial">Courtesy of HS Fox & Roach-Chestnut Hill
-                                Evergreen</span>
+        <div class="col-xs-5 category-pricing">
+          <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
+            <li>Average price: <%= ProductCurrency.format_money(product.average_price) %></li>
+            <br/>
+            <li>Current price: <%= ProductCurrency.format_money(product.current_price) %></li>
+            <br/>
+            <li>Percent off: <%= NumberFormatter.format_percentage(product.percent_discount).first %></li>
+          </ul>
+        </div>
+        <div class="col-xs-7">
+          <%= line_chart(product.price_log_hash, height: "80px" ) %>
+        </div>
       </div>
     </div>
   </div>
