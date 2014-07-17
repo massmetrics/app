@@ -1,0 +1,22 @@
+body {
+  .navbar {
+    background-color: #666666;
+    height: 100px;
+    margin-bottom: 50px;
+    border-radius: 0px;
+
+    .container-fluid {
+      .navbar-brand {
+        margin-left: 255px;
+        padding-top: 55px;
+        font-size: 28px;
+        font-family: open-sans;
+        font-weight: 400;
+        color: #FFFFFF
+      }
+    }
+  }
+  .navbar-header {
+    text-align: center;
+  }
+}
