@@ -23,6 +23,7 @@
         <p><strong>Average price: </strong><%= ProductCurrency.format_money(@product.average_price) %></p>
         <p><strong>Current price: </strong><%= ProductCurrency.format_money(@product.current_price) %></p>
         <p><strong>Percent discount: </strong><%= NumberFormatter.format_percentage(@product.percent_discount).first %></p><br/>
+
         <p><strong>Features: </strong><br/>
         <ul>
           <% @product.features.each do |feature| %>
@@ -33,7 +34,7 @@
       </div>
     </div>
     <div class="col-xs-12 divider text-center">
-      <%= line_chart(@chart_hash) %>
+      <%= line_chart(@chart_hash, {library: {vAxis: {format:'$#,###'}}}) %>
     </div>
   </div>
 </div>
