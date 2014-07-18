@@ -1,3 +1,2 @@
-<% @categories.each do |category| %>
-  <%= link_to category, category_path(category) %>
-<% end %>
+
+<%= render partial: 'side_nav', locals: {categories: @categories} %>
