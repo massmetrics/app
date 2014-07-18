@@ -15,7 +15,8 @@
  */
 
 @import "bootstrap-sprockets";
-@import "bootstrap";
+@import 'bootstrap';
+@import "bootstrap-custom";
 
 body {
   padding-bottom: 20px;
