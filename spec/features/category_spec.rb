@@ -16,5 +16,9 @@ feature 'homepage' do
     click_on category_1.category
 
     expect(page).to have_content product.title
+
+    click_on product.title
+
+    expect(page).to have_content('Features:')
   end
 end
