@@ -1,49 +1,5 @@
 <div class="container-fluid cards-wrapper" style="background-color:#e8e8e8">
   <div class="container container-pad" id="property-lngs">
-    <div class="col-xs-10 col-xs-offset-1">
-      <div class="profile">
-        <div class="col-xs-12">
-          <div class="col-xs-6 text-center">
-            <figure>
-              <img src="<%= @product.large_image_url %>" alt="" class="img-responsive">
-            </figure>
-          </div>
-          <div class="col-xs-6 ">
-            <h2><%= @product.title %></h2>
-
-            <div class="text-center">
-              <p>
-                <%= link_to @product.detail_page_url, class: 'btn btn-default btn-success' do %>
-                  <span class="glyphicon glyphicon-heart"></span> Buy now!
-                <% end %>
-                <%= link_to @product.review_url, class: 'btn btn-default btn-warning' do %>
-                  Read Reviews <span class="glyphicon glyphicon-list-alt"></span>
-                <% end %>
-              </p>
-            </div>
-
-            <p><strong>Average price: </strong><%= ProductCurrency.format_money(@product.average_price) %></p>
-
-            <p><strong>Current price: </strong><%= ProductCurrency.format_money(@product.current_price) %></p>
-
-            <p>
-              <strong>Percent
-                discount: </strong><%= NumberFormatter.format_percentage(@product.percent_discount).first %>
-            </p><br/>
-
-            <p><strong>Features: </strong><br/>
-            <ul>
-              <% @product.features.each do |feature| %>
-                <li><%= feature %></li>
-              <% end %>
-            </ul>
-            </p>
-          </div>
-        </div>
-        <div class="col-xs-12 divider text-center">
-          <%= line_chart(@chart_hash, {library: {vAxis: {format: '$#,###'}}}) %>
-        </div>
-      </div>
-    </div>
+    <%= render 'product_show_card' %>
   </div>
 </div>
