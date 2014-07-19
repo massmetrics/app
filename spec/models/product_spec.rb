@@ -101,10 +101,12 @@ describe Product do
     ObjectCreation.create_price_log(product: new_item, price: '2000')
     ObjectCreation.create_price_log(product: new_item, price: '1000')
     new_item.add_categories(['protein'])
+
     new_item2 = ObjectCreation.create_product(current_price: '1000')
     ObjectCreation.create_price_log(product: new_item2, price: '2000')
     ObjectCreation.create_price_log(product: new_item2, price: '1000')
     new_item2.add_categories(['protein'])
+
     new_item3 = ObjectCreation.create_product(current_price: '1000', sku: 'item_3')
     ObjectCreation.create_price_log(product: new_item3, price: '2000')
     ObjectCreation.create_price_log(product: new_item3, price: '1000')
