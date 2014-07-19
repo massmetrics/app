@@ -72,19 +72,19 @@
 
 /**** MEDIA QUERIES ****/
 @media only screen and (max-width: 991px) {
-  #property-listings .property-listing {
+  .category-listing {
     padding: 5px!important;
   }
-  #property-listings .property-listing a {
+  .category-listing a {
     margin: 0;
   }
-  #property-listings .property-listing .media-body {
+  .category-listing .media-body {
     padding: 10px;
   }
 }
 
 @media only screen and (min-width: 992px) {
-  #property-listings .property-listing img {
+  .category-listing img {
     max-width: 180px;
   }
 }
