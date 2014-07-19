@@ -6,13 +6,23 @@
 .lib-panel img {
   width: 100%;
   background-color: transparent;
-  padding-top:10px;
+  padding-top: 10px;
 }
 
 .lib-panel .row,
 .lib-panel .col-md-6 {
   padding: 0;
   background-color: #FFFFFF;
+}
+
+.lib-row {
+  a {
+    color: black;
+  }
+  a:hover
+  {
+    color:#c8c8c8;
+  }
 }
 
 .lib-panel .lib-row {
@@ -68,6 +78,6 @@
   margin-right: 15px;
 }
 
-.lib-panel{
+.lib-panel {
   height: 300px;
 }
