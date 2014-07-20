@@ -35,7 +35,7 @@ class Product < ActiveRecord::Base
       averages(days).each do |product|
         percentages << [product[0], (product[1].to_f - product[0].current_price.to_f)/product[1]]
       end
-      percentages.sort_by { |product| product[1] }.reverse[0..items].map { |product| product[0] }
+      percentages.sort_by { |product| product[1] }.reverse[0...items].map { |product| product[0] }
     end
 
     def get_products_for(category)
