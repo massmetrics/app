@@ -1,11 +1,14 @@
-<div class="container-fluid cards-wrapper" style="background-color:#e8e8e8">
-  <div class="container container-pad" id="property-listings">
-
-    <div class="row">
-      <%= render partial: "category/category_card", collection: @products, as: :product %>
-      <!-- End Col -->
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2">
+      <%= render partial: 'side_nav', locals: {categories: @categories} %>
     </div>
-    <!-- End row -->
-    <!-- End container -->
+    <div class="col-xs-10" id="category-cards">
+      <div class="container-fluid cards-wrapper" style="background-color:#e8e8e8">
+        <div class="container-pad" id="category-listing">
+          <%= render partial: 'category/category_card', collection: @products, as: :product %>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
