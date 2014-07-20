@@ -2,10 +2,13 @@ require 'rails_helper'
 
 feature "Product" do
   scenario "User can view product details" do
-    product = ObjectCreation.create_product
+    ObjectCreation.create_product_with_category({category: 'Protein'})
+    product = Product.find_by_sku('12345')
+    ObjectCreation.create_price_log(product: product)
 
     visit '/'
-    click_link "#title"
+    first(".title").click
+
     expect(page).to have_content product.title
     expect(page).to have_content(ProductCurrency.format_money(product.current_price))
 
