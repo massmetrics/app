@@ -9,9 +9,6 @@ feature "Homepage" do
     visit '/'
 
     expect(page).to have_content(ProductCurrency.format_money(product.current_price))
-    within "img" do
-      expect(page).to have_xpath("//img[@src=\"#{product.large_image_url}\"]")
-    end
     expect(page).to have_content NumberFormatter.format_percentage(product.percent_discount)[0]
   end
 end
