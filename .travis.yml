@@ -1,0 +1,20 @@
+language: ruby
+cache: bundler
+rvm:
+- ruby
+- 2.1.1
+script:
+- RAILS_ENV=test bundle exec rake --trace db:create db:migrate
+- bundle exec rspec
+notifications:
+  email:
+    recipients:
+    - steven.magelowitz@gmail.com
+    on_failure: change
+    on_success: never
+env:
+  global:
+  - secure: OgbGKDGUlfaRs6MzfsLakoWFqVL6LjpVKV+PFY9OsWiKyqqiDnWhuMfMvxh5ridFMveDLs6kLeUyoXXO0GGUNzHWh6fnfRqp21z/mwMlKCq9KIzn8nSxaLFVsC1xByMQiu+yzj37XpO/ttt+Two6eDiSq+ppIcIlZzqglghSfhI=
+  - secure: FHoWY4U3cMA3h21Lubr/2tMu59I/ykdOtynLGJodQ/VlffREb0wuzYqZbQMcLf4VdDxa0tMX58v8QU608C6Q/RxRwEfLyCnpMDZVz/ttexs4hjoTy+4B9/GTMQq8ika3Cxl9thcjjmMekGG+6jSLFEAieHG+5a65hDFWj5B2x0Y=
+  - secure: RVt7Pi2M03KmJzXomCH+qH5p4+082MB6V3enGx6qA75x66rrQlEm1dmy3uXfh6zHNV8lzUMZjOkOuSt8H0+jeK9BLXzZ3zFZ82vyFyjhmbDZ95fx7dV4YMBgxTTXVLNl1Ipt8kIHXgpQ9+ab4/+vGphw9ceqUlnI9gq0/4SQgtc=
+  - secure: DWQWbJra9/s9/Alf1jbSOTR1EMl76Y72/q5Eja6ryWtoSyQubHmYLAmW/VyNIMgiCYRru+hyMdqd/t0eB89h5Ey3Nwj5jg9QNCny/pRf8aMYyq9WD829xS8hLu5Xc7lzPB3EwKePuRxA+VToyUsmZm4n7GJdN4oyiv10xgbo1Sc=

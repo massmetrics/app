@@ -33,3 +33,4 @@ group :test do
   gem 'vcr'
   gem 'webmock'
 end
+gem "codeclimate-test-reporter", group: :test, require: nil
