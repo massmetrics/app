@@ -1,24 +1,24 @@
-<div class="col-sm-6">
+<div class="col-xs-6">
   <div class="brdr bgc-fff pad-10 box-shad btm-mrg-20 category-listing">
     <div class="media">
-      <%= link_to(image_tag(product.small_image_url, class: "img-responsive"), product_path(product.id), class: "pull-left") %>
-      <div class="clearfix visible-sm"></div>
-      <div class="media-body fnt-smaller">
+      <div class="clearfix "></div>
+      <div class="fnt-smaller">
         <h4 class="media-heading">
-          <%= link_to(product.title.truncate(45), product_path(product)) %>
+          <%= link_to(product.title.truncate(42), product_path(product)) %>
         </h4>
 
         <div class="col-xs-4 category-pricing">
+          <%= link_to(image_tag(product.small_image_url, class: "img-responsive"), product_path(product.id)) %>
           <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-            <li>Average: <%= ProductCurrency.format_money(product.average_price) %></li>
+            <li>Average: <strong><%= ProductCurrency.format_money(product.average_price) %></strong></li>
             <br/>
-            <li>Current: <%= ProductCurrency.format_money(product.current_price) %></li>
+            <li>Current: <strong><%= ProductCurrency.format_money(product.current_price) %></strong></li>
             <br/>
-            <li>Discount: <%= NumberFormatter.format_percentage(product.percent_discount).first %></li>
+            <li>Discount: <strong><%= NumberFormatter.format_percentage(product.percent_discount).first %></strong></li>
           </ul>
         </div>
         <div class="col-xs-8">
-          <%= line_chart(product.price_log_hash(9), {height: "80px", library: {vAxis: {format: '$#,###'}}}) %>
+          <%= line_chart(product.price_log_hash(9), {height: "180px", library: {vAxis: {format: '$#,###'}}}) %>
         </div>
       </div>
     </div>
