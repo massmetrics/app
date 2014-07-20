@@ -1,9 +1,14 @@
 /**** BASE ****/
 .cards-wrapper {
   border-radius: 13px;
+  padding-top: 22px;
 
   .category-pricing{
     margin-top: 9px;
+    li{
+      padding-top: 4px;
+      font-size: 11px;
+    }
   }
   body {
     color: #888;
@@ -22,7 +27,7 @@
   padding: 0 10px 0 0;
 }
 .container-pad {
-  padding: 30px 15px;
+  padding: 30px 0;
   display: inline;
 }
 
@@ -84,4 +89,9 @@
   .category-listing img {
     max-width: 180px;
   }
+}
+
+#category-cards {
+  padding-left: 0;
+  padding-right: 30px;
 }
