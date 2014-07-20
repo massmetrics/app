@@ -1,3 +1,6 @@
+require "codeclimate-test-reporter"
+CodeClimate::TestReporter.start
+
 ENV["RAILS_ENV"] ||= 'test'
 require 'spec_helper'
 require 'capybara'
@@ -16,6 +19,7 @@ RSpec.configure do |config|
     c.filter_sensitive_data("<ASIN_TAG>") { ENV['ASIN_TAG'] }
     c.cassette_library_dir = 'spec/vcr_cassettes'
     c.hook_into :webmock # or :fakeweb
+    c.ignore_hosts 'codeclimate.com'
   end
   config.use_transactional_fixtures = true
 
