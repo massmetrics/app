@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'welcome#index'
+  root 'category#index'
   resources :welcome, only: [:index]
   resources :product, only: [:show]
   resources :category
