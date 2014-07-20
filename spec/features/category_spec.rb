@@ -5,7 +5,10 @@ feature 'homepage' do
     category_1 = ObjectCreation.create_product_with_category({category: 'Protein'})
     product = Product.find_by_sku('12345')
     ObjectCreation.create_price_log(product: product)
-    category_2 = Category.create(category: 'Pre workout')
+    category_2 = ObjectCreation.create_product_with_category({category: 'Pre-workout'}, {sku: 'product2'})
+    product2 = Product.find_by_sku('product2')
+    ObjectCreation.create_price_log(product: product2)
+
 
     visit '/'
     click_link 'Browse'
