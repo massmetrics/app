@@ -67,12 +67,13 @@ class Product < ActiveRecord::Base
 
   def update_from_sku
     item = ItemLookup.new(self.sku)
+    current_price = AmazonScraper.new(item.detail_page_url).price || item.current_price
     self.update(
       features: item.features,
       detail_page_url: item.detail_page_url,
       review_url: item.review_url,
       title: item.title,
-      current_price: NumberFormatter.format_price_string(AmazonScraper.new(item.detail_page_url).price),
+      current_price: NumberFormatter.format_price_string(current_price),
       large_image_url: item.large_image_url,
       medium_image_url: item.medium_image_url,
       small_image_url: item.small_image_url,
