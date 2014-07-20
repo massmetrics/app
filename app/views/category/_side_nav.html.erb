@@ -1,14 +1,8 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-2">
-      <h2><span class="label label-default category-heading">Categories</span></h2>
-      <nav class="nav-sidebar">
-        <ul class="nav">
-          <% categories.each do |category| %>
-            <li><%= link_to category, category_path(category) %></li>
-          <% end %>
-        </ul>
-      </nav>
-    </div>
-  </div>
-</div>
+<h2><span class="label label-default category-heading">Categories</span></h2>
+<nav class="nav-sidebar">
+  <ul class="nav">
+    <% categories.each do |category| %>
+      <li><%= link_to category, category_path(category) %></li>
+    <% end %>
+  </ul>
+</nav>
