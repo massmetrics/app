@@ -3,7 +3,9 @@ class Category < ActiveRecord::Base
 
   def self.category_list
     all.map do |category|
-      category.category
-    end.uniq
+      if Product.category_discounts(category.category).length > 0
+        category.category
+      end
+    end.uniq.reject {|c| c.nil?}
   end
 end
