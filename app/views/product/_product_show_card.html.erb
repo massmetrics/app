@@ -7,20 +7,21 @@
         </figure>
       </div>
       <div class="col-xs-6 ">
-        <h2><%= @product.title %></h2>
+        <div class="title-description">
+          <h2><%= @product.title %></h2>
 
+          <p><strong>Average price: </strong><%= ProductCurrency.format_money(@product.average_price) %></p>
 
+          <p><strong>Current price: </strong><%= ProductCurrency.format_money(@product.current_price) %></p>
 
-        <p><strong>Average price: </strong><%= ProductCurrency.format_money(@product.average_price) %></p>
+          <p>
+            <strong>Percent
+              discount: </strong><%= NumberFormatter.format_percentage(@product.percent_discount).first %>
+          </p>
 
-        <p><strong>Current price: </strong><%= ProductCurrency.format_money(@product.current_price) %></p>
-
-        <p>
-          <strong>Percent
-            discount: </strong><%= NumberFormatter.format_percentage(@product.percent_discount).first %>
-        </p>
 
         <p><strong>Features: </strong><br/>
+        </div>
         <ul>
           <% @product.features.each do |feature| %>
             <li><%= feature %></li>
