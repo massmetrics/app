@@ -14,7 +14,14 @@
             <br/>
             <li>Current: <strong><%= ProductCurrency.format_money(product.current_price) %></strong></li>
             <br/>
-            <li>Discount: <strong><%= NumberFormatter.format_percentage(product.percent_discount).first %></strong></li>
+            <% if product.percent_discount > 0 %>
+              <% percent_style = "text-success" %>
+            <% elsif product.percent_discount < 0 %>
+              <% percent_style = "text-danger" %>
+            <% end %>
+            <li>Discount: <strong>
+              <span class="<%= percent_style %>"><%= NumberFormatter.format_percentage(product.percent_discount).first %></span>
+            </strong></li>
           </ul>
         </div>
         <div class="col-xs-8">
