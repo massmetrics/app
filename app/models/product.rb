@@ -46,6 +46,22 @@ class Product < ActiveRecord::Base
         end
       end.reject { |product| product.nil? }
     end
+
+    def category_discounts(category, days = 30, items = 10)
+      output = []
+      products = get_products_for(category)
+      products.each do |product|
+        number_of_price_logs = product.price_logs.map do |log|
+          if log.created_at >= days.day.ago
+            log
+          end
+        end.length
+        if number_of_price_logs > 0
+          output << [product, (product.average_price(days).to_f - product.current_price.to_i)/ product.current_price.to_i]
+        end
+      end
+      output.sort_by { |product| product[1] }.reverse[0..items].map { |product| product[0] }.reject { |product| product.nil? }
+    end
   end
 
   def percent_discount(days = 30)
@@ -111,21 +127,5 @@ class Product < ActiveRecord::Base
     category_array.each do |category|
       Category.create(product: self, category: category)
     end
-  end
-
-  def self.category_discounts(category, days = 30, items = 10)
-    output = []
-    products = Product.get_products_for(category)
-    products.each do |product|
-      number_of_price_logs = product.price_logs.map do |log|
-        if log.created_at >= days.day.ago
-          log
-        end
-      end.length
-      if number_of_price_logs > 0
-        output << [product, (product.average_price(days).to_f - product.current_price.to_i)/ product.current_price.to_i]
-      end
-    end
-    output.sort_by { |product| product[1] }.reverse[0..items].map { |product| product[0] }.reject { |product| product.nil? }
   end
 end
