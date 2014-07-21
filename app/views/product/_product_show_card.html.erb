@@ -1,6 +1,13 @@
 <div class="col-xs-10 col-xs-offset-1">
   <div class="profile">
     <div class="col-xs-12 product-show-container">
+      <div class="col-xs-12 categories-header">
+        <h2>Categories:
+          <% @product.categories.each do |category| %>
+            <span class="label label-info"><%= link_to category.category, category_path(category.category) %></span>
+          <% end %>
+        </h2>
+      </div>
       <div class="col-xs-6 text-center">
         <figure>
           <img src="<%= @product.large_image_url %>" alt="" class="img-responsive">
