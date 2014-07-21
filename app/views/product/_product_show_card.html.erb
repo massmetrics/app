@@ -15,12 +15,16 @@
           <p><strong>Current price: </strong><%= ProductCurrency.format_money(@product.current_price) %></p>
 
           <p>
-            <strong>Percent
-              discount: </strong><%= NumberFormatter.format_percentage(@product.percent_discount).first %>
-          </p>
+            <strong>Percent discount: </strong>
+            <% if @product.percent_discount > 0 %>
+              <% percent_style = "text-success" %>
+            <% elsif @product.percent_discount < 0 %>
+              <% percent_style = "text-danger" %>
+            <% end %>
+            <span class="<%= percent_style %>"><%= NumberFormatter.format_percentage(@product.percent_discount).first %></span>
+          </p><br/>
 
-
-        <p><strong>Features: </strong><br/>
+          <p><strong>Features: </strong><br/>
         </div>
         <ul>
           <% @product.features.each do |feature| %>
