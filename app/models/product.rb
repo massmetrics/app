@@ -22,21 +22,21 @@ class Product < ActiveRecord::Base
       )
     end
 
+    def priced_products
+      all.includes(:price_logs)
+    end
+
     def averages(days = 30)
-      averages = []
-      all.includes(:price_logs).each do |product|
-        averages << [product, product.average_price(days)]
+      priced_products.map do |product|
+        [product, product.average_price(days)]
       end
-      averages
     end
 
     def percent_discounts(items = 10, days = 30)
-      percentages = []
-      averages(days).each do |product|
-        percentages << [product[0], NumberConverter.percent_off(product[1], product[0].current_price)]
-      end
-      percentages.sort_by { |product| product[1] }.reverse[0...items].map { |product| product[0] }.reject { |product| product.nil? }
+      products = priced_products.sort_by { |product| product.percent_off(days) }
+      products.reverse[0...items].compact
     end
+
 
     def get_products_for(category)
       all.includes(:categories).includes(:price_logs).map do |product|
@@ -62,6 +62,10 @@ class Product < ActiveRecord::Base
       end
       output.sort_by { |product| product[1] }.reverse[0...items].map { |product| product[0] }.reject { |product| product.nil? }
     end
+  end
+
+  def percent_off days
+    NumberConverter.percent_off(self.average_price(days), self.current_price)
   end
 
   def percent_discount(days = 30)
@@ -116,7 +120,7 @@ class Product < ActiveRecord::Base
       if log.created_at >= days.day.ago
         log
       end
-    end.reject{|log| log.nil?}
+    end.reject { |log| log.nil? }
     logs.each do |log|
       logs_hash[log.created_at.to_s] = (log.price.to_i/100).to_s + "." + (log.price.to_i%100).to_s
     end
