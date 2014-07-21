@@ -60,7 +60,7 @@ class Product < ActiveRecord::Base
           output << [product, NumberConverter.percent_off(product.average_price(days), product.current_price)]
         end
       end
-      output.sort_by { |product| product[1] }.reverse[0..items].map { |product| product[0] }.reject { |product| product.nil? }
+      output.sort_by { |product| product[1] }.reverse[0...items].map { |product| product[0] }.reject { |product| product.nil? }
     end
   end
 
