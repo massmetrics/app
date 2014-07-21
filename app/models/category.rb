@@ -9,7 +9,7 @@ class Category < ActiveRecord::Base
       if Product.category_discounts(category).length > 0
         category
       end
-    end
+    end.reject {|category| category.nil?}
   end
 
 end
