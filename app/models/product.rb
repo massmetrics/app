@@ -24,7 +24,7 @@ class Product < ActiveRecord::Base
 
     def averages(days = 30)
       averages = []
-      all.each do |product|
+      all.includes(:price_logs).each do |product|
         averages << [product, product.average_price(days)]
       end
       averages
@@ -35,11 +35,16 @@ class Product < ActiveRecord::Base
       averages(days).each do |product|
         percentages << [product[0], (product[1].to_f - product[0].current_price.to_f)/product[1]]
       end
-      percentages.sort_by { |product| product[1] }.reverse[0...items].map { |product| product[0] }
+      percentages.sort_by { |product| product[1] }.reverse[0...items].map { |product| product[0] }.reject { |product| product.nil? }
     end
 
     def get_products_for(category)
-      Category.where(category: category).includes(:product).map { |cat| cat.product }
+      all.includes(:categories).includes(:price_logs).map do |product|
+        categories = product.categories.map { |category| category.category }
+        if categories.include?(category)
+          product
+        end
+      end.reject { |product| product.nil? }
     end
   end
 
@@ -53,9 +58,13 @@ class Product < ActiveRecord::Base
 
   def average_price(days = 30)
     sum = 0
-    all_prices = get_price_logs(days)
-    length = all_prices.length
-    all_prices.each do |price|
+    price_logs = self.price_logs.map do |log|
+      if log.created_at >= days.day.ago
+        log
+      end
+    end
+    length = price_logs.length
+    price_logs.each do |price|
       sum += price.price.to_i
     end
     if length == 0
@@ -87,7 +96,11 @@ class Product < ActiveRecord::Base
 
   def price_log_hash(days = 30)
     logs_hash = {}
-    logs = get_price_logs(days)
+    logs = self.price_logs.map do |log|
+      if log.created_at >= days.day.ago
+        log
+      end
+    end.reject{|log| log.nil?}
     logs.each do |log|
       logs_hash[log.created_at.to_s] = (log.price.to_i/100).to_s + "." + (log.price.to_i%100).to_s
     end
@@ -104,10 +117,15 @@ class Product < ActiveRecord::Base
     output = []
     products = Product.get_products_for(category)
     products.each do |product|
-      if product && product.get_price_logs(days).length > 0
+      number_of_price_logs = product.price_logs.map do |log|
+        if log.created_at >= days.day.ago
+          log
+        end
+      end.length
+      if number_of_price_logs > 0
         output << [product, (product.average_price(days).to_f - product.current_price.to_i)/ product.current_price.to_i]
       end
     end
-    output.sort_by { |product| product[1] }.reverse[0..items].map { |product| product[0] }
+    output.sort_by { |product| product[1] }.reverse[0..items].map { |product| product[0] }.reject { |product| product.nil? }
   end
 end

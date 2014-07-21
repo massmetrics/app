@@ -2,10 +2,14 @@ class Category < ActiveRecord::Base
   belongs_to :product
 
   def self.category_list
-    all.map do |category|
-      if Product.category_discounts(category.category).length > 0
-        category.category
+    categories = all.map do |category|
+      category.category
+    end.uniq
+    categories.map do |category|
+      if Product.category_discounts(category).length > 0
+        category
       end
-    end.uniq.reject {|c| c.nil?}
+    end.reject {|category| category.nil?}
   end
+
 end
