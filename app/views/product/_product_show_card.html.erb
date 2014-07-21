@@ -9,16 +9,7 @@
       <div class="col-xs-6 ">
         <h2><%= @product.title %></h2>
 
-        <div class="text-center">
-          <p>
-            <%= link_to @product.detail_page_url, class: 'btn btn-default btn-success' do %>
-              <span class="glyphicon glyphicon-heart"></span> Buy now!
-            <% end %>
-            <%= link_to @product.review_url, class: 'btn btn-default btn-warning' do %>
-              Read Reviews <span class="glyphicon glyphicon-list-alt"></span>
-            <% end %>
-          </p>
-        </div>
+
 
         <p><strong>Average price: </strong><%= ProductCurrency.format_money(@product.average_price) %></p>
 
@@ -27,7 +18,7 @@
         <p>
           <strong>Percent
             discount: </strong><%= NumberFormatter.format_percentage(@product.percent_discount).first %>
-        </p><br/>
+        </p>
 
         <p><strong>Features: </strong><br/>
         <ul>
@@ -36,6 +27,16 @@
           <% end %>
         </ul>
         </p>
+        <div class="text-center">
+          <p>
+            <%= link_to @product.detail_page_url, class: 'btn buy-now ' do %>
+              <span class="glyphicon glyphicon-shopping-cart"></span> Buy now!
+            <% end %>
+            <%= link_to @product.review_url, class: 'btn reviews ' do %>
+              Read Reviews <span class="glyphicon glyphicon-list-alt"></span>
+            <% end %>
+          </p>
+        </div>
       </div>
     </div>
     <div class="col-xs-8 col-sm-10 col-md-12 divider text-center">
