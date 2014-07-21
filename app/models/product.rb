@@ -33,7 +33,7 @@ class Product < ActiveRecord::Base
     def percent_discounts(items = 10, days = 30)
       percentages = []
       averages(days).each do |product|
-        percentages << [product[0], (product[1].to_f - product[0].current_price.to_f)/product[1]]
+        percentages << [product[0], NumberConverter.percent_off(product[1], product[0].current_price)]
       end
       percentages.sort_by { |product| product[1] }.reverse[0...items].map { |product| product[0] }.reject { |product| product.nil? }
     end
@@ -57,7 +57,7 @@ class Product < ActiveRecord::Base
           end
         end.length
         if number_of_price_logs > 0
-          output << [product, (product.average_price(days).to_f - product.current_price.to_i)/ product.current_price.to_i]
+          output << [product, NumberConverter.percent_off(product.average_price(days), product.current_price)]
         end
       end
       output.sort_by { |product| product[1] }.reverse[0..items].map { |product| product[0] }.reject { |product| product.nil? }
