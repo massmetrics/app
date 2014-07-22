@@ -102,4 +102,10 @@ describe Product do
 
     expect(Product.category_discounts('protein', 2)).to eq([new_item2,new_item])
   end
+
+  it 'returns 0 of no price logs exist' do
+    new_item = ObjectCreation.create_product(current_price: '1700', sku: 'item_1')
+
+    expect(new_item.average_price).to eq(0)
+  end
 end
