@@ -51,7 +51,7 @@ class Product < ActiveRecord::Base
   end
 
   def average_price(days = 30)
-    price_logs = self.price_logs.where("created_at >= ?", days.days.ago)
+    price_logs = get_price_logs(days)
     sum = price_logs.reduce(0) { |memo, price| memo + price.price.to_i }
     price_logs.length > 0 ? sum / price_logs.length : 0
   end
