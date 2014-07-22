@@ -22,12 +22,6 @@ class Product < ActiveRecord::Base
       )
     end
 
-    def averages(days = 30)
-      priced_products.map do |product|
-        [product, product.average_price(days)]
-      end
-    end
-
     def percent_discounts(items = 10, days = 30)
       includes(:price_logs).sort_by { |product| product.percent_off(days) }.reverse[0...items].compact
     end

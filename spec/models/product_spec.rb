@@ -43,18 +43,6 @@ describe Product do
     expect(new_item.average_price(30)).to eq(1500)
   end
 
-  it 'returns all products and their average prices over a given period' do
-    new_item = ObjectCreation.create_product
-    ObjectCreation.create_price_log(product: new_item, price: '1000')
-    ObjectCreation.create_price_log(product: new_item, price: '2000')
-    new_item2 = ObjectCreation.create_product(sku: 'item_2')
-    ObjectCreation.create_price_log(product: new_item2, price: '5000')
-    ObjectCreation.create_price_log(product: new_item2, price: '10000')
-
-
-    expect(Product.averages).to eq([[new_item, 1500],[new_item2, 7500]])
-  end
-
   it 'returns the best products by value' do
     new_item = ObjectCreation.create_product(current_price: '1700', sku: 'item_2')
     ObjectCreation.create_price_log(product: new_item, price: '2000')
