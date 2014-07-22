@@ -39,12 +39,10 @@ class Product < ActiveRecord::Base
     end
 
     def get_products_for(category)
-      all.includes(:categories).includes(:price_logs).map do |product|
+      all.includes(:categories).includes(:price_logs).select do |product|
         categories = product.categories.map { |category| category.category }
-        if categories.include?(category)
-          product
-        end
-      end.reject { |product| product.nil? }
+        categories.include?(category)
+      end
     end
 
     def category_discounts(category, days = 30, items = 10)
