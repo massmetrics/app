@@ -1,0 +1,44 @@
+<div class="container">
+  <div class="loginbox mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="panel-title">Sign In</div>
+        <div class="forgot-password"><a href="#">Forgot password?</a></div>
+      </div>
+      <div class="panel-body login-panel">
+
+        <div class="login-alert alert alert-danger col-sm-12"></div>
+
+        <%= form_for @user, class: 'form-horizontal' do |f| %>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
+          </div>
+
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <%= f.password_field :password_cofirmation, placeholder: 'Password confirmation', class: 'form-control' %>
+          </div>
+
+          <div class="input-group">
+            <div class="checkbox">
+              <label>
+                <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+              </label>
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-12 controls">
+              <%= f.submit 'Register', class: "btn btn-success pull-right" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
