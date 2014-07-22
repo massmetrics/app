@@ -4,14 +4,15 @@ class ItemLookup
   def initialize(sku)
     @client = ASIN::Client.instance
     @item = client.lookup(sku)
+    @item = @item.first
   end
 
   def detail_page_url
-    item.first["detail_page_url"]
+    item["detail_page_url"]
   end
 
   def review_url
-    item.first["item_links"]["item_link"].each do |object|
+    item["item_links"]["item_link"].each do |object|
       if object.description == "All Customer Reviews"
         return object.url
       end
@@ -19,50 +20,45 @@ class ItemLookup
   end
 
   def title
-    if item.first["item_attributes"].include?("title")
-      item.first["item_attributes"]["title"]
+    if item["item_attributes"].include?("title")
+      item["item_attributes"]["title"]
     end
   end
 
   def features
-    if item.first["item_attributes"].include?("feature")
-      item.first["item_attributes"]["feature"]
+    if item["item_attributes"].include?("feature")
+      item["item_attributes"]["feature"]
     end
   end
 
   def current_price
-    if item.first["offer_summary"]["lowest_new_price"].include?("amount")
-      item.first["offer_summary"]["lowest_new_price"]["amount"]
+    lowest_new_price = item["offer_summary"]["lowest_new_price"]
+    if lowest_new_price.include?("amount")
+      lowest_new_price["amount"]
     end
   end
 
   def large_image_url
-    if item.first.include?("large_image")
-      item.first["large_image"]["url"]
+    if item.include?("large_image")
+      item["large_image"]["url"]
     end
   end
 
   def small_image_url
-    if item.first.include?("small_image")
-      item.first["small_image"]["url"]
+    if item.include?("small_image")
+      item["small_image"]["url"]
     end
   end
 
   def medium_image_url
-    if item.first.include?("medium_image")
-      item.first["medium_image"]["url"]
+    if item.include?("medium_image")
+      item["medium_image"]["url"]
     end
   end
 
   def brand
-    if item.first["item_attributes"].include?("brand")
-      item.first["item_attributes"]["brand"]
-    end
-  end
-
-  def description
-    if item.first["editorial_reviews"]["editorial_review"].include?("content")
-      item.first["editorial_reviews"]["editorial_review"]["content"]
+    if item["item_attributes"].include?("brand")
+      item["item_attributes"]["brand"]
     end
   end
 end
