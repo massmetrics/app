@@ -26,7 +26,6 @@ describe Product do
 
     expect(new_item.get_price_logs(5).length).to eq(3)
     expect(new_item.get_price_logs(5)).not_to include(excluded_log)
-
   end
 
   it 'converts price logs to a hash' do
@@ -71,8 +70,10 @@ describe Product do
     new_item.add_categories(['Protein'])
 
     expect(new_item.categories.map { |cat| cat.category }).to include('Protein')
+
     new_item.add_categories(['Pill', 'blah'])
     new_item.reload
+
     expect(new_item.categories.map { |cat| cat.category }).to match_array(['Protein', 'Pill', 'blah'])
   end
 
