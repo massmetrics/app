@@ -34,3 +34,4 @@ group :test do
   gem 'webmock'
 end
 gem "codeclimate-test-reporter", group: :test, require: nil
+gem 'analytics-ruby', '~>1.0'
