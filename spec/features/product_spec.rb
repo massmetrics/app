@@ -11,6 +11,7 @@ feature "Product" do
 
     expect(page).to have_content product.title
     expect(page).to have_content(ProductCurrency.format_money(product.current_price))
+    expect(page).to have_link("Protein")
 
     within "img" do
       expect(page).to have_xpath("//img[@src=\"#{product.large_image_url}\"]")
