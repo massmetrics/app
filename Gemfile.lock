@@ -28,7 +28,6 @@ GEM
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
     addressable (2.3.6)
-    analytics-ruby (2.0.5)
     arel (5.0.1.20140414130214)
     asin (2.0.1)
       confiture (>= 0.1)
@@ -246,7 +245,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  analytics-ruby (~> 2.0.0)
   asin
   autoprefixer-rails
   bootstrap-sass
