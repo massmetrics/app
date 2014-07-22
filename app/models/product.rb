@@ -26,7 +26,6 @@ class Product < ActiveRecord::Base
       includes(:price_logs).sort_by { |product| product.percent_off(days) }.reverse[0...items].compact
     end
 
-
     def get_products_for(category)
       includes(:categories).where(categories: {category: category})
     end
@@ -43,8 +42,8 @@ class Product < ActiveRecord::Base
   end
 
   def percent_discount(days = 30)
-    if get_price_logs.length > 0
-      ((average_price(days)).to_f - current_price.to_i) / average_price(days)
+    if get_price_logs(days).length > 0
+      NumberConverter.percent_off(average_price(days), current_price)
     else
       0
     end
@@ -61,7 +60,9 @@ class Product < ActiveRecord::Base
   end
 
   def get_price_logs(days = 30)
-    price_logs.where("created_at >= ?", days.days.ago)
+    price_logs.select do |log|
+      log.created_at >= days.day.ago
+    end
   end
 
   def price_log_hash(days = 30)
