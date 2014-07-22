@@ -65,4 +65,19 @@ class ItemLookup
       item.first["editorial_reviews"]["editorial_review"]["content"]
     end
   end
+
+  def to_hash
+    current_price = AmazonScraper.new(detail_page_url).price || current_price
+    {
+      features: features,
+      detail_page_url: detail_page_url,
+      review_url: review_url,
+      title: title,
+      current_price: NumberFormatter.format_price_string(current_price),
+      large_image_url: large_image_url,
+      medium_image_url: medium_image_url,
+      small_image_url: small_image_url,
+      brand: brand
+    }
+  end
 end
