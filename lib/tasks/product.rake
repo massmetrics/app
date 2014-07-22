@@ -1,8 +1,9 @@
 namespace :product do
   desc('add new product to system')
-  task :add_product, [:sku, :categories] => :environment do |t, args|
-    categories = args[:categories].split(' ')
-    ProductAdder.add(args[:sku], categories)
+  task :add_product, [:skus, :categories] => :environment do |t, args|
+    category_array = args[:categories].split(' ')
+    sku_array = args[:skus].split(' ')
+    ProductAdder.add(sku_array, category_array)
   end
 
   desc('add new product to system')
