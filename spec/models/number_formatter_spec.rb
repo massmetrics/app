@@ -12,4 +12,10 @@ describe NumberFormatter do
 
     expect(NumberFormatter.format_price_string(amount)).to eq('1795')
   end
+
+  it 'chooses the first number if a range is given' do
+    amount = '$24.30 - $59.15'
+
+    expect(NumberFormatter.format_price_string(amount)).to eq('2430')
+  end
 end
