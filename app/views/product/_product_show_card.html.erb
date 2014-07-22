@@ -24,9 +24,9 @@
           <p>
             <strong>Percent discount: </strong>
             <% if @product.percent_discount > 0 %>
-              <% percent_style = "text-success" %>
+              <% percent_style = 'text-success' %>
             <% elsif @product.percent_discount < 0 %>
-              <% percent_style = "text-danger" %>
+              <% percent_style = 'text-danger' %>
             <% end %>
             <span class="<%= percent_style %>"><%= NumberFormatter.format_percentage(@product.percent_discount).first %></span>
           </p><br/>
