@@ -9,7 +9,7 @@ class SubmissionsController < ApplicationController
       flash[:success] = "Thank you for your submission, it will be reviewed shortly"
       redirect_to root_path
     else
-
+      render :new
     end
   end
 
