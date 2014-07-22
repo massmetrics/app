@@ -51,21 +51,9 @@ class Product < ActiveRecord::Base
   end
 
   def average_price(days = 30)
-    sum = 0
-    price_logs = self.price_logs.map do |log|
-      if log.created_at >= days.day.ago
-        log
-      end
-    end
-    length = price_logs.length
-    price_logs.each do |price|
-      sum += price.price.to_i
-    end
-    if length == 0
-      sum
-    else
-      sum / length
-    end
+    price_logs = self.price_logs.where("created_at >= ?", days.days.ago)
+    sum = price_logs.reduce(0) { |memo, price| memo + price.price.to_i }
+    price_logs.length > 0 ? sum / price_logs.length : 0
   end
 
   def update_from_sku
