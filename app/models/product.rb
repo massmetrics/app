@@ -99,11 +99,9 @@ class Product < ActiveRecord::Base
   end
 
   def get_price_logs(days = 30)
-    price_logs.map do |log|
-      if log.created_at >= days.day.ago
-        log
-      end
-    end.reject{|log| log.nil?}
+    price_logs.select do |log|
+      log.created_at >= days.day.ago
+    end
   end
 
   def price_log_hash(days = 30)
