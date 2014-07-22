@@ -3,6 +3,7 @@ class ProductController < ApplicationController
 
   def show
     @chart_hash = @product.price_log_hash
+
   end
 
   private

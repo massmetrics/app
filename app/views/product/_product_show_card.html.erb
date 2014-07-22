@@ -1,6 +1,13 @@
 <div class="col-xs-10 col-xs-offset-1">
   <div class="profile">
     <div class="col-xs-12 product-show-container">
+      <div class="col-xs-12 categories-header">
+        <h2>Categories:
+          <% @product.categories.each do |category| %>
+            <span class="label label-info"><%= link_to category.category, category_path(category.category) %></span>
+          <% end %>
+        </h2>
+      </div>
       <div class="col-xs-6 text-center">
         <figure>
           <img src="<%= @product.large_image_url %>" alt="" class="img-responsive">
@@ -23,15 +30,15 @@
             <% end %>
             <span class="<%= percent_style %>"><%= NumberFormatter.format_percentage(@product.percent_discount).first %></span>
           </p><br/>
-
-          <p><strong>Features: </strong><br/>
         </div>
-        <ul>
-          <% @product.features.each do |feature| %>
-            <li><%= feature %></li>
-          <% end %>
-        </ul>
-        </p>
+        <% if @product.features %>
+          <p><strong>Features: </strong><br/></p>
+          <ul>
+            <% @product.features.each do |feature| %>
+              <li><%= feature %></li>
+            <% end %>
+          </ul>
+        <% end %>
         <div class="text-center">
           <p>
             <%= link_to @product.detail_page_url, class: 'btn buy-now ' do %>
