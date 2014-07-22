@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   resources :product, only: [:show]
   resources :category
   resources :submissions
+  resources :users
 end
