@@ -30,15 +30,15 @@
             <% end %>
             <span class="<%= percent_style %>"><%= NumberFormatter.format_percentage(@product.percent_discount).first %></span>
           </p><br/>
-
-          <p><strong>Features: </strong><br/>
         </div>
-        <ul>
-          <% @product.features.each do |feature| %>
-            <li><%= feature %></li>
-          <% end %>
-        </ul>
-        </p>
+        <% if @product.features %>
+          <p><strong>Features: </strong><br/></p>
+          <ul>
+            <% @product.features.each do |feature| %>
+              <li><%= feature %></li>
+            <% end %>
+          </ul>
+        <% end %>
         <div class="text-center">
           <p>
             <%= link_to @product.detail_page_url, class: 'btn buy-now ' do %>
