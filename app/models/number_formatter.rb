@@ -6,7 +6,7 @@ class NumberFormatter
     end
 
     def format_price_string(price_string)
-      price_string.tr('$.', '')
+      price_string.tr('$.', '').split('-').first.strip
     end
   end
 end
