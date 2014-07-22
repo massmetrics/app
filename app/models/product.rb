@@ -22,10 +22,6 @@ class Product < ActiveRecord::Base
       )
     end
 
-    def priced_products
-      all.includes(:price_logs)
-    end
-
     def averages(days = 30)
       priced_products.map do |product|
         [product, product.average_price(days)]
@@ -33,34 +29,18 @@ class Product < ActiveRecord::Base
     end
 
     def percent_discounts(items = 10, days = 30)
-      products = priced_products.sort_by { |product| product.percent_off(days) }
-      products.reverse[0...items].compact
+      includes(:price_logs).sort_by { |product| product.percent_off(days) }.reverse[0...items].compact
     end
 
 
     def get_products_for(category)
-      all.includes(:categories).includes(:price_logs).map do |product|
-        categories = product.categories.map { |category| category.category }
-        if categories.include?(category)
-          product
-        end
-      end.reject { |product| product.nil? }
+      includes(:categories).where(categories: {category: category})
     end
 
     def category_discounts(category, days = 30, items = 10)
-      output = []
-      products = get_products_for(category)
-      products.each do |product|
-        number_of_price_logs = product.price_logs.map do |log|
-          if log.created_at >= days.day.ago
-            log
-          end
-        end.length
-        if number_of_price_logs > 0
-          output << [product, NumberConverter.percent_off(product.average_price(days), product.current_price)]
-        end
-      end
-      output.sort_by { |product| product[1] }.reverse[0...items].map { |product| product[0] }.reject { |product| product.nil? }
+      products = get_products_for(category).includes(:price_logs)
+      products = products.where("price_logs.created_at >= ? ",days.days.ago)
+      products.percent_discounts(items, days)
     end
   end
 
