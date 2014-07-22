@@ -51,11 +51,7 @@ class Product < ActiveRecord::Base
       output = []
       products = get_products_for(category)
       products.each do |product|
-        number_of_price_logs = product.price_logs.map do |log|
-          if log.created_at >= days.day.ago
-            log
-          end
-        end.length
+        number_of_price_logs = product.get_price_logs(days).length
         if number_of_price_logs > 0
           output << [product, NumberConverter.percent_off(product.average_price(days), product.current_price)]
         end
@@ -74,11 +70,7 @@ class Product < ActiveRecord::Base
 
   def average_price(days = 30)
     sum = 0
-    price_logs = self.price_logs.map do |log|
-      if log.created_at >= days.day.ago
-        log
-      end
-    end
+    price_logs = self.get_price_logs(days)
     length = price_logs.length
     price_logs.each do |price|
       sum += price.price.to_i
@@ -107,16 +99,16 @@ class Product < ActiveRecord::Base
   end
 
   def get_price_logs(days = 30)
-    price_logs.where("created_at >= ?", days.days.ago)
-  end
-
-  def price_log_hash(days = 30)
-    logs_hash = {}
-    logs = self.price_logs.map do |log|
+    price_logs.map do |log|
       if log.created_at >= days.day.ago
         log
       end
     end.reject{|log| log.nil?}
+  end
+
+  def price_log_hash(days = 30)
+    logs_hash = {}
+    logs = self.get_price_logs(days)
     logs.each do |log|
       logs_hash[log.created_at.to_s] = (log.price.to_i/100).to_s + "." + (log.price.to_i%100).to_s
     end
