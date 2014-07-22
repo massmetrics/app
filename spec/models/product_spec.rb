@@ -114,4 +114,5 @@ describe Product do
 
     expect(Product.category_discounts('protein', 2)).to eq([new_item2,new_item])
   end
+
 end
