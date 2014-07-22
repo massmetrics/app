@@ -10,8 +10,9 @@
 <body>
 
 <div class="container">
-  <%= render partial: "layouts/nav" %>
 
+  <%= render partial: "layouts/nav" %>
+  <%= flash[:success] %>
 
   <%= yield %>
   <%= render partial: "layouts/footer" %>
