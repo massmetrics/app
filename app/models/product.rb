@@ -35,7 +35,7 @@ class Product < ActiveRecord::Base
       averages(days).each do |product|
         percentages << [product[0], NumberConverter.percent_off(product[1], product[0].current_price)]
       end
-      percentages.sort_by { |product| product[1] }.reverse[0...items].map { |product| product[0] }.reject { |product| product.nil? }
+      ProductSorter.sort_by_percentage(percentages, items)
     end
 
     def get_products_for(category)
@@ -46,15 +46,15 @@ class Product < ActiveRecord::Base
     end
 
     def category_discounts(category, days = 30, items = 10)
-      output = []
+      percentages = []
       products = get_products_for(category)
       products.each do |product|
         number_of_price_logs = product.get_price_logs(days).length
         if number_of_price_logs > 0
-          output << [product, NumberConverter.percent_off(product.average_price(days), product.current_price)]
+          percentages << [product, NumberConverter.percent_off(product.average_price(days), product.current_price)]
         end
       end
-      output.sort_by { |product| product[1] }.reverse[0...items].map { |product| product[0] }.reject { |product| product.nil? }
+      ProductSorter.sort_by_percentage(percentages, items)
     end
   end
 
