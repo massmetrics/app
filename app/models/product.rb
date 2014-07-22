@@ -37,7 +37,7 @@ class Product < ActiveRecord::Base
     end
   end
 
-  def percent_off days
+  def percent_off(days)
     NumberConverter.percent_off(self.average_price(days), self.current_price)
   end
 
