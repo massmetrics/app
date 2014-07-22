@@ -12,11 +12,18 @@ feature 'homepage' do
 
     visit '/'
     click_link 'Browse'
+    within '#category-header' do
+      expect(page).to have_content('Best deals')
+    end
 
     expect(page).to have_content category_1.category
     expect(page).to have_content category_2.category
 
     click_on category_1.category
+
+    within '#category-header' do
+      expect(page).to have_content(category_1.category)
+    end
 
     expect(page).to have_content product.title
 
