@@ -33,7 +33,7 @@ class Product < ActiveRecord::Base
 
     def category_discounts(category, days = 30, items = 10)
       products = get_products_for(category).includes(:price_logs)
-      products = products.where("price_logs.created_at >= ? ",days.days.ago)
+      products = products.where("price_logs.created_at >= ? ", days.days.ago)
       products.percent_discounts(items, days)
     end
   end
@@ -65,16 +65,10 @@ class Product < ActiveRecord::Base
   end
 
   def price_log_hash(days = 30)
-    logs_hash = {}
-    logs = self.price_logs.map do |log|
-      if log.created_at >= days.day.ago
-        log
-      end
-    end.reject { |log| log.nil? }
-    logs.each do |log|
-      logs_hash[log.created_at.to_s] = (log.price.to_i/100).to_s + "." + (log.price.to_i%100).to_s
+    get_price_logs(days).reduce({}) do |logs_hash, log|
+      logs_hash[log.date_string] = log.in_dollars
+      logs_hash
     end
-    logs_hash
   end
 
   def add_categories(category_array)
