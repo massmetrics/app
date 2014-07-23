@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(allowed_params)
     if @user.save
-      flash[:success] = "Welcome #{@user.email}"
+      flash[:notice] = "Welcome #{@user.email}"
       redirect_to '/'
     else
       render :new
