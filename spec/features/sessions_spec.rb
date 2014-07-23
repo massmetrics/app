@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'Sessions' do
-  scenario 'A user can login in ' do
+  scenario 'A user can login in' do
     visit '/'
     click_link 'Register'
     fill_in 'Email', with: 'Joe@example.com'
