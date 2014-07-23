@@ -31,4 +31,15 @@ feature 'homepage' do
 
     expect(page).to have_content('Features:')
   end
+
+  scenario 'Buy now button is displayed on category card' do
+    category_1 = ObjectCreation.create_product_with_category({category: 'Protein'})
+    product = Product.find_by_sku('12345')
+    ObjectCreation.create_price_log(product: product)
+
+    visit '/'
+    click_link category_1.category
+
+    expect(page).to have_link 'Buy now!'
+  end
 end
