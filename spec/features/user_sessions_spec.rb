@@ -9,7 +9,9 @@ feature 'Sessions' do
     fill_in 'Email', with: user.email
     fill_in 'Password', with: 'password'
     click_button 'Login'
-
-    expect(page).to have_content("Welcome #{user.email}")
+    expect(page).to have_content("#{user.email}")
+    expect(page).to have_link 'Logout'
+    expect(page).to_not have_link('Register')
+    expect(page).to_not have_link('Login')
   end
 end
