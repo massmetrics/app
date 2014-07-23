@@ -34,5 +34,19 @@ describe User do
       expect(invalid_user).to be_invalid
     end
   end
+
+  it 'defaults role to user' do
+    user = User.new(email: 'joe@example.com', password: 'password', password_confirmation: 'password')
+    expect(user.role).to eq('user')
+  end
+
+  it 'checks the users role' do
+    user = User.new(email: 'joe@example.com', password: 'password', password_confirmation: 'password')
+    expect(user.role?('admin')).to eq(false)
+    expect(user.role?('user')).to eq(true)
+    admin_user = User.new(email: 'joe@example.com', password: 'password', password_confirmation: 'password', role: 'admin')
+    expect(admin_user.role?('admin')).to eq(true)
+    expect(admin_user.role?('user')).to eq(false)
+  end
 end
 

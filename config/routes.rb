@@ -6,4 +6,7 @@ Rails.application.routes.draw do
   resources :submissions
   resources :users
   resources :user_sessions
+  namespace :admin do
+    resources :submissions
+  end
 end
