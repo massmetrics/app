@@ -45,7 +45,7 @@ module ObjectCreation
   def self.create_user(attributes = {})
     default = {email: "john@example.com", password: 'password', password_confirmation: 'password'}
     default.merge!(attributes)
-    User.create(
+    User.create!(
       default
     )
   end
