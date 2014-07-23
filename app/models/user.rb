@@ -6,4 +6,7 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
 
+  def role?(role)
+    self.role == role
+  end
 end
