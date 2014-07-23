@@ -7,7 +7,13 @@
       </div>
       <div class="panel-body login-panel">
 
-        <div class="login-alert alert alert-danger col-sm-12"></div>
+        <% if @user.errors.full_messages.length > 0 %>
+          <div class="login-alert alert alert-danger col-sm-12">
+            <% @user.errors.full_messages.each do |error| %>
+              <div><%= error %></div>
+            <% end %>
+          </div>
+        <% end %>
 
         <%= form_for @user, class: 'form-horizontal' do |f| %>
           <div class="input-group">
