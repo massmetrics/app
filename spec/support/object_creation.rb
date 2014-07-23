@@ -49,4 +49,12 @@ module ObjectCreation
       default
     )
   end
+
+  def self.create_admin(attributes = {})
+    default = {email: "#{rand(1000)}@example.com", password: 'password', password_confirmation: 'password', role: :admin}
+    default.merge!(attributes)
+    User.create!(
+      default
+    )
+  end
 end
