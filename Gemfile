@@ -9,6 +9,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'nokogiri'
 gem 'sorcery', '~> 0.8.6'
 gem 'sdoc', '~> 0.4.0',          group: :doc
+gem 'cancancan', '~> 1.9.1'
 
 gem 'spring',        group: :development
 
