@@ -10,8 +10,13 @@
     <ul class="nav navbar-nav">
       <li><%= link_to 'Browse', category_index_path %></li>
       <li><%= link_to 'Suggest a product', new_submission_path %></li>
-      <li><%= link_to 'Register', new_user_path %></li>
-      <li><%= link_to 'Login', new_user_session_path  %></li>
+      <% if logged_in? %>
+        <li><%= current_user.email %></li>
+        <li><%= link_to 'Logout', user_session_path(current_user.id), method: :delete %></li>
+      <% else %>
+        <li><%= link_to 'Register', new_user_path %></li>
+        <li><%= link_to 'Login', new_user_session_path %></li>
+      <% end %>
     </ul>
   </div>
 </nav>
