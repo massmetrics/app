@@ -23,6 +23,10 @@
               <span class="<%= percent_style %>"><%= NumberFormatter.format_percentage(product.percent_discount).first %></span>
             </strong></li>
           </ul>
+
+          <%= link_to product.detail_page_url, class: 'btn category-buy-now' do %>
+            <span class="glyphicon glyphicon-shopping-cart"></span> Buy now!
+          <% end %>
         </div>
         <div class="col-xs-8">
           <%= line_chart(product.price_log_hash(9), {height: "180px", library: {vAxis: {format: '$#,###'}}}) %>

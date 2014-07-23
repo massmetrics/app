@@ -4,7 +4,6 @@ class UsersController < ApplicationController
   end
 
   def create
-
     @user = User.new(allowed_params)
     if @user.save
       flash[:success] = "Welcome #{@user.email}"

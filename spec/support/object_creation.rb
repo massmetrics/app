@@ -41,4 +41,12 @@ module ObjectCreation
     new_product = self.create_product(product)
     self.create_category(category.merge!(product: new_product))
   end
+
+  def self.create_user(attributes = {})
+    default = {email: "john@example.com", password: 'password', password_confirmation: 'password'}
+    default.merge!(attributes)
+    User.create(
+      default
+    )
+  end
 end
