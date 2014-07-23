@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users
   resources :user_sessions
   namespace :admin do
+    resources :base
     resources :submissions
   end
 end

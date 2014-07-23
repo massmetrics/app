@@ -219,6 +219,8 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    simple_enum (2.0.1)
+      activesupport (>= 4.0.0)
     simplecov (0.8.2)
       docile (~> 1.1.0)
       multi_json
@@ -285,6 +287,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
+  simple_enum
   sorcery (~> 0.8.6)
   spring
   timecop

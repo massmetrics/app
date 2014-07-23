@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  enum role: [ :admin, :user ]
+  as_enum :role, admin: 1, user: 0
   before_create :set_role
   authenticates_with_sorcery!
 
