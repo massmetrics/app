@@ -6,16 +6,13 @@
         <div class="forgot-password"><a href="#">Forgot password?</a></div>
       </div>
       <div class="panel-body login-panel">
-
-        <% if @user.errors.full_messages.length > 0 %>
+        <% if flash[:alert] %>
           <div class="login-alert alert alert-danger col-sm-12">
-            <% @user.errors.full_messages.each do |error| %>
-              <div><%= error %></div>
-            <% end %>
+            <div><%= flash[:alert] %></div>
           </div>
         <% end %>
 
-        <%= form_for @user, class: 'form-horizontal' do |f| %>
+        <%= form_for @user, url: {action: 'create'}, class: 'form-horizontal' do |f| %>
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
             <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>

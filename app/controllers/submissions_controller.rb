@@ -6,7 +6,7 @@ class SubmissionsController < ApplicationController
   def create
     @submission = Submission.new(allowed_params)
     if @submission.save
-      flash[:success] = "Thank you for your submission, it will be reviewed shortly"
+      flash[:notice] = "Thank you for your submission, it will be reviewed shortly"
       redirect_to root_path
     else
       render :new
