@@ -44,6 +44,7 @@ GEM
     bootstrap-sass (3.2.0.0)
       sass (~> 3.2)
     builder (3.2.2)
+    cancancan (1.9.1)
     capybara (2.4.1)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -265,6 +266,7 @@ DEPENDENCIES
   asin
   autoprefixer-rails
   bootstrap-sass
+  cancancan (~> 1.9.1)
   capybara
   chartkick
   codeclimate-test-reporter
