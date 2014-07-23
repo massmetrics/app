@@ -16,7 +16,14 @@ describe User do
 
       expect(valid_user).to be_valid
       expect(invalid_user).to be_invalid
+    end
 
+    it 'validates email is an email' do
+      valid_user = User.create(email: 'joe@example.com', password: 'password', password_confirmation: 'password')
+      invalid_user = User.new(email: 'why you mad?', password: 'password', password_confirmation: 'password')
+
+      expect(valid_user).to be_valid
+      expect(invalid_user).to be_invalid
     end
 
     it 'validates presence of password' do
