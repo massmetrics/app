@@ -21,7 +21,7 @@ gem 'bootstrap-sass'
 gem 'autoprefixer-rails'
 gem 'dotenv-rails'
 gem 'money'
-
+gem 'valid_email', '~> 0.0.5'
 gem 'rails_12factor', group: :production
 
 group :test, :development do
