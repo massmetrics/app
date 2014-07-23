@@ -3,6 +3,6 @@ Rails.application.routes.draw do
   resources :welcome, only: [:index]
   resources :product, only: [:show]
   resources :category
+  resources :submissions
   resources :users
-
 end

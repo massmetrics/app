@@ -41,18 +41,24 @@ class ItemLookup
   def large_image_url
     if item.include?("large_image")
       item["large_image"]["url"]
+    else
+      item["image_sets"]["image_set"].first["large_image"]["url"]
     end
   end
 
   def small_image_url
     if item.include?("small_image")
       item["small_image"]["url"]
+    else
+      item["image_sets"]["image_set"].first["small_image"]["url"]
     end
   end
 
   def medium_image_url
     if item.include?("medium_image")
       item["medium_image"]["url"]
+    else
+      item["image_sets"]["image_set"].first["medium_image"]["url"]
     end
   end
 
