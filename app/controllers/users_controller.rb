@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(allowed_params)
     if @user.save
-      flash[:notice] = "Welcome #{@user.email}"
-      redirect_to '/'
+      login(@user.email, params[:user][:password])
+      redirect_back_or_to(root_path)
     else
       render :new
     end
