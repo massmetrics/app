@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   resources :category
   resources :submissions
   resources :users
+  resources :user_sessions
 end
