@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :products, only: [:show]
   resources :category, only: [:index, :show]
   resources :submissions, only: [:new, :create]
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :show]
   resources :user_sessions, only: [:new, :create, :destroy]
   namespace :admin do
     resources :base, only: [:index]
