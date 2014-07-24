@@ -6,12 +6,14 @@ describe Product do
     it 'wont create an item if sku is already in db' do
       product = ObjectCreation.create_product(sku: 'B0047Y6I24')
       invalid_item = ObjectCreation.create_product(sku: product.sku)
+
       expect(invalid_item.valid?).to eq(false)
     end
   end
 
   it 'can add a new product from an SKU - Myotein Chocolate' do
     product = ObjectCreation.create_product(sku: 'B0047Y6I24')
+
     expect(product.sku).to eq('B0047Y6I24')
     expect(product.valid?).to eq(true)
   end
@@ -34,6 +36,7 @@ describe Product do
       new_item = ObjectCreation.create_product
       ObjectCreation.create_price_log(product: new_item, created_at: 'Fri, 04 Jul 2014 22:24:46 UTC +00:00')
       ObjectCreation.create_price_log(product: new_item, created_at: 'Mon, 07 Jul 2014 22:23:06 UTC +00:00')
+
       expect(new_item.price_log_hash(7)).to eq({'2014-07-07 22:23:06 UTC' => '1.00', '2014-07-04 22:24:46 UTC' => '1.00'})
     end
   end
