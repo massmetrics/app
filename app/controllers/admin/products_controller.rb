@@ -1,6 +1,6 @@
 module Admin
   class ProductsController < BaseController
-    before_action :get_product_and_categories, only: [:edit, :update]
+    before_action :get_product_and_categories, only: [:edit, :update, :destroy]
     def index
       @products = Product.all
     end
@@ -10,8 +10,13 @@ module Admin
 
     def update
       categories = SubmissionHelper.split_categories(params[:categories])
-      @product.add_categories(categories)
+      @product.update_categories(categories)
       redirect_to edit_admin_product_path(@product)
+    end
+
+    def destroy
+      @product.destroy
+      redirect_to admin_products_path
     end
 
     private
