@@ -44,9 +44,9 @@ class Product < ActiveRecord::Base
   def percent_discount(days = 30)
     if get_price_logs(days).length > 0
       NumberConverter.percent_off(average_price(days), current_price)
+    else
+      0
     end
-  else
-    0
   end
 
   def average_price(days = 30)
