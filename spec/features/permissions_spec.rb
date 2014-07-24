@@ -11,6 +11,13 @@ feature 'Permissions and authorization' do
 
       expect(page).to have_content('You don\'t have permission to access that page')
     end
+
+    scenario 'tries to visit a users profile' do
+      user = ObjectCreation.create_user
+      visit user_path(user)
+
+      expect(page).to have_content('You don\'t have permission to access that page')
+    end
   end
 
   context 'user' do
@@ -24,7 +31,6 @@ feature 'Permissions and authorization' do
     end
     scenario 'tries to access the admin section' do
 
-
       expect(page).to_not have_link('Admin')
 
       visit admin_base_index_path
@@ -37,6 +43,13 @@ feature 'Permissions and authorization' do
 
       expect(page).to have_content('My Products')
     end
+
+    scenario 'a user cannot visit another user page' do
+      user = ObjectCreation.create_user(email:'uniqueemail@aol.com')
+      visit user_path(user)
+
+      expect(page).to have_content('You don\'t have permission to access that page')
+    end
   end
 
   context 'admin' do
@@ -44,6 +57,15 @@ feature 'Permissions and authorization' do
       FeatureSupport.create_and_login_admin
 
       expect(page).to have_content('Admin Section')
+    end
+
+    scenario 'accesses a user page' do
+      user = ObjectCreation.create_user
+      FeatureSupport.create_and_login_admin
+
+      visit user_path(user)
+
+      expect(page).to have_content('My Products')
     end
   end
 end
