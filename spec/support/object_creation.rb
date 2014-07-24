@@ -43,7 +43,7 @@ module ObjectCreation
   end
 
   def self.create_user(attributes = {})
-    default = {email: "#{rand(1000)}@example.com", password: 'password', password_confirmation: 'password'}
+    default = {email: "#{rand(10000)}@example.com", password: 'password', password_confirmation: 'password'}
     default.merge!(attributes)
     User.create!(
       default
@@ -51,7 +51,7 @@ module ObjectCreation
   end
 
   def self.create_admin(attributes = {})
-    default = {email: "#{rand(1000)}@example.com", password: 'password', password_confirmation: 'password', role: :admin}
+    default = {email: "#{rand(10000)}@example.com", password: 'password', password_confirmation: 'password', role: :admin}
     default.merge!(attributes)
     User.create!(
       default

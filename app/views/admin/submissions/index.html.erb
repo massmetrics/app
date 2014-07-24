@@ -3,4 +3,5 @@
   SKU: <%= submission.sku %>
   Category: <%= submission.category %>
   <%= link_to 'Add', edit_admin_submission_path(submission)  %>
+  <%= link_to 'Reject', admin_submission_path(submission), method: :delete %>
 <% end %>
