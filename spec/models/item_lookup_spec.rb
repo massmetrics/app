@@ -19,4 +19,14 @@ describe ItemLookup do
       end
     end
   end
+
+  it 'uses current price if no price is returned' do
+    new_time = "2014-07-24T20:42:46Z"
+    Timecop.freeze(new_time) do
+      VCR.use_cassette('models/item_lookup/to_hash') do
+        item = ItemLookup.new('B00CTUIS12')
+        expect(item.large_image_url).to eq(item.item["image_sets"]["image_set"].first["large_image"]["url"])
+      end
+    end
+  end
 end
