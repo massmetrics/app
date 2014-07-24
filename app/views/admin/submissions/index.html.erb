@@ -2,7 +2,7 @@
   <h3>Submission</h3>
   SKU: <%= submission.sku %>
   Category: <%= submission.category %>
-  <%= link_to 'Add', edit_admin_submission_path(submission)  %>
-  <%= link_to 'Reject', admin_submission_path(submission), method: :delete %>
+  <%= link_to 'Add', edit_admin_submission_path(submission), class: 'btn btn-success '  %>
+  <%= link_to 'Reject', admin_submission_path(submission), method: :delete, class: 'btn btn-danger ' %></br>
   <%= link_to 'Amazon detail page', "http://www.amazon.com/gp/product/#{submission.sku}/" %>
 <% end %>
