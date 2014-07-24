@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'category#index'
   resources :welcome, only: [:index]
-  resources :product, only: [:show]
+  resources :products, only: [:show]
   resources :category, only: [:index, :show]
   resources :submissions, only: [:new, :create]
   resources :users, only: [:new, :create]
@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :base, only: [:index]
     resources :submissions, only: [:index, :edit, :update, :destroy]
+    resources :products, only: [:index, :edit, :update]
   end
 end
