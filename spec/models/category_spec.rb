@@ -12,7 +12,15 @@ describe Category do
     product3 = Product.find_by_sku('product3')
     ObjectCreation.create_price_log(product: product3)
 
-
     expect(Category.category_list).to match_array(['Protein', 'Pre-workout'])
+  end
+
+  it 'makes first letter of each word capital before creation' do
+    protein = Category.create(category: 'protein')
+
+    expect(protein.category).to eq('Protein')
+
+    pre_workout = Category.create(category: 'pre workout')
+    expect(pre_workout.category).to eq('Pre Workout')
   end
 end
