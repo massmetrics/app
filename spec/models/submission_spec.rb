@@ -16,7 +16,7 @@ describe Submission do
 
       expect(valid_submission.valid?).to eq(true)
       expect(invalid_submission.valid?).to eq(false)
-      expect(invalid_submission.errors.full_messages).to eq(["Sku can't be blank", "Sku is the wrong length (should be 10 characters)"])
+      expect(invalid_submission.errors.full_messages).to eq(["Sku can't be blank", "Sku Invalid SKU"])
     end
 
     it 'validates presence of category' do
