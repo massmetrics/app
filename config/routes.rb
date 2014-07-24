@@ -9,6 +9,6 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :base, only: [:index]
     resources :submissions, only: [:index, :edit, :update, :destroy]
-    resources :products, only: [:index, :edit, :update]
+    resources :products, only: [:index, :edit, :update, :destroy]
   end
 end
