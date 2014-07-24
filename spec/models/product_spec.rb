@@ -68,6 +68,7 @@ describe Product do
     expect(Product.percent_discounts(2)).to eq([new_item2, new_item])
   end
 
+
   it 'can add a category to a product' do
     new_item = ObjectCreation.create_product(current_price: '1000')
     new_item.add_categories(['Protein'])
