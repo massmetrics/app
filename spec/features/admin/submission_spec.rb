@@ -32,5 +32,13 @@ feature 'Submissions' do
         end
       end
     end
+
+    scenario 'Admin can reject submissions' do
+      click_link 'Submissions'
+      click_link 'Reject'
+
+      expect(page).to have_no_content "SKU: #{@submission.sku}"
+      expect(page).to have_no_content "Category: #{@submission.category}"
+    end
   end
 end
