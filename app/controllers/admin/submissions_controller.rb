@@ -1,12 +1,11 @@
 module Admin
   class SubmissionsController < BaseController
-
+    before_action :find_submission, only: [:edit, :destroy]
     def index
       @submissions = Submission.all
     end
 
     def edit
-      @submission = Submission.find(params[:id])
       @amazon_detail_page = "http://www.amazon.com/gp/product/#{@submission.sku}/"
     end
 
@@ -17,9 +16,14 @@ module Admin
       redirect_to admin_submissions_path
     end
 
+    def destroy
+      @submission.destroy
+      redirect_to admin_submissions_path
+    end
+
     private
-    def allowed_params
-      params.require(:submission).permit(:sku, :category)
+    def find_submission
+      @submission = Submission.find(params[:id])
     end
   end
 end
