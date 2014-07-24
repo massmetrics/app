@@ -69,7 +69,7 @@ class ItemLookup
   end
 
   def to_hash
-    current_price = AmazonScraper.new(detail_page_url).price || current_price
+    current_price = AmazonScraper.new(detail_page_url).price || self.current_price
     {
       features: features,
       detail_page_url: detail_page_url,
