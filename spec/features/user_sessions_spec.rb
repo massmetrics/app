@@ -6,7 +6,6 @@ feature 'Sessions' do
 
   end
   scenario 'User can login and logout' do
-
     visit '/'
     click_link 'Login'
     fill_in 'Email', with: @user.email
