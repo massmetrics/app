@@ -7,6 +7,7 @@ describe 'Submit an SKU and category' do
     fill_in 'submission[sku]', with: 'B0031JK96C'
     fill_in 'submission[category]', with: 'protein'
     click_on 'Suggest product'
+
     expect(page).to have_content('Thank you for your submission, it will be reviewed shortly')
   end
 end
