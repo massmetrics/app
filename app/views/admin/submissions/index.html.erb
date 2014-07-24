@@ -4,4 +4,5 @@
   Category: <%= submission.category %>
   <%= link_to 'Add', edit_admin_submission_path(submission)  %>
   <%= link_to 'Reject', admin_submission_path(submission), method: :delete %>
+  <%= link_to 'Amazon detail page', "http://www.amazon.com/gp/product/#{submission.sku}/" %>
 <% end %>
