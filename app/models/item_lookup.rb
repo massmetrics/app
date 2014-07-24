@@ -39,27 +39,15 @@ class ItemLookup
   end
 
   def large_image_url
-    if item.include?("large_image")
-      item["large_image"]["url"]
-    else
-      item["image_sets"]["image_set"].first["large_image"]["url"]
-    end
+    image_checker("large_image")
   end
 
   def small_image_url
-    if item.include?("small_image")
-      item["small_image"]["url"]
-    else
-      item["image_sets"]["image_set"].first["small_image"]["url"]
-    end
+    image_checker("small_image")
   end
 
   def medium_image_url
-    if item.include?("medium_image")
-      item["medium_image"]["url"]
-    else
-      item["image_sets"]["image_set"].first["medium_image"]["url"]
-    end
+    image_checker("medium_image")
   end
 
   def brand
@@ -81,5 +69,15 @@ class ItemLookup
       small_image_url: small_image_url,
       brand: brand
     }
+  end
+
+  private
+
+  def image_checker(image_string)
+    if item.include?(image_string)
+      item[image_string]["url"]
+    else
+      item["image_sets"]["image_set"].first[image_string]["url"]
+    end
   end
 end
