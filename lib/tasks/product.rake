@@ -9,7 +9,7 @@ namespace :product do
   desc('add new product to system')
   task :update_products => :environment do
     Product.all.each do |item|
-      puts "Updated item with SKU: #{item.sku}"
+      puts "Updating item with SKU: #{item.sku}"
       item.update_from_sku
       item.reload
       PriceLog.create(price: item.current_price, product: item)
