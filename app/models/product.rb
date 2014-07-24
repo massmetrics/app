@@ -81,4 +81,9 @@ class Product < ActiveRecord::Base
       end
     end
   end
+
+  def update_categories(category_array)
+    self.categories.destroy_all
+    self.add_categories(category_array)
+  end
 end
