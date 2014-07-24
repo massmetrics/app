@@ -13,7 +13,7 @@ feature 'Sessions' do
     expect(page).to have_link('Logout')
     expect(page).to_not have_link('Register')
     expect(page).to_not have_link('Login')
-    click_link "Logout"
+    click_link 'Logout'
     expect(page).to have_link('Login')
     expect(page).to have_link('Register')
     expect(page).to_not have_content('Logout')
