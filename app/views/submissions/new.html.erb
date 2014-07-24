@@ -12,6 +12,12 @@
             <% end %>
           </div>
         <% end %>
+        <% if flash[:notice] %>
+          <div class="login-alert alert alert-success col-sm-12">
+            <%= flash[:notice] %>
+          </div>
+        <% end %>
+
 
         <%= form_for @submission, class: 'form-horizontal' do |f| %>
           <div class="input-group">
