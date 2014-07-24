@@ -10,4 +10,14 @@ describe 'Submit an SKU and category' do
 
     expect(page).to have_content('Thank you for your submission, it will be reviewed shortly')
   end
+
+  it 'renders the new page with errors if an invalid sku is entered' do
+    visit '/'
+    click_on 'Suggest a product'
+    fill_in 'submission[sku]', with: 'stuff'
+    fill_in 'submission[category]', with: 'protein'
+    click_on 'Suggest product'
+
+    expect(page).to have_content 'Invalid SKU'
+  end
 end
