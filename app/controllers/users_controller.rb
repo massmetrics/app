@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :find_user, only: [:show]
+  before_filter :verify_user, only: [:show]
+
   def new
     @user = User.new
   end
@@ -14,11 +17,18 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   private
+  def find_user
+    @user = User.find(params[:id])
+  end
+
   def allowed_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def verify_user
+    redirect_to root_path, notice: "You don't have permission to access that page" unless current_user == @user || (logged_in? && current_user.role?(:admin))
   end
 end
