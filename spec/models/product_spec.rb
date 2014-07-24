@@ -74,7 +74,7 @@ describe Product do
     expect(Product.percent_discounts(2)).to eq([new_item2, new_item])
   end
 
-  context 'adding categories to a product' do
+  context 'categories' do
     it 'can add a category to a product' do
       new_item = ObjectCreation.create_product(current_price: '1000')
       new_item.add_categories(['Protein'])
@@ -95,7 +95,17 @@ describe Product do
       expect(new_item.categories.map { |cat| cat.category }).to match_array(['Protein'])
     end
 
+    it 'updates all categories for a product' do
+      new_item = ObjectCreation.create_product(current_price: '1000')
+      new_item.add_categories(['Protein'])
+      new_item.reload
+      new_item.update_categories(['pre workout'])
+      new_item.reload
+
+      expect(new_item.categories.map { |cat| cat.category }).to match_array(['Pre Workout'])
+    end
   end
+
   it 'returns a list of products for a given category' do
     ObjectCreation.create_product_with_category({category: 'protein'}, {sku: '123'})
     ObjectCreation.create_product_with_category({category: 'pre workout'}, {sku: '1234'})
