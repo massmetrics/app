@@ -9,5 +9,4 @@ class CategoryController < ApplicationController
     @categories = Category.category_list
     @products = Product.category_discounts(params[:id])
   end
-
 end
