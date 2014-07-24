@@ -12,6 +12,7 @@ describe AmazonScraper do
     VCR.use_cassette('amazon_scraper/labrada') do
       product = ObjectCreation.create_product(detail_page_url: 'http://www.amazon.com/Labrada-Nutrition-Essential-Capsules-180-Count/dp/B00HQNNS6C/ref=sr_1_1?ie=UTF8&qid=1405887875&sr=8-1&keywords=LABRADA+EFA+LEAN+GOLD')
       labrada = AmazonScraper.new(product.detail_page_url)
+
       expect(labrada.price).to eq('$25.00')
     end
   end
