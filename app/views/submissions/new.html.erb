@@ -7,7 +7,7 @@
       <div class="panel-body login-panel">
         <% if @submission.errors.full_messages.length > 0 %>
           <div class="login-alert alert alert-danger col-sm-12">
-            <% @submission.errors.full_messages.each do |error| %>
+            <% @submission.errors.each do |_, error| %>
               <div><%= error %></div>
             <% end %>
           </div>
