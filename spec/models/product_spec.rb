@@ -74,7 +74,7 @@ describe Product do
     new_item.add_categories(['Pill', 'blah'])
     new_item.reload
 
-    expect(new_item.categories.map { |cat| cat.category }).to match_array(['Protein', 'Pill', 'blah'])
+    expect(new_item.categories.map { |cat| cat.category }).to match_array(['Protein', 'Pill', 'Blah'])
   end
 
   it 'returns a list of products for a given category' do
@@ -85,8 +85,8 @@ describe Product do
     second_product = Product.find_by_sku('12345')
     third_product = Product.find_by_sku('1234')
 
-    expect(Product.get_products_for('protein')).to match_array([first_product, second_product])
-    expect(Product.get_products_for('protein')).to_not include(third_product)
+    expect(Product.get_products_for('Protein')).to match_array([first_product, second_product])
+    expect(Product.get_products_for('Protein')).to_not include(third_product)
   end
 
   it 'returns the best products by value for a category up to the number requested' do
@@ -110,7 +110,7 @@ describe Product do
     ObjectCreation.create_price_log(product: new_item4, price: '1000')
     new_item4.add_categories(['protein'])
 
-    expect(Product.category_discounts('protein', 2)).to eq([new_item2, new_item])
+    expect(Product.category_discounts('Protein', 2)).to eq([new_item2, new_item])
   end
 
   it 'returns 0 of no price logs exist' do

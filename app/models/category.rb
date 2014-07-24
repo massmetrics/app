@@ -1,5 +1,6 @@
 class Category < ActiveRecord::Base
   belongs_to :product
+  before_create :capitalize_category
 
   def self.category_list
     all_categories.map do |category|
@@ -13,5 +14,10 @@ class Category < ActiveRecord::Base
     all.map do |category|
       category.category
     end.uniq
+  end
+
+  private
+  def capitalize_category
+    self.category = self.category.split(' ').map(&:capitalize).join(' ')
   end
 end

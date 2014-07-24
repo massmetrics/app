@@ -5,7 +5,8 @@ class User < ActiveRecord::Base
 
   validates_confirmation_of :password
   validates_presence_of :password, :on => :create
-  validates :email, :presence => true, :email => true
+  validates :email, :presence => true
+  validates :email, :email => true
   validates_uniqueness_of :email
 
   def role?(role)
