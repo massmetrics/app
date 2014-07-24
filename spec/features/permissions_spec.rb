@@ -14,20 +14,28 @@ feature 'Permissions and authorization' do
   end
 
   context 'user' do
-    scenario 'tries to access the admin section' do
-      user = ObjectCreation.create_user
-
+    before do
+      @user = ObjectCreation.create_user
       visit '/'
       click_link 'Login'
-      fill_in 'Email', with: user.email
+      fill_in 'Email', with: @user.email
       fill_in 'Password', with: 'password'
       click_button 'Login'
+    end
+    scenario 'tries to access the admin section' do
+
 
       expect(page).to_not have_link('Admin')
 
       visit admin_base_index_path
 
       expect(page).to have_content('You don\'t have permission to access that page')
+    end
+
+    scenario 'A user can visit their personal page' do
+      visit user_path(@user)
+
+      expect(page).to have_content('My Products')
     end
   end
 
