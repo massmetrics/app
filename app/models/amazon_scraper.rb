@@ -3,6 +3,7 @@ require 'open-uri'
 class AmazonScraper
   def initialize(url)
     @page = Nokogiri::HTML(open(url))
+    sleep 3
   end
 
   def price
