@@ -68,19 +68,28 @@ describe Product do
     expect(Product.percent_discounts(2)).to eq([new_item2, new_item])
   end
 
+  context 'adding categories to a product' do
+    it 'can add a category to a product' do
+      new_item = ObjectCreation.create_product(current_price: '1000')
+      new_item.add_categories(['Protein'])
 
-  it 'can add a category to a product' do
-    new_item = ObjectCreation.create_product(current_price: '1000')
-    new_item.add_categories(['Protein'])
+      new_item.reload
+      expect(new_item.categories.map { |cat| cat.category }).to include('Protein')
 
-    expect(new_item.categories.map { |cat| cat.category }).to include('Protein')
+      new_item.add_categories(['Pill', 'blah', "protein"])
+      new_item.reload
 
-    new_item.add_categories(['Pill', 'blah'])
-    new_item.reload
+      expect(new_item.categories.map { |cat| cat.category }).to match_array(['Protein', 'Pill', 'Blah'])
+    end
 
-    expect(new_item.categories.map { |cat| cat.category }).to match_array(['Protein', 'Pill', 'Blah'])
+    it 'doesnt add duplicate categories to a product' do
+      new_item = ObjectCreation.create_product(current_price: '1000')
+      new_item.add_categories(['Protein', 'protein'])
+      new_item.reload
+      expect(new_item.categories.map { |cat| cat.category }).to match_array(['Protein'])
+    end
+
   end
-
   it 'returns a list of products for a given category' do
     ObjectCreation.create_product_with_category({category: 'protein'}, {sku: '123'})
     ObjectCreation.create_product_with_category({category: 'pre workout'}, {sku: '1234'})
@@ -108,11 +117,6 @@ describe Product do
     ObjectCreation.create_price_log(product: new_item3, price: '2000')
     ObjectCreation.create_price_log(product: new_item3, price: '1000')
     new_item3.add_categories(['pre workout'])
-
-    new_item4 = ObjectCreation.create_product(current_price: '1000')
-    ObjectCreation.create_price_log(product: new_item4, price: '2000')
-    ObjectCreation.create_price_log(product: new_item4, price: '1000')
-    new_item4.add_categories(['protein'])
 
     expect(Product.category_discounts('Protein', 2)).to eq([new_item2, new_item])
   end

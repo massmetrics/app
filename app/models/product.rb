@@ -74,7 +74,11 @@ class Product < ActiveRecord::Base
 
   def add_categories(category_array)
     category_array.each do |category|
-      Category.create(product: self, category: category)
+      self.reload
+      categories = self.categories.map { |c| c.category.downcase }
+      unless categories.include?(category.downcase.strip)
+        Category.create(product: self, category: category)
+      end
     end
   end
 end
