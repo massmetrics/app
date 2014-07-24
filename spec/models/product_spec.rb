@@ -57,6 +57,12 @@ describe Product do
     expect(new_item.percent_discount).to eq(0.3333333333333333)
   end
 
+  it 'returns 0 if no price logs exist' do
+    new_item = ObjectCreation.create_product(current_price: '1000')
+
+    expect(new_item.percent_discount).to eq(0)
+  end
+
   it 'returns the best products by value' do
     new_item = ObjectCreation.create_product(current_price: '1700', sku: 'item_2')
     ObjectCreation.create_price_log(product: new_item, price: '2000')
