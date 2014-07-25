@@ -3,6 +3,7 @@ class Product < ActiveRecord::Base
   validates_uniqueness_of :sku
   has_many :price_logs
   has_many :categories
+  has_many :my_products, through: :users
 
   class << self
     def create_from_sku(sku)
@@ -74,7 +75,16 @@ class Product < ActiveRecord::Base
 
   def add_categories(category_array)
     category_array.each do |category|
-      Category.create(product: self, category: category)
+      self.reload
+      categories = self.categories.map { |c| c.category.downcase }
+      unless categories.include?(category.downcase.strip)
+        Category.create(product: self, category: category)
+      end
     end
+  end
+
+  def update_categories(category_array)
+    self.categories.destroy_all
+    self.add_categories(category_array)
   end
 end

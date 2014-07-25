@@ -47,6 +47,7 @@
             <%= link_to @product.review_url, class: 'btn reviews ' do %>
               Read Reviews <span class="glyphicon glyphicon-list-alt"></span>
             <% end %>
+            <%= link_to "Track Product", product_my_products_path(@product), method: :post %>
           </p>
         </div>
       </div>
