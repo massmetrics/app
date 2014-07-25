@@ -29,4 +29,14 @@ describe ItemLookup do
       end
     end
   end
+
+  it 'turns features into an array if its not an array' do
+    new_time = "2014-07-25T05:48:56Z"
+    Timecop.freeze(new_time) do
+      VCR.use_cassette('models/item_lookup/features') do
+        item = ItemLookup.new('B002NU6FC2')
+        expect(item.features.class).to eq(Array)
+      end
+    end
+  end
 end
