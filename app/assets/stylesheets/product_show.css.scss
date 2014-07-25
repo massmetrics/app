@@ -92,3 +92,17 @@ span.tags
 .title-description{
   padding-left: 25px
 }
+
+.list-group {
+  .my-products-light {
+    margin-bottom: 5px;
+    background-color: #c8c8c8;
+    color: black;
+    border-color: black;
+  }
+
+  .my-products-dark {
+    background-color: #3e444c;
+    margin-bottom: 5px;
+  }
+}
