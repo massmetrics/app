@@ -1,0 +1,31 @@
+
+
+.my-products {
+  .col-xs-9{
+    padding-top: 10px
+  }
+  .my-products-light {
+    margin-bottom: 5px;
+    background-color: #c8c8c8;
+    color: black;
+    border-color: black;
+    .my-product-title{
+      color: black;
+    }
+  }
+
+  .my-products-dark {
+    background-color: #3e444c;
+    margin-bottom: 5px;
+  }
+
+  .buy-now-small {
+    background-color: #F2A03D ;
+    color: black;
+  }
+
+  .untrack {
+    color: black;
+  }
+
+}
