@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @my_products = @user.my_products
   end
 
   private

@@ -12,6 +12,13 @@ feature 'Permissions and authorization' do
       expect(page).to have_content('You don\'t have permission to access that page')
     end
 
+    scenario 'tries to track an item' do
+      product = ObjectCreation.create_product
+      visit product_path(product)
+      click_on 'Track Product'
+      expect(page).to have_content('You must log in to track products')
+    end
+
     scenario 'tries to visit a users profile' do
       user = ObjectCreation.create_user
       visit user_path(user)

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   as_enum :role, admin: 1, user: 0
   before_create :set_role
+  has_many :my_products
   authenticates_with_sorcery!
 
   validates_confirmation_of :password
