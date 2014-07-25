@@ -9,7 +9,7 @@ namespace :product do
   desc('add new product to system')
   task :update_products => :environment do
     Product.all.each do |item|
-      puts "Updating item with SKU: #{item.sku}"
+      puts "Updating item with ID: #{item.id}"
       price = NumberFormatter.format_price_string(AmazonScraper.new(item.detail_page_url).price)
       item.update(current_price: price)
       item.reload
