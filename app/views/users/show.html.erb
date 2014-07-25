@@ -2,5 +2,6 @@
 <ul>
   <% @my_products.each do |product| %>
     <li><%= product.product.title %></li>
+    <%= link_to 'Untrack', product_my_product_path(product.product, product), method: :delete %>
   <% end %>
 </ul>
