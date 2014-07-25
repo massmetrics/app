@@ -35,7 +35,7 @@ feature 'User' do
       product = ObjectCreation.create_product
 
       visit product_path(product)
-      click_on 'Track Product'
+      click_on 'Track-it'
       visit user_path(user)
 
       expect(page).to have_content product.title
@@ -45,8 +45,8 @@ feature 'User' do
       FeatureSupport.create_and_login_user
       product = ObjectCreation.create_product
       visit product_path(product)
-      click_on 'Track Product'
-      click_on 'Track Product'
+      click_on 'Track-it'
+      click_on 'Track-it'
       expect(page).to have_content("Product is already tracked")
     end
   end
