@@ -19,6 +19,18 @@
                 Untrack <span class="glyphicon glyphicon-remove-circle"></span>
               <% end %>
             </div>
+            <div class="col-xs-12">
+              <%= form_for @my_product_notification do |f| %>
+                <% if product.my_products_notification %>
+                  <% discount = product.my_products_notification.discount %>
+                <% else %>
+                  <% discount = '' %>
+                <% end %>
+                <%= hidden_field_tag :my_product, product.id -%>
+                <%= f.text_field :discount, value: discount %>
+                <%= f.submit 'Save notification' %>
+              <% end -%>
+            </div>
           </div>
         <% end %>
       </ul>
