@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :products, only: [:show] do
     resources :my_products, only: [:create, :destroy]
   end
+  resources :my_products_notifications, only: [:create]
   resources :category, only: [:index, :show]
   resources :submissions, only: [:new, :create]
   resources :users, only: [:new, :create, :show]
