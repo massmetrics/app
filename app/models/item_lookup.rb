@@ -27,7 +27,12 @@ class ItemLookup
 
   def features
     if item["item_attributes"].include?("feature")
-      item["item_attributes"]["feature"]
+      features = item["item_attributes"]["feature"]
+      if features.class == Array
+        features
+      else
+        [features]
+      end
     end
   end
 
