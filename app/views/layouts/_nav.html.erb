@@ -13,7 +13,7 @@
     </ul>
     <ul class="nav navbar-nav pull-right">
       <% if logged_in? %>
-        <li><%= link_to current_user.email, '#', class: 'user-email' %></li>
+        <li><%= link_to current_user.email, current_user, class: 'user-email' %></li>
         <li><%= link_to 'Logout', user_session_path(current_user.id), method: :delete %></li>
         <% if current_user.role?(:admin) %>
           <li><%= link_to 'Admin', admin_base_index_path %></li>
