@@ -15,7 +15,7 @@ feature 'Permissions and authorization' do
     scenario 'tries to track an item' do
       product = ObjectCreation.create_product
       visit product_path(product)
-      click_on 'Track Product'
+      click_on 'Track-it'
       expect(page).to have_content('You must log in to track products')
     end
 
