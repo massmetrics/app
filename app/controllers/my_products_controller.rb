@@ -1,6 +1,7 @@
 class MyProductsController < ApplicationController
   before_action :get_product
   before_filter :verify_logged_in
+
   def create
     @my_product = MyProduct.new(product: @product, user: current_user)
     if @my_product.save
@@ -8,6 +9,11 @@ class MyProductsController < ApplicationController
     else
       redirect_to @product, notice: @my_product.errors.full_messages.first
     end
+  end
+
+  def destroy
+    MyProduct.find(params[:id]).destroy
+    redirect_to(current_user)
   end
 
   private
