@@ -6,10 +6,10 @@ class AmazonScraper
   end
 
   def price
-    if @page.xpath('//span[@id = "priceblock_ourprice"]').first
-      @page.xpath('//span[@id = "priceblock_ourprice"]').first.children.to_s
-    elsif @page.xpath('//span[@id = "priceblock_saleprice"]').first
-      @page.xpath('//span[@id = "priceblock_saleprice"]').first.children.to_s
+    if @page.css('#priceblock_ourprice').length > 0
+      @page.css('#priceblock_ourprice').text
+    elsif @page.css('#priceblock_saleprice').length > 0
+      @page.css('#priceblock_saleprice').text
     end
   end
 end
