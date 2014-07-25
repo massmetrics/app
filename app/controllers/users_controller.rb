@@ -17,7 +17,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @my_products = @user.my_products
+    @my_products = @user.my_products.includes(:my_products_notification)
+    @my_product_notification = MyProductsNotification.new
   end
 
   private

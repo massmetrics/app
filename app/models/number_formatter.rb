@@ -8,5 +8,13 @@ class NumberFormatter
     def format_price_string(price_string)
       price_string.tr('$.', '').split('-').first.strip
     end
+
+    def string_to_float(discount_string)
+      if discount_string =~ /(?<=^| )\d+(\.\d+)?(?=$| )|(?<=^| )\.\d+(?=$| )/
+        discount_string
+      else
+        0
+      end
+    end
   end
 end

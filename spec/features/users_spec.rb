@@ -47,7 +47,7 @@ feature 'User' do
       visit product_path(product)
       click_on 'Track-it'
       click_on 'Track-it'
-      expect(page).to have_content("Product is already tracked")
+      expect(page).to have_content('Product is already tracked')
     end
   end
 end
