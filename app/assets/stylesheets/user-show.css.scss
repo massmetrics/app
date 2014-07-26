@@ -18,6 +18,9 @@
   .my-products-dark {
     background-color: #3e444c;
     margin-bottom: 5px;
+    label {
+      color: white
+    }
   }
 
   .buy-now-small {
@@ -27,6 +30,9 @@
 
   .untrack {
     color: black;
+  }
+  label {
+    font-weight: normal ;
   }
 
 }
