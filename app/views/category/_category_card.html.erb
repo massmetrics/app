@@ -27,9 +27,9 @@
           <%= link_to product.detail_page_url, class: 'btn category-buy-now btn-xs' do %>
             <span class="glyphicon glyphicon-shopping-cart"></span> Buy now!
           <% end %>
-          <%= link_to product_my_products_path(product), method: :post, class:'btn btn-success btn-xs track-it-xs ' do%>
+          <%= link_to product_my_products_path(product), method: :post, class: 'btn btn-success btn-xs track-it-xs' do %>
             Track-it <span class="glyphicon glyphicon-ok-circle"> </span>
-          <% end  %>
+          <% end %>
         </div>
         <div class="col-xs-8">
           <%= line_chart(product.price_log_hash(9), {height: "185px", library: {vAxis: {format: '$#,###'}}}) %>
