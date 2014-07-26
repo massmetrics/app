@@ -28,9 +28,6 @@
             <span class="glyphicon glyphicon-shopping-cart"></span> Buy now!
           <% end %>
           <% if logged_in? && current_user.tracked?(product) %>
-            <%= link_to product_my_products_path(product), method: :post, class: 'btn btn-success btn-xs track-it-xs' do %>
-              Track-it <span class="glyphicon glyphicon-ok-circle"> </span>
-            <% end %>
           <% else %>
             <%= link_to product_my_products_path(product), method: :post, class: 'btn btn-success btn-xs track-it-xs' do %>
               Track-it <span class="glyphicon glyphicon-ok-circle"> </span>
