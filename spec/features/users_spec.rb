@@ -46,8 +46,7 @@ feature 'User' do
       product = ObjectCreation.create_product
       visit product_path(product)
       click_on 'Track-it'
-      click_on 'Track-it'
-      expect(page).to have_content('Product is already tracked')
+      expect(page).to_not have_link('Track-it')
     end
   end
 end
