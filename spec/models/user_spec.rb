@@ -68,5 +68,16 @@ describe User do
     expect(admin_user.role?(:admin)).to eq(true)
     expect(admin_user.role?(:user)).to eq(false)
   end
+
+  it 'returns true if a user tracked an item' do
+    user = ObjectCreation.create_user
+    product = ObjectCreation.create_product
+    other_user = ObjectCreation.create_user(email: 't@t.com')
+    MyProduct.create(user: user, product: product)
+    user.reload
+    other_user.reload
+    expect(other_user.tracked?(product)).to eq(false)
+    expect(user.tracked?(product)).to eq(true)
+  end
 end
 
