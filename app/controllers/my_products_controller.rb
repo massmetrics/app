@@ -5,9 +5,9 @@ class MyProductsController < ApplicationController
   def create
     @my_product = MyProduct.new(product: @product, user: current_user)
     if @my_product.save
-      redirect_to @product
+      redirect_to :back
     else
-      redirect_to @product, notice: @my_product.errors.full_messages.first
+      redirect_to :back, notice: @my_product.errors.full_messages.first
     end
   end
 
@@ -22,6 +22,6 @@ class MyProductsController < ApplicationController
   end
 
   def verify_logged_in
-    redirect_back_or_to(@product, notice: 'You must log in to track products') unless logged_in?
+    redirect_back_or_to(:back, notice: 'You must log in to track products') unless logged_in?
   end
 end
