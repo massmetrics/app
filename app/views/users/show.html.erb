@@ -9,17 +9,8 @@
         <% @my_products.each do |product| %>
           <div class="col-xs-12 list-group-item <%= cycle("my-products-light", "my-products-dark") -%>">
             <div class="col-xs-9">
-              <li class="list-unstyled"><%= link_to product.product.title, product.product, class: 'my-product-title' %></li>
-            </div>
-            <div class="col-xs-3">
-              <%= link_to product.product.detail_page_url, class: 'btn btn-small buy-now-small ' do %>
-                <span class="glyphicon glyphicon-shopping-cart"></span> Buy now!
-              <% end %>
-              <%= link_to product_my_product_path(product.product, product), class: 'btn btn-danger untrack pull-right ', method: :delete do %>
-                Untrack <span class="glyphicon glyphicon-remove-circle"></span>
-              <% end %>
-            </div>
-            <div class="col-xs-12">
+              <li class="list-unstyled"><%= link_to product.product.title, product.product, class: 'my-product-title' %></li></br>
+
               <%= form_for @my_product_notification do |f| %>
                 <% if product.my_products_notification %>
                   <% discount = product.my_products_notification.discount %>
@@ -27,9 +18,18 @@
                   <% discount = '' %>
                 <% end %>
                 <%= hidden_field_tag :my_product, product.id -%>
+                <%= f.label "Percentage discount threshold: %"  %>
                 <%= f.text_field :discount, value: discount %>
                 <%= f.submit 'Save notification' %>
               <% end -%>
+            </div>
+            <div class="col-xs-3 my-products-button">
+              <%= link_to product.product.detail_page_url, class: 'btn btn-small buy-now-small ' do %>
+                <span class="glyphicon glyphicon-shopping-cart"></span> Buy now!
+              <% end %>
+              <%= link_to product_my_product_path(product.product, product), class: 'btn btn-danger untrack pull-right ', method: :delete do %>
+                Untrack <span class="glyphicon glyphicon-remove-circle"></span>
+              <% end %>
             </div>
           </div>
         <% end %>
