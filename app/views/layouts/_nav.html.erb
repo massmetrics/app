@@ -6,7 +6,9 @@
     <ul class="nav navbar-nav">
       <li><%= link_to 'Browse', category_index_path %></li>
       <li><%= link_to 'Suggest a product', new_submission_path %></li>
-      <li><%= link_to 'My Products', current_user  %></li>
+      <% if logged_in? %>
+        <li><%= link_to 'My Products', current_user %></li>
+      <% end %>
     </ul>
     <ul class="nav navbar-nav pull-right">
       <% if logged_in? %>
