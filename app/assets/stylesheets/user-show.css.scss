@@ -1,15 +1,15 @@
 
-
 .my-products {
-  .col-xs-9{
-    padding-top: 10px
+  .col-xs-9 {
+    padding-top: 10px;
+
   }
   .my-products-light {
     margin-bottom: 5px;
     background-color: #c8c8c8;
     color: black;
     border-color: black;
-    .my-product-title{
+    .my-product-title {
       color: black;
       font-weight: bold;
     }
@@ -21,7 +21,7 @@
   }
 
   .buy-now-small {
-    background-color: #F2A03D ;
+    background-color: #F2A03D;
     color: black;
   }
 
@@ -30,7 +30,12 @@
   }
 
 }
+
 .my-products-button {
   margin-top: 18px;
-
 }
+
+.my-products-panel {
+  background-color: #1c1e22;
+}
+
