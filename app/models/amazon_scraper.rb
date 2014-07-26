@@ -2,7 +2,7 @@ require 'nokogiri'
 require 'open-uri'
 class AmazonScraper
   def initialize(url)
-    @page = Nokogiri::HTML(open(url))
+    @page = Nokogiri::HTML(open(url, 'User-Agent' => 'ruby'))
   end
 
   def price
