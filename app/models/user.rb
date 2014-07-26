@@ -15,10 +15,13 @@ class User < ActiveRecord::Base
   end
 
   def tracked?(product)
+    truthy = false
     my_products.each do |my_product|
-      return my_product.product == product
+      if my_product.product == product
+        truthy = true
+      end
     end
-    false
+    truthy
   end
 
   private
