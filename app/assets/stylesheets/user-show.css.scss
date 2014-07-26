@@ -35,7 +35,13 @@
   margin-top: 18px;
 }
 
-.my-products-panel {
-  background-color: #1c1e22;
+.panel {
+  .my-products-panel {
+    background-color: #1c1e22;
+    padding: 40px;
+    padding-top: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 
