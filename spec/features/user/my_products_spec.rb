@@ -32,7 +32,7 @@ feature 'My Products' do
       visit user_path(@user)
       fill_in 'my_products_notification[discount]', with: '15'
       click_on 'Save notification'
-      click_on 'Remove notification'
+      click_on 'Remove'
 
       expect(find_field('my_products_notification[discount]').value).to eq('')
 

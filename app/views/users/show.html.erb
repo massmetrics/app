@@ -29,7 +29,7 @@
               <%= f.text_field :discount, value: discount, size: 3 %>  %
               <%= f.submit 'Save notification', class: 'btn-xs' %>
               <% if product.my_products_notification %>
-                <%= button_to 'Remove notification', {action: "destroy", controller: 'my_products_notifications', id: product.my_products_notification.id}, method: :delete, class: 'btn-xs' %>
+                <%= link_to 'Remove', my_products_notification_path(product.my_products_notification), class: 'btn btn-xs remove-notification', method: :delete %>
               <% end %>
             <% end -%>
           </div>
