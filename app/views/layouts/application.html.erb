@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MassMetrics</title>
   <%= javascript_include_tag "//www.google.com/jsapi", "chartkick" %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_include_tag 'application' %>
   <%= favicon_link_tag 'favicon.ico' %>
   <%= csrf_meta_tags %>
+  <%= display_meta_tags :site => 'Mass Metrics' %>
 </head>
 <body>
-
 <div class="container">
   <%= render partial: "layouts/nav" %>
   <%= flash[:notice] %>
