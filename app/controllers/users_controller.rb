@@ -3,6 +3,12 @@ class UsersController < ApplicationController
   before_filter :verify_user, only: [:show]
 
   def new
+    meta_tag_setter(
+      "Login",
+      'Best discounts for health and beauty products',
+      key_words,
+      false
+    )
     @user = User.new
   end
 
@@ -17,6 +23,12 @@ class UsersController < ApplicationController
   end
 
   def show
+    meta_tag_setter(
+      "My products",
+      'Best discounts for health and beauty products',
+      key_words,
+      false
+    )
     @my_products = @user.my_products.includes(:my_products_notification)
     @my_product_notification = MyProductsNotification.new
   end
