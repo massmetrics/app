@@ -3,7 +3,7 @@
   .col-xs-9 {
     padding-top: 10px;
   }
-  .text-success, .text-danger{
+  .text-success, .text-danger {
     text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
     padding-left: 15px;
 
@@ -18,12 +18,21 @@
       color: black;
       font-weight: bold;
     }
+    .remove-notification {
+      color: black;
+    }
+
   }
 
   .my-products-dark {
     background-color: #3e444c;
     margin-bottom: 5px;
+    color: white;
+
+    .remove-notification {
       color: white;
+      
+    }
   }
 
   .buy-now-small {
@@ -58,9 +67,10 @@
   }
 }
 
-.list-unstyled{
+.list-unstyled {
   .percent-style {
-    color:black;
+    color: black;
   }
 }
+
 
