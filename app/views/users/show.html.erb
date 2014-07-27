@@ -7,9 +7,16 @@
       <ul class="list-group my-products">
         <% @my_products.each do |product| %>
           <div class="col-xs-12 list-group-item <%= cycle("my-products-light", "my-products-dark") -%>">
-            <div class="col-xs-9">
+            <div class="col-xs-10">
               <li class="list-unstyled"><%= link_to product.product.title, product.product, class: 'my-product-title' %></li></br>
-
+              <% if product.product.percent_discount > 0 %>
+                <% percent_style = "text-success" %>
+              <% elsif product.product.percent_discount < 0 %>
+                <% percent_style = "text-danger" %>
+              <% end %>
+              <li class="list-unstyled">Current percentage discount: <strong>
+              <span class="<%= percent_style %>"><%= NumberFormatter.format_percentage(product.product.percent_discount).first %></span>
+            </strong></li><br>
               <%= form_for @my_product_notification do |f| %>
                 <% if product.my_products_notification %>
                   <% discount = product.my_products_notification.discount %>
@@ -17,16 +24,16 @@
                   <% discount = '' %>
                 <% end %>
                 <%= hidden_field_tag :my_product, product.id -%>
-                <%= f.label "Percentage discount threshold: %"  %>
-                <%= f.text_field :discount, value: discount, size: 3 %>
-                <%= f.submit 'Save notification' %>
+                <%= f.label "Percentage discount threshold:"  %>
+                <%= f.text_field :discount, value: discount, size: 3 %>  %
+                <%= f.submit 'Save notification', class:'btn-xs' %>
               <% end -%>
             </div>
-            <div class="col-xs-3 my-products-button">
+            <div class="col-xs-2 my-products-button">
               <%= link_to product.product.detail_page_url, class: 'btn btn-small buy-now-small ' do %>
                 <span class="glyphicon glyphicon-shopping-cart"></span> Buy now!
               <% end %>
-              <%= link_to product_my_product_path(product.product, product), class: 'btn btn-danger untrack pull-right ', method: :delete do %>
+              <%= link_to product_my_product_path(product.product, product), class: 'btn btn-danger untrack ', method: :delete do %>
                 Untrack <span class="glyphicon glyphicon-remove-circle"></span>
               <% end %>
             </div>
