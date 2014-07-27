@@ -3,7 +3,7 @@ class Product < ActiveRecord::Base
   validates_uniqueness_of :sku
   has_many :price_logs
   has_many :categories
-  has_many :my_products, through: :users
+  has_many :my_products
 
   class << self
     def create_from_sku(sku)
