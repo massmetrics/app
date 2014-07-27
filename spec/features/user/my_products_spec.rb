@@ -27,5 +27,15 @@ feature 'My Products' do
       click_on 'Save notification'
       expect(page).to have_content('Invalid format for discount')
     end
+
+    scenario 'User can remove a notification' do
+      visit user_path(@user)
+      fill_in 'my_products_notification[discount]', with: '15'
+      click_on 'Save notification'
+      click_on 'Remove'
+
+      expect(find_field('my_products_notification[discount]').value).to eq('')
+
+    end
   end
 end

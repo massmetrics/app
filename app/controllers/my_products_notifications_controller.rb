@@ -9,4 +9,8 @@ class MyProductsNotificationsController < ApplicationController
       redirect_to current_user, notice: 'Invalid format for discount'
     end
   end
+  def destroy
+    MyProductsNotification.find(params[:id]).destroy
+    redirect_to :back
+  end
 end
