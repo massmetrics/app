@@ -14,6 +14,16 @@ class User < ActiveRecord::Base
     self.role == role
   end
 
+  def tracked?(product)
+    truthy = false
+    my_products.each do |my_product|
+      if my_product.product == product
+        truthy = true
+      end
+    end
+    truthy
+  end
+
   private
   def set_role
     self.role = :user unless self.role

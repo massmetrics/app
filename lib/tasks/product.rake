@@ -11,7 +11,11 @@ namespace :product do
     Product.all.each do |item|
       puts "Updating item with ID: #{item.id}"
       price = NumberFormatter.format_price_string(AmazonScraper.new(item.detail_page_url).price)
-      item.update(current_price: price)
+      if price.nil?
+        puts "Price is nil for #{item.id}"
+      else
+        item.update(current_price: price)
+      end
       item.reload
       PriceLog.create(price: item.current_price, product: item)
     end
