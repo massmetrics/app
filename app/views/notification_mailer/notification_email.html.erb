@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+</head>
+<body>
+<h1><%= @user.email %> the time to buy <%= @product.title %> is now!</h1>
+
+<p> You can have the benefit of: <% @product.features.each do |feature| %>
+    <ul>
+ <li><%= feature %></li>
+    </ul>
+     at a massive discount.
+  <% end %>
+</p>
+
+<p>
+  To see what a good deal you are getting visit: <a href=<%= @product %>><%= @product.title %></a>
+</p>
+
+<p>Thanks for using Mass Metrics and stay JACKED!</p>
+</body>
+</html>

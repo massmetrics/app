@@ -11,6 +11,7 @@ gem 'sorcery', '~> 0.8.6'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'cancancan', '~> 1.9.1'
 gem 'simple_enum'
+gem 'sucker_punch'
 
 gem 'spring',        group: :development
 
