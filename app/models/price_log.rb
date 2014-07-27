@@ -1,6 +1,6 @@
 class PriceLog < ActiveRecord::Base
   belongs_to :product
-  # after_create :check_discount
+  after_create :check_discount
 
   def date_string
     created_at.to_s
@@ -12,7 +12,8 @@ class PriceLog < ActiveRecord::Base
 
   private
   def check_discount
-    notifcations = self.product.my_products.map {|my_product| my_product.my_products_notification}
+    self.product.reload
+    notifcations = self.product.my_products.map { |my_product| my_product.my_products_notification }
     discount = self.product.percent_discount
     notifcations.each do |notification|
       if discount >= notification.discount/100
@@ -21,4 +22,3 @@ class PriceLog < ActiveRecord::Base
     end
   end
 end
-
