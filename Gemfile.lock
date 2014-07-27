@@ -70,6 +70,7 @@ GEM
     crack (0.4.2)
       safe_yaml (~> 1.0.0)
     curb (0.8.5)
+    daemons (1.1.9)
     debug_inspector (0.0.2)
     debugger (1.6.8)
       columnize (>= 0.3.1)
@@ -86,6 +87,7 @@ GEM
     dotenv-rails (0.11.1)
       dotenv (= 0.11.1)
     erubis (2.7.0)
+    eventmachine (1.0.3)
     execjs (2.2.1)
     faraday (0.9.0)
       multipart-post (>= 1.2, < 3)
@@ -93,6 +95,8 @@ GEM
       diff-lcs (~> 1.1)
       mime-types (~> 1.15)
       posix-spawn (~> 0.3.6)
+    haml (4.0.5)
+      tilt
     hashie (2.0.5)
     hike (1.2.3)
     hirb (0.7.2)
@@ -124,6 +128,18 @@ GEM
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mailcatcher (0.2.4)
+      eventmachine
+      haml
+      i18n
+      json
+      mail
+      sinatra
+      skinny (>= 0.1.2)
+      sqlite3-ruby
+      thin
+    meta-tags (2.0.0)
+      actionpack (>= 3.0.0)
     method_source (0.8.2)
     mime-types (1.25.1)
     mini_portile (0.6.0)
@@ -168,6 +184,8 @@ GEM
       binding_of_caller (>= 0.7)
       pry (>= 0.9.11)
     rack (1.5.2)
+    rack-protection (1.5.3)
+      rack
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (4.1.1)
@@ -228,6 +246,13 @@ GEM
       multi_json
       simplecov-html (~> 0.8.0)
     simplecov-html (0.8.0)
+    sinatra (1.4.5)
+      rack (~> 1.4)
+      rack-protection (~> 1.4)
+      tilt (~> 1.3, >= 1.3.4)
+    skinny (0.2.3)
+      eventmachine (~> 1.0.0)
+      thin (~> 1.5.0)
     slop (3.5.0)
     sorcery (0.8.6)
       bcrypt (~> 3.1)
@@ -243,8 +268,15 @@ GEM
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
+    sqlite3 (1.3.9)
+    sqlite3-ruby (1.3.3)
+      sqlite3 (>= 1.3.3)
     sucker_punch (1.1)
       celluloid (~> 0.15.2)
+    thin (1.5.1)
+      daemons (>= 1.0.9)
+      eventmachine (>= 0.12.6)
+      rack (>= 1.0.0)
     thor (0.19.1)
     thread_safe (0.3.4)
     tilt (1.4.1)
@@ -287,6 +319,8 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  mailcatcher
+  meta-tags
   money
   nokogiri
   pg
