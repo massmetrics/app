@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'nokogiri'
 gem 'sorcery', '~> 0.8.6'
+gem 'meta-tags'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'cancancan', '~> 1.9.1'
 gem 'simple_enum'
@@ -31,6 +32,7 @@ group :test, :development do
   gem 'launchy'
   gem 'timecop'
   gem 'jazz_hands'
+  gem 'mailcatcher'
 end
 
 group :test do

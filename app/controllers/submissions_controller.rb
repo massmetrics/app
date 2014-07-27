@@ -1,5 +1,11 @@
 class SubmissionsController < ApplicationController
   def new
+    meta_tag_setter(
+      "Suggest product",
+      'Best discounts for health and beauty products',
+      key_words,
+      false
+    )
     @submission = Submission.new
   end
 
