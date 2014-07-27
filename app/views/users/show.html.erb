@@ -18,7 +18,7 @@
                 <% end %>
                 <%= hidden_field_tag :my_product, product.id -%>
                 <%= f.label "Percentage discount threshold: %"  %>
-                <%= f.text_field :discount, value: discount %>
+                <%= f.text_field :discount, value: discount, size: 3 %>
                 <%= f.submit 'Save notification' %>
               <% end -%>
             </div>
