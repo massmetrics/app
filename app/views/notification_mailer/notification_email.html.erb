@@ -6,18 +6,22 @@
 <body>
 <h1><%= @user.email %> the time to buy <%= @product.title %> is now!</h1>
 
-<p> You can have the benefit of: <% @product.features.each do |feature| %>
+<% if @product.features %>
+  <p> You can have the benefit of:
+    <% @product.features.each do |feature| %>
     <ul>
- <li><%= feature %></li>
+      <li><%= feature %></li>
     </ul>
-     at a massive discount.
+    at a massive discount.
   <% end %>
-</p>
+  </p>
+<% end %>
 
 <p>
-  To see what a good deal you are getting visit: <a href=<%= @product %>><%= @product.title %></a>
+  To see what a good deal you are getting visit <%= @product.title %>'s page on
+  <a href='<%= @product.detail_page_url %>'>Amazon</a>
 </p>
 
-<p>Thanks for using Mass Metrics and stay JACKED!</p>
+<p>Thanks for using <a href="www.massmetrics.com">Mass Metrics</a> and stay JACKED!</p>
 </body>
 </html>
