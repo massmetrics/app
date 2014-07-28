@@ -52,8 +52,24 @@ feature 'Products' do
       within("##{@p1.sku}") do
         click_on 'Delete'
       end
-
       expect(page).to have_no_content(@p1.title)
+    end
+  end
+
+  context 'managing products' do
+    scenario 'admin adds a product' do
+      new_time = '2014-07-28T23:25:27Z'
+      Timecop.freeze(new_time) do
+        VCR.use_cassette('admin/new_products') do
+          click_link 'Products'
+          click_link 'Add New Product'
+          fill_in 'sku', with: 'B0057RKQ4Q'
+          fill_in 'category', with: 'Creatine'
+          click_on 'Add Product'
+
+          expect(page).to have_content 'Product successfully added'
+        end
+      end
     end
   end
 end

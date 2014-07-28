@@ -1,8 +1,21 @@
 module Admin
   class ProductsController < BaseController
     before_action :get_product_and_categories, only: [:edit, :update, :destroy]
+
     def index
       @products = Product.all
+    end
+
+    def new
+      @product = Product.new
+    end
+
+    def create
+      sku = params[:sku]
+      categories = SubmissionHelper.split_categories(params[:category])
+      ProductAdder.add([sku], categories)
+      flash[:notice] = "Product successfully added"
+      redirect_to :back
     end
 
     def edit
