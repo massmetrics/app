@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :base, only: [:index]
     resources :submissions, only: [:index, :edit, :update, :destroy]
-    resources :products, only: [:index, :edit, :update, :destroy]
+    resources :products
+    post 'products', to: 'product#create', as: 'create_product'
   end
 end
