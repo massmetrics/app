@@ -17,7 +17,7 @@ class PriceLog < ActiveRecord::Base
     discount = self.product.percent_discount
     notifcations.each do |notification|
       unless notification.nil?
-        if discount >= notifcation.discount/100
+        if discount >= notification.discount/100
           EmailJob.new.async.perform(notification.user, self.product)
         end
       end
