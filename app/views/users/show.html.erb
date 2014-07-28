@@ -6,7 +6,7 @@
     <ul class="list-group my-products">
       <% @my_products.each do |product| %>
         <div class="col-xs-12 list-group-item <%= cycle("my-products-light", "my-products-dark") -%>">
-          <div class="col-xs-10">
+          <div class="col-xs-5">
             <li class="list-unstyled"><%= link_to product.product.title, product.product, class: 'my-product-title' %></li>
             </br>
             <% if product.product.percent_discount > 0 %>
@@ -26,13 +26,14 @@
               <% end %>
               <%= hidden_field_tag :my_product, product.id -%>
               <%= f.label "Percentage discount threshold:" %>
-              <%= f.text_field :discount, value: discount, size: 3 %>  %
+              <%= f.text_field :discount, value: discount, size: 3 %>  %<br/>
               <%= f.submit 'Save notification', class: 'btn-xs' %>
               <% if product.my_products_notification %>
-                <%= link_to 'Remove', my_products_notification_path(product.my_products_notification), class: 'btn btn-xs remove-notification', method: :delete %>
+                <%= link_to 'Remove', my_products_notification_path(product.my_products_notification), class: 'btn btn-xs remove-notification ', method: :delete %>
               <% end %>
             <% end -%>
           </div>
+          <div class="col-xs-5"><%= line_chart(product.product.price_log_hash(), { height: '140px', library: {vAxis: {format: '$#,###'}}}) %></div>
           <div class="col-xs-2 my-products-button">
             <%= link_to product.product.detail_page_url, class: 'btn btn-small buy-now-small ' do %>
               <span class="glyphicon glyphicon-shopping-cart"></span> Buy now!
