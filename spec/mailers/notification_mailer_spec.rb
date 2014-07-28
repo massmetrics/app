@@ -1,13 +1,12 @@
-require 'spec_helper'
+require 'rails_helper'
 
 describe NotificationMailer do
-  before do
-    @user = ObjectCreation.create_user
-    @product = ObjectCreation.create_product
-  end
+
 
   describe 'message when user is created' do
-    let(:message) { NotificationMailer.notification_email(@user, @product) }
+    let(:user) {ObjectCreation.create_user}
+    let(:product) {ObjectCreation.create_product}
+    let(:message) { NotificationMailer.notification_email(user, product) }
 
 
     it 'comes from the proper user' do
@@ -17,7 +16,7 @@ describe NotificationMailer do
 
     it 'goes to the proper user' do
 
-      expect(message.to).to eq [@user.email]
+      expect(message.to).to eq [user.email]
     end
 
     it 'has the proper subject' do
