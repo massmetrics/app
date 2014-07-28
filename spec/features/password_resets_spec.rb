@@ -18,5 +18,11 @@ feature 'forgot password' do
     click_on 'Reset Password'
 
     expect(page).to have_content 'Password was successfully updated.'
+
+    click_on 'Login'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: 'new_password'
+    click_button 'Login'
+    expect(page).to have_content(user.email)
   end
 end
