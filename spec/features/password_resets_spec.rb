@@ -10,7 +10,7 @@ feature 'forgot password' do
     click_on 'Reset Password'
 
     expect(page).to have_content 'Instructions have been sent to your email.'
-
+    user.reload
     visit edit_password_reset_path(user.reset_password_token)
 
     fill_in 'user[password]', with: 'new_password'
