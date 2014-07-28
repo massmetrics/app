@@ -1,6 +1,30 @@
-<%= form_tag password_resets_path, :method => :post do %>
-  <div class="field">
-    <%= label_tag :email %><br />
-    <%= text_field_tag :email %> <%= submit_tag "Reset my password!" %>
+
+<div class="container">
+  <div class="loginbox mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="panel-title">Reset Password</div>
+      </div>
+      <div class="panel-body login-panel">
+        <% if flash[:alert] %>
+          <div class="login-alert alert alert-danger col-sm-12">
+            <div><%= flash[:alert] %></div>
+          </div>
+        <% end %>
+
+        <%= form_tag password_resets_path, :method => :post do %>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+            <%= text_field_tag :email, nil, {placeholder: 'Email', class: 'form-control'} %>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-12 controls">
+              <%= submit_tag 'Reset Password', class: "btn btn-success pull-right" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>

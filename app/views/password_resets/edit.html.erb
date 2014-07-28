@@ -1,33 +1,34 @@
-<h1>PasswordResets#edit</h1>
-<p>Find me in app/views/password_resets/edit.html.erb</p>
-<h1>Choose a new password</h1>
-<%= form_for @user, :url => password_reset_path(@user), :html => {:method => :put} do |f| %>
-  <% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
 
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
+<div class="container">
+  <div class="loginbox mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+    <div class="panel panel-info">
+      <div class="panel-heading">
+        <div class="panel-title">Reset Password</div>
+      </div>
+      <div class="panel-body login-panel">
+        <% if flash[:alert] %>
+          <div class="login-alert alert alert-danger col-sm-12">
+            <div><%= flash[:alert] %></div>
+          </div>
         <% end %>
-      </ul>
-    </div>
-  <% end %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= @user.email %>
+        <%= form_for @user, :url => password_reset_path(@user), :html => {:method => :put} do |f| %>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
+          </div>
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <%= f.password_field :password_confirmation, placeholder: 'Password confirmation', class: 'form-control' %>
+          </div>
+          <%= hidden_field_tag :token, @token %>
+          <div class="form-group">
+            <div class="col-sm-12 controls">
+              <%= f.submit 'Reset Password', class: "btn btn-success pull-right" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.password_field :password %>
-  </div>
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation %>
-    <%= hidden_field_tag :token, @token %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
