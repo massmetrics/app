@@ -13,8 +13,8 @@ feature 'forgot password' do
 
     visit edit_password_reset_url(user.reset_password_token)
 
-    fill_in 'Password', with: 'new_password'
-    fill_in 'Password confirmation', with: 'new_password'
+    fill_in 'user[password]', with: 'new_password'
+    fill_in 'user[password_confirmation]', with: 'new_password'
     click_on 'Reset Password'
 
     expect(page).to have_content 'Password was successfully updated.'
