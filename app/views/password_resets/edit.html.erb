@@ -1,9 +1,9 @@
+
 <div class="container">
   <div class="loginbox mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
     <div class="panel panel-info">
       <div class="panel-heading">
-        <div class="panel-title">Sign In</div>
-        <div class="forgot-password"><%= link_to 'Forgot Password?', new_password_reset_path %></div>
+        <div class="panel-title">Reset Password</div>
       </div>
       <div class="panel-body login-panel">
         <% if flash[:alert] %>
@@ -12,20 +12,19 @@
           </div>
         <% end %>
 
-        <%= form_for @user, url: {action: 'create'}, class: 'form-horizontal' do |f| %>
-          <div class="input-group">
-            <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-            <%= f.text_field :email, placeholder: 'Email', class: 'form-control' %>
-          </div>
-
+        <%= form_for @user, :url => password_reset_path(@user), :html => {:method => :put} do |f| %>
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
             <%= f.password_field :password, placeholder: 'Password', class: 'form-control' %>
           </div>
-
+          <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+            <%= f.password_field :password_confirmation, placeholder: 'Password confirmation', class: 'form-control' %>
+          </div>
+          <%= hidden_field_tag :token, @token %>
           <div class="form-group">
             <div class="col-sm-12 controls">
-              <%= f.submit 'Login', class: "btn btn-success pull-right" %>
+              <%= f.submit 'Reset Password', class: "btn btn-success pull-right" %>
             </div>
           </div>
         <% end %>

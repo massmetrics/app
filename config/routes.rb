@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root 'category#index'
-  resources :welcome, only: [:index]
+  resources :password_resets
+  root to: "category#index"
   resources :products, only: [:show] do
     resources :my_products, only: [:create, :destroy]
   end
