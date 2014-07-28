@@ -1,9 +1,9 @@
 class PasswordResetMailer < ActionMailer::Base
-  default from: 'Userserices@massmetrics.com'
+  default from: 'noreply@massmetrics.com'
 
-  def welcome_email(user)
+  def reset_password_email(user)
     @user = user
-    @url  = "#{root_url}/password_resets?auth_token=#{@user.reset_password_token}"
-    mail(to: @user.email, subject: "Password Reset")
+    @url  = edit_password_reset_url(user.reset_password_token)
+    mail(to: @user.email, subject: "Reset your Mass Metrics Password")
   end
 end
