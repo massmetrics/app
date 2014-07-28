@@ -11,7 +11,7 @@ feature 'forgot password' do
 
     expect(page).to have_content 'Instructions have been sent to your email.'
 
-    visit edit_password_reset_url(user.reset_password_token)
+    visit edit_password_reset_path(user.reset_password_token)
 
     fill_in 'user[password]', with: 'new_password'
     fill_in 'user[password_confirmation]', with: 'new_password'
