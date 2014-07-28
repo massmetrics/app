@@ -1,6 +1,12 @@
 class UserSessionsController < ApplicationController
 
   def new
+    meta_tag_setter(
+    "Register",
+    'Best discounts for health and beauty products',
+    key_words,
+    false
+  )
     @user = User.new
   end
 
