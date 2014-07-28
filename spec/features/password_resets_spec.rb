@@ -10,7 +10,7 @@ feature 'forgot password' do
     click_on 'Reset Password'
 
     expect(page).to have_content 'Instructions have been sent to your email.'
-
+    user.reload
     visit edit_password_reset_path(user.reset_password_token)
 
     fill_in 'user[password]', with: 'new_password'
@@ -18,5 +18,11 @@ feature 'forgot password' do
     click_on 'Reset Password'
 
     expect(page).to have_content 'Password was successfully updated.'
+
+    click_on 'Login'
+    fill_in 'Email', with: user.email
+    fill_in 'Password', with: 'new_password'
+    click_button 'Login'
+    expect(page).to have_content(user.email)
   end
 end
