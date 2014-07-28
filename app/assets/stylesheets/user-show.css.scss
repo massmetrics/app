@@ -14,12 +14,17 @@
     background-color: #c8c8c8;
     color: black;
     border-color: black;
+
     .my-product-title {
       color: black;
       font-weight: bold;
     }
-    .remove-notification {
-      color: black;
+    .remove-notification,.save-notification {
+      color: white;
+      border: 1px solid black;
+      background-color: #3e444c;
+      margin-left: 10px;
+
     }
 
   }
@@ -29,9 +34,13 @@
     margin-bottom: 5px;
     color: white;
 
-    .remove-notification {
-      color: white;
-      
+    .remove-notification, .save-notification {
+      color: black;
+      border: 1px solid black;
+      background-color: #c8c8c8;
+      margin-left: 10px;
+
+
     }
   }
 
@@ -73,4 +82,9 @@
   }
 }
 
+.notification-button-wrapper {
+  margin-top: 10px;
+  float:right;
+  margin-right: 160px;
+}
 
