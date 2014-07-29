@@ -7,15 +7,19 @@ module Admin
     end
 
     def new
-      @product = Product.new
     end
 
     def create
-      sku = params[:sku]
-      categories = SubmissionHelper.split_categories(params[:category])
-      ProductAdder.add([sku], categories)
-      flash[:notice] = "Product successfully added"
-      redirect_to :back
+      if new_params_set?
+        sku = params[:sku]
+        categories = SubmissionHelper.split_categories(params[:category])
+        ProductAdder.add([sku], categories)
+        flash[:notice] = "Product successfully added"
+        redirect_to 'admin#index'
+      else
+        flash[:notice] = "Please set params"
+        redirect_to :back
+      end
     end
 
     def edit
@@ -36,6 +40,10 @@ module Admin
     def get_product_and_categories
       @product = Product.find(params[:id])
       @categories = @product.categories.map(&:category).join(",")
+    end
+
+    def new_params_set?
+      !(params[:sku].strip.blank? || params[:category].strip.blank?)
     end
   end
 end
