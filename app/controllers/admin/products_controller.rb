@@ -15,7 +15,7 @@ module Admin
         categories = SubmissionHelper.split_categories(params[:category])
         ProductAdder.add([sku], categories)
         flash[:notice] = "Product successfully added"
-        redirect_to 'admin#index'
+        redirect_to admin_products_path
       else
         flash[:notice] = "Please set params"
         redirect_to :back
