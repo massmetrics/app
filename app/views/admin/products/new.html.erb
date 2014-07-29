@@ -17,7 +17,7 @@
             <%= flash[:notice] %>
           </div>
         <% end %>
-        <%= form_tag(admin_create_product_path) %>
+        <%= form_tag({:action => :create}, {:method => :post}) do%>
         <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-qrcode"></i></span>
             <%= text_field_tag :sku, nil,  placeholder: 'Enter SKU from Amazon', class: 'form-control' %>
@@ -31,6 +31,7 @@
           <div class="form-group">
             <div class="col-sm-12 controls">
               <%= submit_tag 'Add Product', class: "btn btn-success pull-right" %>
+              <% end %>
             </div>
           </div>
       </div>
