@@ -13,6 +13,5 @@ Rails.application.routes.draw do
     resources :base, only: [:index]
     resources :submissions, only: [:index, :edit, :update, :destroy]
     resources :products
-    post 'products', to: 'product#create', as: 'create_product'
   end
 end
