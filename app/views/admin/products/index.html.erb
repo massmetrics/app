@@ -1,4 +1,5 @@
 <ul>
+  <%= link_to 'Add New Product', new_admin_product_path %>
   <% @products.each do |product| %>
     <li id="<%= product.sku %>">
       <%= product.title %>
