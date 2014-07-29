@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="loginbox mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
     <div class="panel panel-info">
@@ -6,10 +5,12 @@
         <div class="panel-title">Reset Password</div>
       </div>
       <div class="panel-body login-panel">
-        <% if flash[:alert] %>
+        <% if @user.errors.any? %>
           <div class="login-alert alert alert-danger col-sm-12">
-            <div><%= flash[:alert] %></div>
-          </div>
+            <% @user.errors.full_messages.each do |error| %>
+              <div><%= error %></div>
+              </div>
+            <% end %>
         <% end %>
 
         <%= form_for @user, :url => password_reset_path(@user), :html => {:method => :put} do |f| %>
