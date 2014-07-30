@@ -13,7 +13,7 @@ describe MyProductsNotification do
 
     it 'is invalid when discount is greater than or equal to 100' do
       invalid_discount2 = MyProductsNotification.new(discount: '101')
-      invalid_discount = MyProductsNotification.new(discount: '10')
+      invalid_discount = MyProductsNotification.new(discount: '100')
 
       expect(invalid_discount).to_not be_valid
       expect(invalid_discount2).to_not be_valid
