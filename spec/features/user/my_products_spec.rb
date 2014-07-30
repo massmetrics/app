@@ -39,13 +39,11 @@ feature 'My Products' do
   end
 
   scenario 'User is redirected back if he doesn\'t exist' do
-    user = FeatureSupport.create_and_login_user
-    product = ObjectCreation.create_product
-    category = ObjectCreation.create_category(product: product)
-    User.destroy(user.id)
+    ObjectCreation.create_product
 
-    visit category_path(category)
-    
-    expect(page).to have_no_link('Track-it')
+    visit root_path
+    click_on 'Track-it'
+
+    expect(page).to have_content 'You must log in to track products'
   end
 end
