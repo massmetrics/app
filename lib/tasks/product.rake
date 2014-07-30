@@ -19,5 +19,11 @@ namespace :product do
       item.reload
       PriceLog.create(price: item.current_price, product: item)
     end
+    User.all.each do |user|
+      if user.notifications.length > 0
+        EmailJob.new.async.perform(user, user.notifications)
+      end
+    end
   end
+
 end
