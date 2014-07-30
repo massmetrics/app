@@ -5,8 +5,9 @@ describe NotificationMailer do
 
   describe 'message when user is created' do
     let(:user) {ObjectCreation.create_user}
-    let(:product) {ObjectCreation.create_product}
-    let(:message) { NotificationMailer.notification_email(user, product) }
+    let(:product1) {ObjectCreation.create_product}
+    let(:product2) {ObjectCreation.create_product(sku: '2314')}
+    let(:message) { NotificationMailer.notification_email(user, [product1, product2]) }
 
 
     it 'comes from the proper user' do

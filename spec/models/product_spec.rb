@@ -142,18 +142,4 @@ describe Product do
 
     expect(new_item.average_price).to eq(0)
   end
-
-  context 'product notifications' do
-    it 'sends an email to the user if product reaches discount threshold' do
-      product = ObjectCreation.create_product(current_price: '85')
-      user = ObjectCreation.create_user
-      my_product = MyProduct.create(product: product, user: user)
-      MyProductsNotification.create(discount: '10', my_product: my_product)
-      ObjectCreation.create_price_log(product: product, price: '100')
-      mail_sent =  ActionMailer::Base.deliveries.size
-      ObjectCreation.create_price_log(product: product, price: '90')
-      product.reload
-      expect(ActionMailer::Base.deliveries.size).to eq(mail_sent+1)
-    end
-  end
 end
