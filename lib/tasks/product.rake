@@ -20,7 +20,7 @@ namespace :product do
       PriceLog.create(price: item.current_price, product: item)
     end
   end
-  
+
   desc('send users emails')
   task :send_emails => :environment do
     User.all.each do |user|

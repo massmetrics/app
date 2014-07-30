@@ -6,15 +6,15 @@
 <body>
 <% if @products.length == 1 %>
   <% product = @products[0] %>
-  <h1><%= @user.email %>, the time to buy <%= product.title %> is now!</h1>
+  <h2><%= @user.email %>, the time to buy <%= product.title %> is now!</h2>
   <% if product.features %>
-    <p> You can have the benefit of:
+    <p> You can have the following benefits:
       <% product.features.each do |feature| %>
       <ul>
         <li><%= feature %></li>
       </ul>
-      at a massive discount.
     <% end %>
+    at a massive discount.
     </p>
   <% end %>
   <p>
