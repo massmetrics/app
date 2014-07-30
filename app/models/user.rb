@@ -38,6 +38,14 @@ class User < ActiveRecord::Base
     products
   end
 
+  def send_notification?
+    send = true
+    if notification_date && notification_date > 7.days.ago
+      send = false
+    end
+    send
+  end
+
   private
   def set_role
     self.role = :user unless self.role

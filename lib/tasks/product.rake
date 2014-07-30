@@ -21,10 +21,12 @@ namespace :product do
     end
     User.all.each do |user|
       if user.notifications.length > 0
-        puts 'Sending notification to user: ' + user.id
-        EmailJob.new.async.perform(user, user.notifications)
+        if user.send_notification?
+          puts 'Sending notification to user: ' + user.id
+          EmailJob.new.async.perform(user, user.notifications)
+          user.update(notification_date: Time.now)
+        end
       end
     end
   end
-
 end
