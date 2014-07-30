@@ -20,6 +20,9 @@
 <p>
   To see what a good deal you are getting visit <%= @product.title %>'s page on
   <a href='<%= @product.detail_page_url %>'>Amazon</a>
+
+  If you would like to untrack this product or set a new discount threshold visit:
+  <%= link_to 'Your products page', user_url(@user) %>
 </p>
 
 <p>Thanks for using <a href="www.massmetrics.com">Mass Metrics</a> and stay JACKED!</p>
