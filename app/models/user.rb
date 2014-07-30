@@ -24,6 +24,20 @@ class User < ActiveRecord::Base
     truthy
   end
 
+  def notifications
+    products = []
+    my_products.each do |my_product|
+      discount = my_product.product.percent_discount
+      notification = my_product.my_products_notification
+      unless notification.discount.nil?
+        if discount >= notification.discount/100
+          products << my_product.product
+        end
+      end
+    end
+    products
+  end
+
   private
   def set_role
     self.role = :user unless self.role

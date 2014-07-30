@@ -79,5 +79,18 @@ describe User do
     expect(other_user.tracked?(product)).to eq(false)
     expect(user.tracked?(product)).to eq(true)
   end
+
+  it 'returns all of the products a user has tracked that have reached the threshold' do
+    user = ObjectCreation.create_user
+    product = ObjectCreation.create_product(current_price: '80')
+    ObjectCreation.create_price_log(product: product, price: '100')
+    product2 = ObjectCreation.create_product(current_price: '80', sku: '2312')
+    ObjectCreation.create_price_log(product: product2, price: '100')
+    my_p = MyProduct.create(user: user, product: product)
+    my_p2 = MyProduct.create(user: user, product: product2)
+    MyProductsNotification.create(my_product: my_p, discount: 10.0)
+    MyProductsNotification.create(my_product: my_p2, discount: 15.0)
+    expect(user.notifications).to eq([product, product2])
+  end
 end
 
