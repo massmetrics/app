@@ -36,7 +36,7 @@ describe User do
 
     it 'validates presence of email' do
       valid_user = User.new(email: 'joe@example.com', password: 'password', password_confirmation: 'password')
-      invalid_user = User.new( password: 'password', password_confirmation: 'password confirmation')
+      invalid_user = User.new(password: 'password', password_confirmation: 'password confirmation')
 
       expect(valid_user).to be_valid
       expect(invalid_user).to be_invalid
@@ -44,7 +44,7 @@ describe User do
 
     it 'validates password and password confirmation match' do
       valid_user = User.new(email: 'joe@example.com', password: 'password', password_confirmation: 'password')
-      invalid_user = User.new(email:'joe@example.com', password: 'password', password_confirmation: 'password confirmation')
+      invalid_user = User.new(email: 'joe@example.com', password: 'password', password_confirmation: 'password confirmation')
 
       expect(valid_user).to be_valid
       expect(invalid_user).to be_invalid
@@ -91,6 +91,14 @@ describe User do
     MyProductsNotification.create(my_product: my_p, discount: 10.0)
     MyProductsNotification.create(my_product: my_p2, discount: 15.0)
     expect(user.notifications).to eq([product, product2])
+  end
+
+  it 'returns false if user received notification in the last 7 days' do
+    user = ObjectCreation.create_user
+    expect(user.send_notification?).to eq(true)
+    user.update(notification_date: 5.day.ago)
+    user.reload
+    expect(user.send_notification?).to eq(false)
   end
 end
 
