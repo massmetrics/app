@@ -4,24 +4,38 @@
   <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
 </head>
 <body>
-<h1><%= @user.email %> the time to buy <%= @product.title %> is now!</h1>
-
-<% if @product.features %>
-  <p> You can have the benefit of:
-    <% @product.features.each do |feature| %>
-    <ul>
-      <li><%= feature %></li>
-    </ul>
-    at a massive discount.
+<% if @products.length == 1 %>
+  <% product = @products[0] %>
+  <h1><%= @user.email %> the time to buy <%= product.title %> is now!</h1>
+  <% if product.features %>
+    <p> You can have the benefit of:
+      <% product.features.each do |feature| %>
+      <ul>
+        <li><%= feature %></li>
+      </ul>
+      at a massive discount.
+    <% end %>
+    </p>
   <% end %>
+  <p>
+    To see what a good deal you are getting visit <%= product.title %>'s page on
+    <a href='<%= product.detail_page_url %>'>Amazon</a>
   </p>
+<% else %>
+  <h1><%= @user.email %> the time to buy the following products is now!</h1>
+  <% @products.each do |product| %>
+    <%= product.title %>
+    <p>
+      Buy this product on <%= link_to 'Amazon', product.detail_page_url %>.
+    </p>
+  <% end %>
 <% end %>
-
 <p>
-  To see what a good deal you are getting visit <%= @product.title %>'s page on
-  <a href='<%= @product.detail_page_url %>'>Amazon</a>
+  To set a new pricing threshold visit your <%= link_to 'User Page', user_url(@user) %>.
 </p>
 
-<p>Thanks for using <a href="www.massmetrics.com">Mass Metrics</a> and stay JACKED!</p>
+<p>
+  Thanks for using <%= link_to 'MassMetrics', root_url %> and stay JACKED!
+</p>
 </body>
 </html>
