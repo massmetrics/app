@@ -3,12 +3,8 @@ class MyProductsController < ApplicationController
   before_filter :verify_logged_in
 
   def create
-    @my_product = MyProduct.new(product: @product, user: current_user)
-    if @my_product.save
-      redirect_to :back
-    else
-      redirect_to :back, notice: @my_product.errors.full_messages.first
-    end
+    MyProduct.create(product: @product, user: current_user)
+    redirect_to :back
   end
 
   def destroy
