@@ -11,9 +11,6 @@ class ProductsController < ApplicationController
     @chart_hash = @product.price_log_hash
   end
 
-  def new
-    @product = Product.new
-  end
 
   private
   def get_product
