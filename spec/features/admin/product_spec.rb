@@ -71,5 +71,22 @@ feature 'Products' do
         end
       end
     end
+
+    scenario 'doesnt enter either an sku or categories' do
+      click_link 'Products'
+      click_link 'Add New Product'
+      fill_in 'sku', with: ''
+      fill_in 'category', with: 'awd'
+      click_on 'Add Product'
+      expect(page).to have_content('Please set params')
+      fill_in 'sku', with: 'awd'
+      fill_in 'category', with: ''
+      click_on 'Add Product'
+      expect(page).to have_content('Please set params')
+      fill_in 'sku', with: ''
+      fill_in 'category', with: ''
+      click_on 'Add Product'
+      expect(page).to have_content('Please set params')
+    end
   end
 end
