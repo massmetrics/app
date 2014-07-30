@@ -6,7 +6,7 @@
 <body>
 <% if @products.length == 1 %>
   <% product = @products[0] %>
-  <h1><%= @user.email %> the time to buy <%= product.title %> is now!</h1>
+  <h1><%= @user.email %>, the time to buy <%= product.title %> is now!</h1>
   <% if product.features %>
     <p> You can have the benefit of:
       <% product.features.each do |feature| %>
@@ -22,7 +22,7 @@
     <a href='<%= product.detail_page_url %>'>Amazon</a>
   </p>
 <% else %>
-  <h1><%= @user.email %> the time to buy the following products is now!</h1>
+  <h1><%= @user.email %>, the time to buy the following products is now!</h1>
   <% @products.each do |product| %>
     <%= product.title %>
     <p>
@@ -31,7 +31,8 @@
   <% end %>
 <% end %>
 <p>
-  To set a new pricing threshold visit your <%= link_to 'User Page', user_url(@user) %>.
+  If you would like to untrack this product or set a new discount threshold visit:
+  <%= link_to 'Your products page', user_url(@user) %>.
 </p>
 
 <p>
