@@ -35,7 +35,6 @@ feature 'My Products' do
       click_on 'Remove'
 
       expect(find_field('my_products_notification[discount]').value).to eq('')
-
     end
   end
 end
