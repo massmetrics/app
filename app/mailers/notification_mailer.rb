@@ -4,6 +4,6 @@ class NotificationMailer < ActionMailer::Base
   def notification_email(user, products_array)
     @user = user
     @products = products_array
-    mail(to: @user.email, subject: "Your item has reached the target discount percentage!")
+    mail(to: user.email, subject: "Your item has reached the target discount percentage!")
   end
 end
