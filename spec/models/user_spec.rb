@@ -80,7 +80,7 @@ describe User do
     expect(user.tracked?(product)).to eq(true)
   end
 
-  it 'returns all of the products a user has tracked that have reached the threshold' do
+  it 'returns all of the products a user has tracked that have reached the threshold and their notifications' do
     user = ObjectCreation.create_user
     product = ObjectCreation.create_product(current_price: '80')
     ObjectCreation.create_price_log(product: product, price: '100')
@@ -88,17 +88,11 @@ describe User do
     ObjectCreation.create_price_log(product: product2, price: '100')
     my_p = MyProduct.create(user: user, product: product)
     my_p2 = MyProduct.create(user: user, product: product2)
-    MyProductsNotification.create(my_product: my_p, discount: 10.0)
-    MyProductsNotification.create(my_product: my_p2, discount: 15.0)
-    expect(user.notifications).to eq([product, product2])
+    my_p_notification = MyProductsNotification.create(my_product: my_p, discount: 10.0)
+    my_p2_notification = MyProductsNotification.create(my_product: my_p2, discount: 15.0)
+    expect(user.notifications).to eq([[product, my_p_notification], [product2, my_p2_notification]])
   end
 
-  it 'returns false if user received notification in the last 7 days' do
-    user = ObjectCreation.create_user
-    expect(user.send_notification?).to eq(true)
-    user.update(notification_date: 5.day.ago)
-    user.reload
-    expect(user.send_notification?).to eq(false)
-  end
+
 end
 

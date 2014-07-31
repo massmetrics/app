@@ -31,20 +31,13 @@ class User < ActiveRecord::Base
       notification = my_product.my_products_notification
       unless notification.nil?
         if discount >= notification.discount/100
-          products << my_product.product
+          products << [my_product.product, notification]
         end
       end
     end
     products
   end
 
-  def send_notification?
-    send = true
-    if notification_date && notification_date > 7.days.ago
-      send = false
-    end
-    send
-  end
 
   private
   def set_role

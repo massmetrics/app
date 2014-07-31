@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140730220135) do
+ActiveRecord::Schema.define(version: 20140731170314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,8 +40,9 @@ ActiveRecord::Schema.define(version: 20140730220135) do
   add_index "my_products", ["user_id"], name: "index_my_products_on_user_id", using: :btree
 
   create_table "my_products_notifications", force: true do |t|
-    t.integer "my_product_id"
-    t.float   "discount"
+    t.integer  "my_product_id"
+    t.float    "discount"
+    t.datetime "notification_date"
   end
 
   add_index "my_products_notifications", ["my_product_id"], name: "index_my_products_notifications_on_my_product_id", using: :btree

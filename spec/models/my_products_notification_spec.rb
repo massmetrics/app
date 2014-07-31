@@ -19,4 +19,21 @@ describe MyProductsNotification do
       expect(invalid_discount2).to_not be_valid
     end
   end
+
+  it 'returns false if product notification was sent in the last 7 days' do
+    notification = ObjectCreation.create_notification
+    expect(notification.send_notification?).to eq(true)
+    notification.update(notification_date: 5.day.ago)
+    notification.reload
+    expect(notification.send_notification?).to eq(false)
+  end
+
+  it 'updates token for all notifications from a given array' do
+    notification1 = ObjectCreation.create_notification
+    notification2 = ObjectCreation.create_notification
+    MyProductsNotification.update_notifications([notification1,notification2])
+
+    expect(notification1.notification_date).to_not be_nil
+    expect(notification2.notification_date).to_not be_nil
+  end
 end
