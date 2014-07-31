@@ -24,12 +24,19 @@ namespace :product do
   desc('send users emails')
   task :send_emails => :environment do
     User.all.each do |user|
-      if user.notifications.length > 0
-        if user.send_notification?
-          puts "Sending notification to user: #{user.id}"
-          EmailJob.new.async.perform(user, user.notifications)
-          user.update(notification_date: Time.now)
+      user_notifications = user.notifications
+      if user_notifications.length > 0
+        products = []
+        notifications =[]
+        user_notifications.each do |notification|
+          if notification[1].send_notification?
+            products << notification[0]
+            notifications << notification[1]
+          end
         end
+        puts "Sending notification to user: #{user.id}"
+        EmailJob.new.async.perform(user, products)
+        MyProductsNotification.update_notifications(notifications)
       end
     end
   end
