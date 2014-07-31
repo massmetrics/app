@@ -11,6 +11,7 @@ feature 'My Products' do
     scenario 'User removes a product that they tracked' do
       visit user_path(@user)
       click_on 'Untrack'
+
       expect(page).to_not have_content(@product.title)
     end
 
@@ -18,6 +19,7 @@ feature 'My Products' do
       visit user_path(@user)
       fill_in 'my_products_notification[discount]', with: '15'
       click_on 'Save notification'
+
       expect(find_field('my_products_notification[discount]').value).to eq('15.0')
     end
 
@@ -25,6 +27,7 @@ feature 'My Products' do
       visit user_path(@user)
       fill_in 'my_products_notification[discount]', with: '15asdf%'
       click_on 'Save notification'
+
       expect(page).to have_content('Invalid format for discount')
     end
 
@@ -37,6 +40,16 @@ feature 'My Products' do
       expect(find_field('my_products_notification[discount]').value).to eq('')
     end
   end
+
+  scenario 'User can track a product and is redirected to my products page' do
+    FeatureSupport.create_and_login_user
+    ObjectCreation.create_product
+    visit '/'
+    click_on 'Track-it'
+
+    expect(page).to have_content 'Percentage discount threshold:'
+  end
+
 
   scenario 'User is redirected back if he doesn\'t exist' do
     ObjectCreation.create_product

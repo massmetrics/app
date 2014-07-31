@@ -57,4 +57,15 @@ module ObjectCreation
       default
     )
   end
+
+  def self.create_notification(attributes={})
+    user = create_user
+    product = create_product(current_price: '80')
+    create_price_log(product: product, price: '100')
+    my_product = MyProduct.create(user: user, product: product)
+    default = {my_product: my_product, discount: 10.0}
+    default.merge!(attributes)
+    MyProductsNotification.create(default)
+  end
 end
+
