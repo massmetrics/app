@@ -38,6 +38,16 @@ feature 'My Products' do
     end
   end
 
+  scenario 'User can track a product and is redirected to my products page' do
+    FeatureSupport.create_and_login_user
+    ObjectCreation.create_product
+    visit '/'
+    click_on 'Track-it'
+
+    expect(page).to have_content 'Percentage discount threshold:'
+  end
+
+
   scenario 'User is redirected back if he doesn\'t exist' do
     ObjectCreation.create_product
 
