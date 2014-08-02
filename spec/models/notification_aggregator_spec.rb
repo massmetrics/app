@@ -9,7 +9,6 @@ describe NotificationAggregator do
     MyProductsNotification.create(my_product: additional_product, discount: 10.0)
     ObjectCreation.create_notification(notification_date: 1.day.ago)
 
-
     expect(notification_1.notification_date).to be_nil
     expect(notification_2.notification_date).to be_nil
 
@@ -19,6 +18,7 @@ describe NotificationAggregator do
                                                    ])
     notification_1.reload
     notification_2.reload
+
     expect(notification_1.notification_date).to_not be_nil
     expect(notification_2.notification_date).to_not be_nil
   end
