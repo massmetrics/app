@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
       notification = my_product.my_products_notification
       unless notification.nil?
         if discount >= notification.discount/100
-          products << my_product.product
+          products << my_product
         end
       end
     end

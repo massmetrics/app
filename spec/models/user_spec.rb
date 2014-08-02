@@ -90,9 +90,7 @@ describe User do
     my_p2 = MyProduct.create(user: user, product: product2)
     MyProductsNotification.create(my_product: my_p, discount: 10.0)
     MyProductsNotification.create(my_product: my_p2, discount: 15.0)
-    expect(user.notifications).to eq([product, product2])
+    expect(user.notifications).to eq([my_p, my_p2])
   end
-
-
 end
 
