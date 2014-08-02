@@ -11,7 +11,9 @@ class NotificationAggregator
             notification.update!(notification_date: Time.now)
           end
         end
-        output << [user, products]
+      end
+      unless products.empty?
+      output << [user, products]
       end
     end
     output
