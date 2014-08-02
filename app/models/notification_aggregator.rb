@@ -3,16 +3,14 @@ class NotificationAggregator
     output = []
     User.all.each do |user|
       products = []
-      if user.notifications.length > 0
-        user.notifications.each do |notification|
-          if notification.send_notification?
-            products << notification.my_product.product
-            notification.update!(notification_date: Time.now)
-          end
+      user.notifications.each do |notification|
+        if notification.send_notification?
+          products << notification.my_product.product
+          notification.update!(notification_date: Time.now)
         end
       end
       unless products.empty?
-      output << [user, products]
+        output << [user, products]
       end
     end
     output
