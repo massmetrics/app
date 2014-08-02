@@ -29,6 +29,5 @@ describe MyProductsNotification do
     notification.update(notification_date: 8.day.ago)
     notification.reload
     expect(notification.send_notification?).to eq(true)
-
   end
 end
