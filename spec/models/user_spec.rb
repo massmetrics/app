@@ -88,9 +88,9 @@ describe User do
     ObjectCreation.create_price_log(product: product2, price: '100')
     my_p = MyProduct.create(user: user, product: product)
     my_p2 = MyProduct.create(user: user, product: product2)
-    MyProductsNotification.create(my_product: my_p, discount: 10.0)
-    MyProductsNotification.create(my_product: my_p2, discount: 15.0)
-    expect(user.notifications).to eq([my_p, my_p2])
+    my_notification_1 = MyProductsNotification.create(my_product: my_p, discount: 10.0)
+    my_notification_2 = MyProductsNotification.create(my_product: my_p2, discount: 15.0)
+    expect(user.notifications).to eq([my_notification_1, my_notification_2])
   end
 end
 
