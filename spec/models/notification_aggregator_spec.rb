@@ -3,6 +3,8 @@ describe NotificationAggregator do
   it 'aggregates notifications' do
     notification_1 = ObjectCreation.create_notification
     notification_2 = ObjectCreation.create_notification
+    ObjectCreation.create_notification(notification_date: 1.day.ago)
+
 
     expect(notification_1.notification_date).to be_nil
     expect(notification_2.notification_date).to be_nil
