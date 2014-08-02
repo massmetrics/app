@@ -53,34 +53,18 @@ creatine = ["B002RWJQMC", "B002DYIZEO", "B0056XU7K4", "B00F9CHC2I", "B0051ZH17E"
 
 cla = ['B008E77A0O', 'B000Z8Z93K', 'B00EVMVU0W', 'B00HFF23RQ', 'B002DYJ0CU', 'B00G6H03NA', 'B00D62KG26', 'B00005317T', 'B00166BCAY']
 
-powders.each do |powder|
-  ProductAdder.add(powder, ['Protein Powder'])
-end
+  ProductAdder.add(powders, ['Protein Powder'])
 
-pre_workouts.each do |pre|
-  ProductAdder.add(pre, ['Pre Workout'])
-end
+  ProductAdder.add(pre_workouts, ['Pre Workout'])
 
-post_workouts.each do |post|
-  ProductAdder.add(post, ['Post Workout'])
-end
+  ProductAdder.add(post_workouts, ['Post Workout'])
 
-protein_bars.each do |bar|
-  ProductAdder.add(bar, ['Protein Bar'])
-end
+  ProductAdder.add(protein_bars, ['Protein Bar'])
 
-multi_vitamins.each do |vitamin|
-  ProductAdder.add(vitamin, ['Vitamin'])
-end
+  ProductAdder.add(multi_vitamins, ['Vitamin'])
 
-fat_burners.each do |burner|
-  ProductAdder.add(burner, ['Fat Burner'])
-end
+  ProductAdder.add(fat_burners, ['Fat Burner'])
 
-creatine.each do |cre|
-  ProductAdder.add(cre, ['Creatine'])
-end
+  ProductAdder.add(creatine, ['Creatine'])
 
-cla.each do |c|
-  ProductAdder.add(c, ['CLA'])
-end
+  ProductAdder.add(cla, ['CLA'])
