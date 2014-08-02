@@ -10,11 +10,15 @@ class NotificationAggregator
     user.notifications.map do |notification|
       if notification.send_notification?
         products << notification.my_product.product
-        notification.update!(notification_date: Time.now)
+        update_notification(notification)
       end
     end
     unless products.empty?
       [user, products]
     end
+  end
+
+  def self.update_notification(notification)
+    notification.update!(notification_date: Time.now)
   end
 end
