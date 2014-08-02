@@ -1,6 +1,7 @@
 require 'rails_helper'
 describe NotificationAggregator do
   it 'aggregates notifications' do
+    ObjectCreation.create_user
     notification_1 = ObjectCreation.create_notification
     product_1 = notification_1.my_product.product
     notification_2 = ObjectCreation.create_notification
