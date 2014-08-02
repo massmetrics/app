@@ -93,12 +93,6 @@ describe User do
     expect(user.notifications).to eq([product, product2])
   end
 
-  it 'returns false if user received notification in the last 7 days' do
-    user = ObjectCreation.create_user
-    expect(user.send_notification?).to eq(true)
-    user.update(notification_date: 5.day.ago)
-    user.reload
-    expect(user.send_notification?).to eq(false)
-  end
+
 end
 

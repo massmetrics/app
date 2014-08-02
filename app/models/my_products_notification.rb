@@ -4,6 +4,13 @@ class MyProductsNotification < ActiveRecord::Base
   before_create :string_to_float
   validates :discount, numericality: { greater_than: 0, less_than: 100, message: 'is invalid.' }
 
+  def send_notification?
+    send = true
+    if notification_date && notification_date > 7.days.ago
+      send = false
+    end
+    send
+  end
 
   private
   def string_to_float
