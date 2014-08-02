@@ -23,14 +23,9 @@ namespace :product do
 
   desc('send users emails')
   task :send_emails => :environment do
-    User.all.each do |user|
-      if user.notifications.length > 0
-        if user.send_notification?
-          puts "Sending notification to user: #{user.id}"
-          EmailJob.new.async.perform(user, user.notifications)
-          user.update(notification_date: Time.now)
-        end
-      end
+    notifications = NotificationAggregator.aggregate
+    notifications.each do |notification|
+      EmailJob.new.async.perform(notification[0],notification[1])
     end
   end
 end
