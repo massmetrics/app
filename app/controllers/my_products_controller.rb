@@ -4,7 +4,7 @@ class MyProductsController < ApplicationController
 
   def create
     MyProduct.create(product: @product, user: current_user)
-    redirect_to :back
+    redirect_to user_path(current_user)
   end
 
   def destroy

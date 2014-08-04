@@ -46,4 +46,14 @@ feature 'My Products' do
 
     expect(page).to have_content 'You must log in to track products'
   end
+
+  scenario 'User is redirected to user show page after tracking a product' do
+    user = FeatureSupport.create_and_login_user
+    product = ObjectCreation.create_product
+
+    visit '/'
+    click_on 'Track-it'
+
+    expect(page).to have_content 'Current percentage discount:'
+  end
 end
