@@ -25,17 +25,17 @@ class User < ActiveRecord::Base
   end
 
   def notifications
-    products = []
+    notifications = []
     my_products.each do |my_product|
       discount = my_product.product.percent_discount
       notification = my_product.my_products_notification
       unless notification.nil?
         if discount >= notification.discount/100
-          products << notification
+          notifications << notification
         end
       end
     end
-    products
+    notifications
   end
 
 
