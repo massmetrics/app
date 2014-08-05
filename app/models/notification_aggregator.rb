@@ -19,6 +19,6 @@ class NotificationAggregator
   end
 
   def self.update_notification(notification)
-    notification.update!(notification_date: Time.now)
+    notification.update(notification_date: Time.now)
   end
 end
