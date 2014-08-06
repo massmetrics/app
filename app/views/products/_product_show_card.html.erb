@@ -58,7 +58,21 @@
       </div>
     </div>
     <div class="col-xs-8 col-sm-10 col-md-12 divider text-center">
-      <%= line_chart(@chart_hash, {library: {vAxis: {format: '$#,###'}}}) %>
+      <%= line_chart(@chart_hash,
+                     {
+                       discrete: true,
+                       library:
+                         {
+                           hAxis:
+                             {
+                               slantedText: true, slantedTextAngle: 40
+                             },
+                           vAxis:
+                             {
+                               format: '$#,###'
+                             }
+                         }
+                     }) %>
     </div>
     <div class="clearfix"></div>
   </div>

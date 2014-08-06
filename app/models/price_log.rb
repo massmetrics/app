@@ -2,7 +2,7 @@ class PriceLog < ActiveRecord::Base
   belongs_to :product
 
   def date_string
-    created_at.to_s
+    "#{created_at.strftime("%b")} #{created_at.day}"
   end
 
   def in_dollars
