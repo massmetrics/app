@@ -63,7 +63,7 @@ class Product < ActiveRecord::Base
   end
 
   def get_price_logs(days = 30)
-    price_logs.select do |log|
+    price_logs.order("created_at asc").select do |log|
       log.created_at >= days.day.ago
     end
   end

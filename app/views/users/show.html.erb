@@ -27,30 +27,32 @@
               <%= hidden_field_tag :my_product, product.id -%>
               <%= f.label "Percentage discount threshold:" %>
               <%= f.text_field :discount, value: discount, size: 3 %>  %<br/>
+
               <div class="notification-button-wrapper">
-              <% if product.my_products_notification %>
-                <%= link_to 'Remove', my_products_notification_path(product.my_products_notification), class: 'btn btn-xs remove-notification ', method: :delete %>
-              <% end %>
-              <%= f.submit 'Save notification', class: 'btn-xs save-notification' %>
+                <% if product.my_products_notification %>
+                  <%= link_to 'Remove', my_products_notification_path(product.my_products_notification), class: 'btn btn-xs remove-notification ', method: :delete %>
+                <% end %>
+                <%= f.submit 'Save notification', class: 'btn-xs save-notification' %>
             <% end -%>
             </div>
           </div>
-          <div class="col-xs-5"><%= line_chart(product.product.price_log_hash, {
-            height: "150px", discrete: true, library:
-              {
-                chartArea:
-                  {
-                    top: 15, left: 35, width: '90%'
-                  }, vAxis:
-                  {
-                    format: '$#,###'
-                  },
-                hAxis:
-                  {
-                    slantedText: true, slantedTextAngle: 90
-                  }
-              }
-          }) %></div>
+          <div class="col-xs-5"><%= line_chart(product.product.price_log_hash,
+                                               {
+                                                 height: "150px", discrete: true, library:
+                                                 {
+                                                   chartArea:
+                                                     {
+                                                       top: 15, left: 35, width: '90%'
+                                                     }, vAxis:
+                                                     {
+                                                       format: '$#,###'
+                                                     },
+                                                   hAxis:
+                                                     {
+                                                       slantedText: true, slantedTextAngle: 90
+                                                     }
+                                                 }
+                                               }) %></div>
           <div class="col-xs-2 my-products-button">
             <%= link_to product.product.detail_page_url, class: 'btn btn-small buy-now-small ' do %>
               <span class="glyphicon glyphicon-shopping-cart"></span> Buy now!
