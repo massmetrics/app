@@ -35,8 +35,25 @@
           <% end %>
         </div>
         <div class="col-xs-8">
-          <%= line_chart(product.price_log_hash(9), {height: "185px", library: { chartArea: {top: 15, left:35, width: '80%'}, vAxis: {format: '$#,###'}, hAxis: {maxTextLines: 5 ,format:"MMM/d", slantedText: true, slantedTextAngle: 40} }}) %>
-
+          <%= line_chart(
+                product.price_log_hash,
+                {
+                  height: "185px", discrete: true, library:
+                  {
+                    chartArea:
+                      {
+                        top: 15, left: 35, width: '80%'
+                      }, vAxis:
+                      {
+                        format: '$#,###'
+                      },
+                    hAxis:
+                      {
+                        slantedText: true, slantedTextAngle: 90
+                      }
+                  }
+                }
+              )%>
         </div>
       </div>
     </div>
