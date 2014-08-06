@@ -35,7 +35,22 @@
             <% end -%>
             </div>
           </div>
-          <div class="col-xs-5"><%= line_chart(product.product.price_log_hash(), { height: '140px', library: {vAxis: {format: '$#,###'}}}) %></div>
+          <div class="col-xs-5"><%= line_chart(product.product.price_log_hash, {
+            height: "150px", discrete: true, library:
+              {
+                chartArea:
+                  {
+                    top: 15, left: 35, width: '90%'
+                  }, vAxis:
+                  {
+                    format: '$#,###'
+                  },
+                hAxis:
+                  {
+                    slantedText: true, slantedTextAngle: 90
+                  }
+              }
+          }) %></div>
           <div class="col-xs-2 my-products-button">
             <%= link_to product.product.detail_page_url, class: 'btn btn-small buy-now-small ' do %>
               <span class="glyphicon glyphicon-shopping-cart"></span> Buy now!
