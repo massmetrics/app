@@ -36,7 +36,7 @@
         </div>
         <div class="col-xs-8">
           <%= line_chart(
-                product.price_log_hash,
+                product.price_log_hash(9),
                 {
                   height: "185px", discrete: true, library:
                   {
