@@ -8,9 +8,9 @@
 
 }
 
-.intro-nav{
+.intro-nav {
   li {
-  padding: 8px 0;
+    padding: 8px 0;
   }
 }
 
@@ -22,5 +22,29 @@
   -webkit-border-radius: 4px 0 0 4px;
   -moz-border-radius: 4px 0 0 4px;
   border-radius: 4px 0 0 4px;
+}
 
+.cards-wrapper {
+  .instruction-heading {
+    color: black;
+    font-size: 16pt;
+    font-weight: bold;
+    padding-bottom: 10px;
+  }
+}
+
+.instructions{
+  color: black;
+  font-size: 13pt
+}
+
+.instruction-photo {
+  img {
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.4);
+    border: 2px solid black;
+  }
 }
