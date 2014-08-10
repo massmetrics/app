@@ -14,7 +14,7 @@
             <% elsif product.product.percent_discount < 0 %>
               <% percent_style = "text-danger" %>
             <% end %>
-            <li class="list-unstyled">Current percentage discount: <strong>
+            <li class="list-unstyled">Current discount: <strong>
               <span class="<%= percent_style %>"><%= NumberFormatter.format_percentage(product.product.percent_discount).first %></span>
             </strong></li>
             <br>
@@ -25,7 +25,7 @@
                 <% discount = '' %>
               <% end %>
               <%= hidden_field_tag :my_product, product.id -%>
-              <%= f.label "Percentage discount threshold:" %>
+              <%= f.label "Target discount:" %>
               <%= f.text_field :discount, value: discount, size: 3 %>  %<br/>
 
               <div class="notification-button-wrapper">
