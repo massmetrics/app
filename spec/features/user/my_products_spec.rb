@@ -54,6 +54,6 @@ feature 'My Products' do
     visit '/'
     click_on 'Track-it'
 
-    expect(page).to have_content 'Current percentage discount:'
+    expect(page).to have_content "Target discount:"
   end
 end
