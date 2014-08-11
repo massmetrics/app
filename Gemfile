@@ -25,6 +25,7 @@ gem 'dotenv-rails'
 gem 'money'
 gem 'valid_email', '~> 0.0.5'
 gem 'rails_12factor', group: :production
+gem 'actionpack-action_caching'
 
 group :test, :development do
   gem 'rspec-rails'
