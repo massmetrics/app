@@ -20,6 +20,7 @@ class CategoryController < ApplicationController
       "#{@category}," + key_words,
       false
     )
+    # @categories = Category.category_list
     @categories = Category.all.map {|category| category.category}.uniq
     @products = Product.category_discounts(@category)
   end
