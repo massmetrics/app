@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 describe Category do
+
   it 'returns a list of all categories' do
     ObjectCreation.create_product_with_category({category: 'Protein'})
     product = Product.find_by_sku('12345')

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-feature 'homepage' do
+feature 'Index' do
   scenario 'has a link to each category and to each product' do
     category_1 = ObjectCreation.create_product_with_category({category: 'Protein'})
     product = Product.find_by_sku('12345')
@@ -10,7 +10,7 @@ feature 'homepage' do
     ObjectCreation.create_price_log(product: product2)
 
 
-    visit '/'
+    visit category_index_path
     click_link 'Browse'
 
     within '#category-header' do
@@ -37,9 +37,21 @@ feature 'homepage' do
     product = Product.find_by_sku('12345')
     ObjectCreation.create_price_log(product: product)
 
-    visit '/'
+    visit category_index_path
     click_link category_1.category
 
     expect(page).to have_link 'Buy now!'
   end
+
+    scenario 'It shows the price of each item and the percent discount' do
+      product = ObjectCreation.create_product(current_price: '1000')
+      ObjectCreation.create_price_log(product: product, price: '2000')
+      ObjectCreation.create_price_log(product: product, price: '1000')
+
+      visit category_index_path
+
+      expect(page).to have_content(ProductCurrency.format_money(product.current_price))
+      expect(page).to have_content NumberFormatter.format_percentage(product.percent_discount)[0]
+    end
+
 end

@@ -6,7 +6,7 @@ feature 'Product' do
     product = Product.find_by_sku('12345')
     ObjectCreation.create_price_log(product: product)
 
-    visit '/'
+    visit category_index_path
     first('.title').click
 
     expect(page).to have_content product.title

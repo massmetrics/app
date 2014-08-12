@@ -12,12 +12,11 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
-    @user = User.load_from_reset_password_token(params[:id])
     @token = params[:id]
+    @user = User.load_from_reset_password_token(@token)
 
     if @user.blank?
       not_authenticated
-      return
     end
   end
 
@@ -26,7 +25,7 @@ class PasswordResetsController < ApplicationController
     @user = User.load_from_reset_password_token(params[:token])
 
     if @user.blank?
-      redirect_to root_path
+      redirect_to category_index_path
       return
     end
     @user.password_confirmation = params[:user][:password_confirmation]

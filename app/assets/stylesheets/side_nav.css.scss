@@ -1,10 +1,10 @@
-.nav-sidebar {
+.intro-nav .nav-sidebar {
   width: 100%;
   padding: 8px 0;
   border-right: 1px solid #ddd;
 }
 
-.nav-sidebar a:hover {
+.intro-nav .nav-sidebar a:hover {
   background-image: none;
   background-image: -webkit-linear-gradient(#020202, #101112 40%, #191b1d);
   background-image: -o-linear-gradient(#020202, #101112 40%, #191b1d);
@@ -14,15 +14,15 @@
   border-radius: 4px 0 0 4px;
 }
 
-.nav-sidebar .active a {
+.intro-nav .nav-sidebar .active a {
   cursor: default;
   background-color: #428bca;
   color: #fff;
   text-shadow: 1px 1px 1px #666;
 }
 
-.nav-sidebar .text-overflow a,
-.nav-sidebar .text-overflow .media-body {
+.intro-nav .nav-sidebar .text-overflow a,
+.intro-nav .nav-sidebar .text-overflow .media-body {
   white-space: nowrap;
   overflow: hidden;
   -o-text-overflow: ellipsis;

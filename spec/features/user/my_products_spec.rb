@@ -41,17 +41,17 @@ feature 'My Products' do
   scenario 'User is redirected back if he doesn\'t exist' do
     ObjectCreation.create_product
 
-    visit root_path
+    visit category_index_path
     click_on 'Track-it'
 
     expect(page).to have_content 'You must log in to track products'
   end
 
   scenario 'User is redirected to user show page after tracking a product' do
-    user = FeatureSupport.create_and_login_user
-    product = ObjectCreation.create_product
+    FeatureSupport.create_and_login_user
+    ObjectCreation.create_product
 
-    visit '/'
+    visit category_index_path
     click_on 'Track-it'
 
     expect(page).to have_content "Target discount:"
