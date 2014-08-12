@@ -39,7 +39,7 @@ module Admin
     private
     def get_product_and_categories
       @product = Product.find(params[:id])
-      @categories = @product.categories.map(&:category).join(",")
+      @categories = @product.categories.map(&:category).sort.join(",")
     end
 
     def new_params_set?
