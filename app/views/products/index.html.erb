@@ -36,7 +36,7 @@
       <div class="col-xs-12 instruction-heading h3">Track a product</div>
 
       <div class="col-xs-4">
-        <div class="instructions h4">In order to track a product you must create an account by clicking the register
+        <div class="instructions h4">In order to track a product, you must create an account by clicking the register
           link at the top of the page, entering your email and password and clicking register(Don't worry, we wont send
           you any emails you don't specifically request.)  Once you have registered, you can click the
           "Track-it" button on any product on the site.  You will then be brought to the "My Products" page where you
@@ -48,9 +48,10 @@
       </div>
       <div class="col-xs-12 instruction-heading h3">Receive notifications</div>
       <div class="col-xs-4">
-        <div class="instructions h4">You can receive a notification for a tracked product by setting
-          a "Target discount".  When the Current discount reaches the Target discount, an email will be sent to
-          the your account.  A reminder email will be sent once per week until you remove the notification.
+        <div class="instructions h4">Registered users can receive a notification for a tracked product by setting
+          a "Target discount".  When the "Current discount" reaches the "Target discount", an email will be sent to
+          your registered email address.  You will not receive more than a single email per day and a reminder email will be sent
+          once per week until you remove the notification.
         </div>
       </div>
       <div class="col-xs-8 instruction-photo ">
@@ -68,6 +69,18 @@
       <div class="col-xs-8 instruction-photo  ">
         <%= image_tag('amazon-url.png', class: 'img-responsive') %>
         <%= image_tag('suggest-product.png', class: 'img-responsive') %>
+      </div>
+      <div class="col-xs-12 instruction-heading h3">How it works</div>
+      <div class="col-xs-4">
+        <div class="instructions h4">Each day Mass Metrics will look up the price of an item on Amazon and create a record of that price.
+          The prices over the most recent 30 days are averaged to calculate the average price.  The current price is then compared
+          with the average price to determine the percent discount.  Due to irregularities in Amazon's pricing based on your
+          location, the listed price on Mass Metrics may differ slightly from your purchase price. If you like what we are doing at
+          Mass Metrics please share the site with your friends and help us help you get jacked!
+        </div>
+      </div>
+      <div class="col-xs-8 instruction-photo ">
+        <%= image_tag('how-it-works.png', class: 'img-responsive') %>
       </div>
 
     </div>
