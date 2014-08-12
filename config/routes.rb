@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :password_resets
   root to: "category#index"
-  resources :products, only: [:show, :index] do
+  resources :products, only: [:show] do
     resources :my_products, only: [:create, :destroy]
   end
   get 'about' => 'welcome#about'
