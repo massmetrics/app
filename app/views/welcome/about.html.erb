@@ -48,15 +48,15 @@
       <div class="col-xs-8 instruction-photo ">
         <%= image_tag('receive-notifications.png', class: 'img-responsive') %>
       </div>
-      <div class="instruction-heading h3 col-xs-12" id="p-suggest">Suggest a product</div>
+      <div class="instruction-heading h3 col-xs-12" >Suggest a product</div>
 
       <div class="col-xs-4" >
-        <div class="instructions h4">If there is a product that is not on our site but you would like to track you can
-          suggest it by clicking the "Suggest a product" tab. Simply get the sku from the url on the amazon product
+        <div class="instructions h4" id="p-suggest">If there is a product that is not on our site but you would like to track you can
+          suggest it by clicking the <%= link_to "Suggest a product", new_submission_path  %> tab. Simply get the sku from the url on the amazon product
           page(pictured) and enter it in the "Enter SKU from Amazon" field. You can also suggest categories for the product by
           entering them in the "Enter a Category" field.  Multiple categories can be suggested by separating each category
           with a comma as pictured.  Products can only be suggested one at a time and all products are subject to review
-          prior to being added in order to maintain the integrity of the product collection.  
+          prior to being added in order to maintain the integrity of the product collection.
         </div>
       </div>
       <div class="col-xs-8 instruction-photo">
