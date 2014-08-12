@@ -47,10 +47,10 @@
           <% end %>
           <div class="text-center">
             <p>
-              <%= link_to @product.detail_page_url, class: 'btn buy-now-large ' do %>
+              <%= link_to @product.detail_page_url, class: 'btn buy-now-large ', target: '_blank' do %>
                 <span class="glyphicon glyphicon-shopping-cart"></span> Buy now!
               <% end %>
-              <%= link_to @product.review_url, class: 'btn reviews ' do %>
+              <%= link_to @product.review_url, class: 'btn reviews', target: '_blank' do %>
                 Read Reviews <span class="glyphicon glyphicon-list-alt"></span>
               <% end %>
 
