@@ -24,7 +24,7 @@
             </strong></li>
           </ul>
 
-          <%= link_to product.detail_page_url, class: 'btn category-buy-now btn-xs' do %>
+          <%= link_to product.detail_page_url, class: 'btn category-buy-now btn-xs', target: '_blank' do %>
             <span class="glyphicon glyphicon-shopping-cart"></span> Buy now!
           <% end %>
           <% if logged_in? && current_user.tracked?(product) %>
