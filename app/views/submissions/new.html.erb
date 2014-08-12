@@ -32,7 +32,7 @@
 
           <div class="form-group">
             <div class="col-sm-6 controls">
-              <%= link_to 'Help', about_path %>
+              <%= link_to 'Help', about_path({:anchor => "p-suggest"}) %>
             </div>
             <div class="col-sm-6 controls">
               <%= f.submit 'Suggest product', class: "btn btn-success pull-right" %>
