@@ -9,6 +9,6 @@ class ApplicationController < ActionController::Base
   end
 
   def key_words
-    "best, health, fitness, supplements, cheap, cheapest, protein, health supplements, protein powder, diet, exercise, discount "
+    "best, health, fitness, supplements, cheap, cheapest, protein, health supplements, protein powder, diet, exercise, discount, Mass Metrics, Mass, Metrics, MassMetrics"
   end
 end

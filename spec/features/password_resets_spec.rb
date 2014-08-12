@@ -53,6 +53,6 @@ feature 'forgot password' do
     User.destroy(@user.id)
     visit edit_password_reset_path(@user.reset_password_token)
 
-    expect(page).to have_content 'Topics'
+    expect(page).to have_content 'Best deals'
   end
 end
