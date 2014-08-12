@@ -1,7 +1,7 @@
 require 'rails_helper'
 
-describe 'Submit an SKU and category' do
-  it 'allows a user to submit an sku' do
+feature 'Submit an SKU and category' do
+  scenario 'allows a user to submit a sku' do
     visit '/'
     click_on 'Suggest a product'
     fill_in 'submission[sku]', with: 'B0031JK96C'
@@ -11,7 +11,7 @@ describe 'Submit an SKU and category' do
     expect(page).to have_content('Thank you for your submission, it will be reviewed shortly')
   end
 
-  it 'renders the new page with errors if an invalid sku is entered' do
+  scenario 'renders the new page with errors if an invalid sku is entered' do
     visit '/'
     click_on 'Suggest a product'
     fill_in 'submission[sku]', with: 'stuff'
@@ -19,5 +19,13 @@ describe 'Submit an SKU and category' do
     click_on 'Suggest product'
 
     expect(page).to have_content 'Invalid SKU'
+  end
+
+  scenario 'User can get help suggesting a product' do
+    visit '/'
+    click_on 'Suggest a product'
+    click_link 'Help'
+
+    expect(page).to have_content 'Product sorting'
   end
 end
