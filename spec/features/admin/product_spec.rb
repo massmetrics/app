@@ -31,8 +31,8 @@ feature 'Products' do
       fill_in 'categories', with: 'protein, something else'
       click_on 'Update'
       @p1.reload
-      categories = @p1.categories.map { |c| c.category }.join(',')
-      expect(categories).to eq('Something Else,Protein')
+      categories = @p1.categories.map { |c| c.category }.sort.join(',')
+      expect(categories).to eq('Protein,Something Else')
       expect(find_field('categories').value).to eq(categories)
     end
     scenario 'admin deletes a category from a product' do
