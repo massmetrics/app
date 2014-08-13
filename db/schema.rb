@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140802150245) do
+ActiveRecord::Schema.define(version: 20140813231851) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,17 +57,18 @@ ActiveRecord::Schema.define(version: 20140802150245) do
   add_index "price_logs", ["product_id"], name: "index_price_logs_on_product_id", using: :btree
 
   create_table "products", force: true do |t|
-    t.string "sku"
-    t.string "detail_page_url"
-    t.string "review_url"
-    t.string "title"
-    t.text   "features"
-    t.string "current_price"
-    t.string "large_image_url"
-    t.string "small_image_url"
-    t.string "medium_image_url"
-    t.string "brand"
-    t.text   "description"
+    t.string  "sku"
+    t.string  "detail_page_url"
+    t.string  "review_url"
+    t.string  "title"
+    t.text    "features"
+    t.string  "current_price"
+    t.string  "large_image_url"
+    t.string  "small_image_url"
+    t.string  "medium_image_url"
+    t.string  "brand"
+    t.text    "description"
+    t.boolean "fetched"
   end
 
   create_table "submissions", force: true do |t|
