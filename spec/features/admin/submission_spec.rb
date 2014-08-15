@@ -30,7 +30,9 @@ feature 'Submissions' do
           product = Product.find_by_sku("B003CTE1LU")
           expect(product.categories.map { |category| category.category }).to include(@submission.category.capitalize)
 
-          visit
+          visit admin_submissions_path
+
+          expect(page).to have_no_content "B003CTE1LU"
         end
       end
     end
