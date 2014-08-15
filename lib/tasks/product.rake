@@ -27,6 +27,7 @@ namespace :product do
   desc('add new product to system')
   task :update_products => :environment do
     Product.all.each do |product|
+      product.update(fetched: false)
       fetch_product(product)
     end
   end
