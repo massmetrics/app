@@ -27,7 +27,7 @@
 
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-            <%= f.text_field :category, placeholder: 'Enter Category', class: 'form-control' %>
+            <%= f.select :category, Category.all_categories %>
           </div>
 
           <div class="form-group">

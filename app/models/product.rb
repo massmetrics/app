@@ -15,7 +15,7 @@ class Product < ActiveRecord::Base
           sku: sku,
           detail_page_url: item.detail_page_url,
           review_url: item.review_url,
-          title: item.title,
+          title: item.title.truncate(254),
           current_price: NumberFormatter.format_price_string(current_price),
           large_image_url: item.large_image_url,
           medium_image_url: item.medium_image_url,

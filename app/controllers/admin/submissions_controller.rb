@@ -13,6 +13,8 @@ module Admin
       categories = SubmissionHelper.split_categories(params[:submission][:category])
       sku = params[:submission][:sku]
       ProductAdder.add([sku], categories)
+      submission = Submission.find_by(sku: sku)
+      submission.destroy
       redirect_to admin_submissions_path
     end
 
