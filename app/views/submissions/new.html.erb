@@ -12,9 +12,9 @@
             <% end %>
           </div>
         <% end %>
-        <% if flash[:notice] %>
+        <% if flash[:success] %>
           <div class="login-alert alert alert-success col-sm-12">
-            <%= flash[:notice] %>
+            <%= flash[:success] %>
           </div>
         <% end %>
 
@@ -27,7 +27,7 @@
 
           <div class="input-group">
             <span class="input-group-addon"><i class="glyphicon glyphicon-tag"></i></span>
-            <%= f.select :category, Category.all_categories, {include_blank: "Select a category"}, class: 'form-control' %>
+            <%= f.select :category, Category.all.map{|cat| cat.category}, {include_blank: "Select a category"}, class: 'form-control' %>
           </div>
 
           <div class="form-group">

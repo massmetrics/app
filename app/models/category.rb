@@ -1,6 +1,8 @@
 class Category < ActiveRecord::Base
-  belongs_to :product
+  belongs_to :product_category
   before_create :capitalize_category
+
+  validates :category, uniqueness: true
 
   def self.category_list
     all_categories.map do |category|

@@ -23,11 +23,12 @@ module Admin
     end
 
     def edit
+
     end
 
     def update
       categories = SubmissionHelper.split_categories(params[:categories])
-      @product.update_categories(categories)
+      @product.add_categories(categories)
       redirect_to edit_admin_product_path(@product)
     end
 
@@ -39,7 +40,7 @@ module Admin
     private
     def get_product_and_categories
       @product = Product.find(params[:id])
-      @categories = @product.categories.map(&:category).sort.join(",")
+      @categories = ProductCategory.where(product_id: @product.id).includes(:category)
     end
 
     def new_params_set?

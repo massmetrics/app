@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140813231851) do
+ActiveRecord::Schema.define(version: 20140815232153) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,27 +25,19 @@ ActiveRecord::Schema.define(version: 20140813231851) do
   end
 
   create_table "categories", force: true do |t|
-    t.integer "product_id"
-    t.string  "category"
+    t.string "category"
   end
-
-  add_index "categories", ["product_id"], name: "index_categories_on_product_id", using: :btree
 
   create_table "my_products", force: true do |t|
     t.integer "product_id"
     t.integer "user_id"
   end
 
-  add_index "my_products", ["product_id"], name: "index_my_products_on_product_id", using: :btree
-  add_index "my_products", ["user_id"], name: "index_my_products_on_user_id", using: :btree
-
   create_table "my_products_notifications", force: true do |t|
     t.integer  "my_product_id"
     t.float    "discount"
     t.datetime "notification_date"
   end
-
-  add_index "my_products_notifications", ["my_product_id"], name: "index_my_products_notifications_on_my_product_id", using: :btree
 
   create_table "price_logs", force: true do |t|
     t.string   "price"
@@ -54,7 +46,13 @@ ActiveRecord::Schema.define(version: 20140813231851) do
     t.datetime "updated_at"
   end
 
-  add_index "price_logs", ["product_id"], name: "index_price_logs_on_product_id", using: :btree
+  create_table "product_categories", force: true do |t|
+    t.integer "product_id"
+    t.integer "category_id"
+  end
+
+  add_index "product_categories", ["category_id"], name: "index_product_categories_on_category_id", using: :btree
+  add_index "product_categories", ["product_id"], name: "index_product_categories_on_product_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string  "sku"

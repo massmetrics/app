@@ -76,19 +76,23 @@ describe Product do
 
   context 'categories' do
     it 'can add a category to a product' do
+      ObjectCreation.create_category
+      ObjectCreation.create_category(category:'pill')
+      ObjectCreation.create_category(category: 'vitamin')
       new_item = ObjectCreation.create_product(current_price: '1000')
       new_item.add_categories(['Protein'])
 
       new_item.reload
       expect(new_item.categories.map { |cat| cat.category }).to include('Protein')
 
-      new_item.add_categories(['Pill', 'blah', "protein"])
+      new_item.add_categories(["Pill", "Protein", "Vitamin"])
       new_item.reload
 
-      expect(new_item.categories.map { |cat| cat.category }).to match_array(['Protein', 'Pill', 'Blah'])
+      expect(new_item.categories.map { |cat| cat.category }).to match_array( ["Pill", "Protein", "Vitamin"])
     end
 
     it 'doesnt add duplicate categories to a product' do
+      ObjectCreation.create_category
       new_item = ObjectCreation.create_product(current_price: '1000')
       new_item.add_categories(['Protein', 'protein'])
       new_item.reload
@@ -96,10 +100,12 @@ describe Product do
     end
 
     it 'updates all categories for a product' do
+      ObjectCreation.create_category
+      ObjectCreation.create_category(category: 'pre workout')
       new_item = ObjectCreation.create_product(current_price: '1000')
       new_item.add_categories(['Protein'])
       new_item.reload
-      new_item.update_categories(['pre workout'])
+      new_item.update_categories(['Pre Workout'])
       new_item.reload
 
       expect(new_item.categories.map { |cat| cat.category }).to match_array(['Pre Workout'])
@@ -119,20 +125,23 @@ describe Product do
   end
 
   it 'returns the best products by value for a category up to the number requested' do
-    new_item = ObjectCreation.create_product(current_price: '1700', sku: 'item_1')
+    protein = ObjectCreation.create_category
+    new_item = ObjectCreation.create_product(current_price: '1700',sku: 'item_1')
+    ProductCategory.create(product_id: new_item.id, category_id: protein.id)
+
     ObjectCreation.create_price_log(product: new_item, price: '2000')
     ObjectCreation.create_price_log(product: new_item, price: '1000')
-    new_item.add_categories(['protein'])
 
-    new_item2 = ObjectCreation.create_product(current_price: '1000')
+
+    new_item2 = ObjectCreation.create_product(current_price: '1000', sku: 'item_2')
+    ProductCategory.create(product_id: new_item2.id, category_id: protein.id)
     ObjectCreation.create_price_log(product: new_item2, price: '2000')
     ObjectCreation.create_price_log(product: new_item2, price: '1000')
-    new_item2.add_categories(['protein'])
 
-    new_item3 = ObjectCreation.create_product(current_price: '1000', sku: 'item_3')
+    new_item3 = ObjectCreation.create_product_with_category({category: 'Pre-workout'},
+                                                            {current_price: '1000', sku: 'item_3'}).product
     ObjectCreation.create_price_log(product: new_item3, price: '2000')
     ObjectCreation.create_price_log(product: new_item3, price: '1000')
-    new_item3.add_categories(['pre workout'])
 
     expect(Product.category_discounts('Protein', 2)).to eq([new_item2, new_item])
   end

@@ -16,13 +16,13 @@ feature 'Index' do
     within '#category-header' do
       expect(page).to have_content('Best deals')
     end
-    expect(page).to have_content category_1.category
-    expect(page).to have_content category_2.category
+    expect(page).to have_content category_1.category.category
+    expect(page).to have_content category_2.category.category
 
-    click_on category_1.category
+    click_on category_1.category.category
 
     within '#category-header' do
-      expect(page).to have_content(category_1.category)
+      expect(page).to have_content(category_1.category.category)
     end
 
     expect(page).to have_content product.title
@@ -38,7 +38,7 @@ feature 'Index' do
     ObjectCreation.create_price_log(product: product)
 
     visit category_index_path
-    click_link category_1.category
+    click_link category_1.category.category
 
     expect(page).to have_link 'Buy now!'
   end
