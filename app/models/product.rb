@@ -26,7 +26,9 @@ class Product < ActiveRecord::Base
     end
 
     def percent_discounts(items = 10, days = 30)
-      includes(:price_logs).sort_by { |product| product.percent_off(days) }.reverse[0...items].compact
+      includes(:price_logs).sort_by { |product| product.percent_off(days) }.reverse[0...items].compact.map do |product|
+        [product, product.price_log_hash]
+      end
     end
 
     def get_products_for(category)
