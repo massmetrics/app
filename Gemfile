@@ -41,3 +41,5 @@ group :test do
   gem 'webmock'
 end
 gem "codeclimate-test-reporter", group: :test, require: nil
+
+gem 'sitemap_generator'
