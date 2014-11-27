@@ -24,7 +24,7 @@ namespace :product do
     ProductAdder.add(sku_array, category_array)
   end
 
-  desc('add new product to system')
+  desc('fetch updated product information')
   task :update_products => :environment do
     Product.all.each do |product|
       product.update(fetched: false)
@@ -45,5 +45,10 @@ namespace :product do
     notifications.each do |notification|
       EmailJob.new.async.perform(notification[0], notification[1])
     end
+  end
+
+  desc('remove old price logs')
+  task :remove_price_logs => :environment do
+    PriceLog.where("created_at >= ?", 30.days.ago)
   end
 end

@@ -9,4 +9,6 @@ describe PriceLog do
     expect(new_log.created_at).to_not eq(nil)
     expect(new_log.product).to eq(product)
   end
+
+
 end
