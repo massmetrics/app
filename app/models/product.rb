@@ -31,7 +31,7 @@ class Product < ActiveRecord::Base
 
     def top_products_with_logs(items = 10, days = 30)
       percent_discounts(items, days).map do |product|
-        [product, product.price_log_hash]
+        [product, product.price_log_hash, product.percent_discount]
       end
     end
 

@@ -134,7 +134,10 @@ describe Product do
     ObjectCreation.create_price_log(product: new_item3, price: '1000')
     new_item3.add_categories(['pre workout'])
 
-    expect(Product.category_discounts('Protein', 2)).to eq([[new_item2, new_item2.price_log_hash], [new_item, new_item.price_log_hash]])
+    expect(Product.category_discounts('Protein', 2)).to eq([
+                                                             [new_item2, new_item2.price_log_hash, new_item2.percent_discount],
+                                                             [new_item, new_item.price_log_hash, new_item.percent_discount]
+                                                           ])
   end
 
   it 'returns 0 of no price logs exist' do
@@ -152,7 +155,10 @@ describe Product do
       ObjectCreation.create_price_log(product: new_item2, price: '2000')
       ObjectCreation.create_price_log(product: new_item2, price: '1000')
 
-      expect(Product.top_products_with_logs(2)).to eq([[new_item2, new_item2.price_log_hash], [new_item, new_item.price_log_hash]])
+      expect(Product.top_products_with_logs(2)).to eq([
+                                                        [new_item2, new_item2.price_log_hash, new_item2.percent_discount],
+                                                        [new_item, new_item.price_log_hash, new_item.percent_discount]
+                                                      ])
     end
   end
 end
