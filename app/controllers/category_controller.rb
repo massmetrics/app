@@ -9,7 +9,7 @@ class CategoryController < ApplicationController
     )
     # @categories = Category.category_list
     @categories = Category.all.map {|category| category.category}.uniq
-    @products = Product.percent_discounts(10, 30)
+    @products = Product.top_products_with_logs(10, 30)
   end
 
   def show

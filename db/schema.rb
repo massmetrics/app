@@ -29,15 +29,10 @@ ActiveRecord::Schema.define(version: 20140813231851) do
     t.string  "category"
   end
 
-  add_index "categories", ["product_id"], name: "index_categories_on_product_id", using: :btree
-
   create_table "my_products", force: true do |t|
     t.integer "product_id"
     t.integer "user_id"
   end
-
-  add_index "my_products", ["product_id"], name: "index_my_products_on_product_id", using: :btree
-  add_index "my_products", ["user_id"], name: "index_my_products_on_user_id", using: :btree
 
   create_table "my_products_notifications", force: true do |t|
     t.integer  "my_product_id"
@@ -45,16 +40,12 @@ ActiveRecord::Schema.define(version: 20140813231851) do
     t.datetime "notification_date"
   end
 
-  add_index "my_products_notifications", ["my_product_id"], name: "index_my_products_notifications_on_my_product_id", using: :btree
-
   create_table "price_logs", force: true do |t|
     t.string   "price"
     t.integer  "product_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
-
-  add_index "price_logs", ["product_id"], name: "index_price_logs_on_product_id", using: :btree
 
   create_table "products", force: true do |t|
     t.string  "sku"

@@ -134,12 +134,25 @@ describe Product do
     ObjectCreation.create_price_log(product: new_item3, price: '1000')
     new_item3.add_categories(['pre workout'])
 
-    expect(Product.category_discounts('Protein', 2)).to eq([new_item2, new_item])
+    expect(Product.category_discounts('Protein', 2)).to eq([[new_item2, new_item2.price_log_hash], [new_item, new_item.price_log_hash]])
   end
 
   it 'returns 0 of no price logs exist' do
     new_item = ObjectCreation.create_product(current_price: '1700', sku: 'item_1')
 
     expect(new_item.average_price).to eq(0)
+  end
+
+  describe 'gets the highest percentage off products along with the price log hash' do
+    it '#top_products_with_logs' do
+      new_item = ObjectCreation.create_product(current_price: '1700', sku: 'item_2')
+      ObjectCreation.create_price_log(product: new_item, price: '2000')
+      ObjectCreation.create_price_log(product: new_item, price: '1000')
+      new_item2 = ObjectCreation.create_product(current_price: '1000')
+      ObjectCreation.create_price_log(product: new_item2, price: '2000')
+      ObjectCreation.create_price_log(product: new_item2, price: '1000')
+
+      expect(Product.top_products_with_logs(2)).to eq([[new_item2, new_item2.price_log_hash], [new_item, new_item.price_log_hash]])
+    end
   end
 end
