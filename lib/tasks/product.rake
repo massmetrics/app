@@ -49,6 +49,6 @@ namespace :product do
 
   desc('remove old price logs')
   task :remove_price_logs => :environment do
-    PriceLog.where("created_at <= ?", 30.days.ago)
+    PriceLog.where("created_at <= ?", 30.days.ago).destroy_all
   end
 end
