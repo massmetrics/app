@@ -49,7 +49,7 @@ class Product < ActiveRecord::Base
       all.each do |product|
         item = ItemLookup.new(product.sku)
         product.update(detail_page_url: item.detail_page_url, review_url: item.review_url)
-        wait 1
+        sleep 1
       end
     end
   end
