@@ -47,9 +47,10 @@ class Product < ActiveRecord::Base
 
     def update_urls
       all.each do |product|
-        item = ItemLookup.new(product.sku)
-        product.update(detail_page_url: item.detail_page_url, review_url: item.review_url)
-        sleep 1
+        product.update(
+          detail_page_url: product.detail_page_url.gsub("massm07-20", ENV['ASIN_TAG']),
+          review_url: product.review_url.gsub("massm07-20", ENV['ASIN_TAG'])
+        )
       end
     end
   end
