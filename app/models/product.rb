@@ -44,6 +44,13 @@ class Product < ActiveRecord::Base
       products = products.where("price_logs.created_at >= ? ", days.days.ago)
       products.top_products_with_logs(items, days)
     end
+
+    def update_urls
+      all.each do |product|
+        item = ItemLookup.new(product.sku)
+        product.update(detail_page_url: item.detail_page_url, review_url: item.review_url)
+      end
+    end
   end
 
   def percent_off(days)
@@ -69,7 +76,7 @@ class Product < ActiveRecord::Base
   end
 
   def get_price_logs(days = 30)
-    price_logs.sort_by {|log| log.created_at}.select do |log|
+    price_logs.sort_by { |log| log.created_at }.select do |log|
       log.created_at >= days.day.ago
     end
   end
@@ -91,7 +98,8 @@ class Product < ActiveRecord::Base
     end
   end
 
-  def update_categories(category_array)
+  def
+  update_categories(category_array)
     self.categories.destroy_all
     self.add_categories(category_array)
   end
