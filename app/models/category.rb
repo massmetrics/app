@@ -1,5 +1,7 @@
 class Category < ActiveRecord::Base
-  belongs_to :product_category
+
+  has_many :product_categories
+  has_many :products, through: :product_categories
   before_create :capitalize_category
 
   validates :category, uniqueness: true

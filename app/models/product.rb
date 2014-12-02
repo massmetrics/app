@@ -6,6 +6,8 @@ class Product < ActiveRecord::Base
   has_many :categories, through: :product_categories
   has_many :my_products
 
+
+
   class << self
     def create_from_sku(sku)
       item = ItemLookup.new(sku)
@@ -79,10 +81,12 @@ class Product < ActiveRecord::Base
   def add_categories(category_array)
     category_array.each do |category|
       self.reload
-      categories = self.categories.map { |c| c.category.downcase }
-      unless categories.include?(category.downcase.strip)
+      categories = self.categories.map { |c| c.category }
+      unless categories.include?(category)
+        binding.pry
         added_category = Category.find_by(category: category)
         ProductCategory.create(product_id: self.id, category_id: added_category.id)
+
       end
     end
   end

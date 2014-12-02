@@ -6,6 +6,7 @@ class ProductAdder
         if product
           product.add_categories(category_array)
         end
+        sleep 10
       end
     end
   end

@@ -1,5 +1,11 @@
-Product.all.each do |item|
-  item.add_categories(["protein", "protein powder"])
+# Product.all.each do |item|
+#   item.add_categories(["protein", "protein powder"])
+# end
+
+categories = ['Protein Powder', 'Pre Workout', 'Post Workout', 'Protein Bar','Vitamin', 'Fat Burner' 'Creatine', 'CLA']
+
+categories.each do |category|
+  Category.create!(category: category)
 end
 
 powders = ["B00ARJN2TK", "B00BEOHFKO", "B000GOY7FO", "B000GOY6Z0", "B002DYJ0OI", "B00FFDSER8", "B002QZORGK", "B000GIPJ0M", "B00HQNNS6C", "B002DYJ0K2", "B002DUD6QU"]
