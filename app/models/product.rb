@@ -48,8 +48,8 @@ class Product < ActiveRecord::Base
     def update_urls
       all.each do |product|
         product.update(
-          detail_page_url: product.detail_page_url.gsub("massm07-20", ENV['ASIN_TAG']),
-          review_url: product.review_url.gsub("massm07-20", ENV['ASIN_TAG'])
+          detail_page_url: PostRank::URI.clean(product.detail_page_url),
+          review_url: PostRank::URI.clean(product.review_url)
         )
       end
     end
