@@ -1,5 +1,3 @@
-require 'postrank-uri'
-
 class ItemLookup
   attr_accessor :client, :item
 
@@ -16,7 +14,7 @@ class ItemLookup
   def review_url
     item["item_links"]["item_link"].each do |object|
       if object.description == "All Customer Reviews"
-        PostRank::URI.clean(return object.url)
+        return PostRank::URI.clean(object.url)
       end
     end
   end
