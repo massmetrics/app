@@ -8,13 +8,13 @@ class ItemLookup
   end
 
   def detail_page_url
-    item["detail_page_url"]
+    PostRank::URI.clean(item["detail_page_url"])
   end
 
   def review_url
     item["item_links"]["item_link"].each do |object|
       if object.description == "All Customer Reviews"
-        return object.url
+        PostRank::URI.clean(return object.url)
       end
     end
   end
@@ -64,15 +64,15 @@ class ItemLookup
   def to_hash
     current_price = AmazonScraper.new(detail_page_url).price || self.current_price
     {
-      features: features,
-      detail_page_url: detail_page_url,
-      review_url: review_url,
-      title: title,
-      current_price: NumberFormatter.format_price_string(current_price),
-      large_image_url: large_image_url,
-      medium_image_url: medium_image_url,
-      small_image_url: small_image_url,
-      brand: brand
+        features: features,
+        detail_page_url: detail_page_url,
+        review_url: review_url,
+        title: title,
+        current_price: NumberFormatter.format_price_string(current_price),
+        large_image_url: large_image_url,
+        medium_image_url: medium_image_url,
+        small_image_url: small_image_url,
+        brand: brand
     }
   end
 
