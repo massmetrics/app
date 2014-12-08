@@ -1,3 +1,5 @@
+require 'postrank-uri'
+
 class ItemLookup
   attr_accessor :client, :item
 
