@@ -101,7 +101,6 @@ class Product < ActiveRecord::Base
       unless categories.include?(category) || categories.include?(capitalized_category)
         added_category = Category.find_by(name: category)
         ProductCategory.create(product_id: self.id, category_id: added_category.id)
-
       end
     end
   end
