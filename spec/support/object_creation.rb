@@ -30,7 +30,7 @@ module ObjectCreation
   end
 
   def self.create_category(attributes = {})
-    default = {category: "Protein"}
+    default = {name: "Protein"}
     default.merge!(attributes)
     Category.create!(default)
   end

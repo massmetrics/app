@@ -4,7 +4,7 @@ class Category < ActiveRecord::Base
   has_many :products, through: :product_categories
   before_create :capitalize_category
 
-  validates :category, uniqueness: true
+  validates :name, uniqueness: true
 
   def self.category_list
     all_categories.map do |category|
@@ -16,12 +16,12 @@ class Category < ActiveRecord::Base
 
   def self.all_categories
     all.map do |category|
-      category.category
+      category.name
     end.uniq
   end
 
   private
   def capitalize_category
-    self.category = self.category.split(' ').map(&:capitalize).join(' ')
+    self.name = self.name.split(' ').map(&:capitalize).join(' ')
   end
 end

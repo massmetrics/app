@@ -39,7 +39,7 @@ class Product < ActiveRecord::Base
     end
 
     def get_products_for(category)
-      joins(:categories).where('categories.category = ?', category)
+      joins(:categories).where('categories.name = ?', category)
     end
 
     def category_discounts(category, days = 30, items = 10)
@@ -97,9 +97,9 @@ class Product < ActiveRecord::Base
     category_array.each do |category|
       self.reload
       capitalized_category = category.split(' ').map(&:capitalize).join(' ')
-      categories = self.categories.map { |c| c.category }
+      categories = self.categories.map { |c| c.name }
       unless categories.include?(category) || categories.include?(capitalized_category)
-        added_category = Category.find_by(category: category)
+        added_category = Category.find_by(name: category)
         ProductCategory.create(product_id: self.id, category_id: added_category.id)
 
       end

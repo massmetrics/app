@@ -77,18 +77,18 @@ describe Product do
   context 'categories' do
     it 'can add a category to a product' do
       ObjectCreation.create_category
-      ObjectCreation.create_category(category:'pill')
-      ObjectCreation.create_category(category: 'vitamin')
+      ObjectCreation.create_category(name:'pill')
+      ObjectCreation.create_category(name: 'vitamin')
       new_item = ObjectCreation.create_product(current_price: '1000')
       new_item.add_categories(['Protein'])
 
       new_item.reload
-      expect(new_item.categories.map { |cat| cat.category }).to include('Protein')
+      expect(new_item.categories.map { |cat| cat.name }).to include('Protein')
 
       new_item.add_categories(["Pill", "Protein", "Vitamin"])
       new_item.reload
 
-      expect(new_item.categories.map { |cat| cat.category }).to match_array( ["Pill", "Protein", "Vitamin"])
+      expect(new_item.categories.map { |cat| cat.name }).to match_array( ["Pill", "Protein", "Vitamin"])
     end
 
     it 'doesnt add duplicate categories to a product' do
@@ -96,26 +96,26 @@ describe Product do
       new_item = ObjectCreation.create_product(current_price: '1000')
       new_item.add_categories(['Protein', 'protein'])
       new_item.reload
-      expect(new_item.categories.map { |cat| cat.category }).to match_array(['Protein'])
+      expect(new_item.categories.map { |cat| cat.name }).to match_array(['Protein'])
     end
 
     it 'updates all categories for a product' do
       ObjectCreation.create_category
-      ObjectCreation.create_category(category: 'pre workout')
+      ObjectCreation.create_category(name: 'pre workout')
       new_item = ObjectCreation.create_product(current_price: '1000')
       new_item.add_categories(['Protein'])
       new_item.reload
       new_item.update_categories(['Pre Workout'])
       new_item.reload
 
-      expect(new_item.categories.map { |cat| cat.category }).to match_array(['Pre Workout'])
+      expect(new_item.categories.map { |cat| cat.name }).to match_array(['Pre Workout'])
     end
   end
 
   it 'returns a list of products for a given category' do
-    ObjectCreation.create_product_with_category({category: 'protein'}, {sku: '123'})
-    ObjectCreation.create_product_with_category({category: 'pre workout'}, {sku: '1234'})
-    ObjectCreation.create_product_with_category({category: 'protein'}, {sku: '12345'})
+    ObjectCreation.create_product_with_category({name: 'protein'}, {sku: '123'})
+    ObjectCreation.create_product_with_category({name: 'pre workout'}, {sku: '1234'})
+    ObjectCreation.create_product_with_category({name: 'protein'}, {sku: '12345'})
     first_product = Product.find_by_sku('123')
     second_product = Product.find_by_sku('12345')
     third_product = Product.find_by_sku('1234')
@@ -138,7 +138,7 @@ describe Product do
     ObjectCreation.create_price_log(product: new_item2, price: '2000')
     ObjectCreation.create_price_log(product: new_item2, price: '1000')
 
-    new_item3 = ObjectCreation.create_product_with_category({category: 'Pre-workout'},
+    new_item3 = ObjectCreation.create_product_with_category({name: 'Pre-workout'},
                                                             {current_price: '1000', sku: 'item_3'}).product
     ObjectCreation.create_price_log(product: new_item3, price: '2000')
     ObjectCreation.create_price_log(product: new_item3, price: '1000')

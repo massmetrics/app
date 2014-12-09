@@ -7,7 +7,7 @@ describe ProductAdder do
       VCR.use_cassette('/models/product_adder/B000QSNYGI') do
         ProductAdder.add(['B000QSNYGI'], ['Protein'])
         expect(Product.last.current_price).to eq('5799')
-        expect(Product.last.categories.first.category).to eq('Protein')
+        expect(Product.last.categories.first.name).to eq('Protein')
       end
     end
   end

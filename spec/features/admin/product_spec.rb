@@ -3,8 +3,8 @@ require 'rails_helper'
 feature 'Products' do
   before do
     @p1 = ObjectCreation.create_product(sku: '2345', title: 'p1')
-    @category1 = Category.create(category: 'protein')
-    @category1 = Category.create(category: 'something else')
+    @category1 = Category.create(name: 'protein')
+    @category1 = Category.create(name: 'something else')
     @p2 = ObjectCreation.create_product(sku: '23456', title: 'p2')
     @p3 = ObjectCreation.create_product(sku: '234567', title: 'p3')
     @p4 = ObjectCreation.create_product(sku: '2345678', title: 'p4')
@@ -21,7 +21,7 @@ feature 'Products' do
       within("##{@p1.sku}") do
         click_on 'Edit'
       end
-      expect(find_field('categories').value).to eq(@category1.category)
+      expect(find_field('categories').value).to eq(@category1.name)
     end
   end
   context 'managing product categories' do
@@ -33,7 +33,7 @@ feature 'Products' do
       fill_in 'categories', with: 'Protein, Something Else'
       click_on 'Update'
       @p1.reload
-      categories = @p1.categories.map { |c| c.category }.sort.join(',')
+      categories = @p1.categories.map { |c| c.name }.sort.join(',')
       expect(categories).to eq('Protein,Something Else')
       expect(find_field('categories').value).to eq("Protein Something Else")
     end
@@ -45,7 +45,7 @@ feature 'Products' do
       fill_in 'categories', with: 'Something Else'
       click_on 'Update'
       @p1.reload
-      categories = @p1.categories.map { |c| c.category }.join(',')
+      categories = @p1.categories.map { |c| c.name }.join(',')
       expect(categories).to eq('Something Else')
     end
 

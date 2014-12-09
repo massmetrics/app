@@ -1,6 +1,6 @@
 <%= "Categories for: #{@product.title}" %>
 
 <%= form_tag(admin_product_path(@product), method: :patch) do %>
-  <%= text_field_tag :categories, @categories.map{|cat| cat.category.category} %>
+  <%= text_field_tag :categories, @categories.map{|cat| cat.category.name} %>
   <%= submit_tag 'Update' %>
 <% end -%>

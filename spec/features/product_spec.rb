@@ -2,7 +2,7 @@ require 'rails_helper'
 
 feature 'Product' do
   scenario 'User can view product details' do
-    ObjectCreation.create_product_with_category({category: 'Protein'})
+    ObjectCreation.create_product_with_category({name: 'Protein'})
     product = Product.find_by_sku('12345')
     ObjectCreation.create_price_log(product: product)
 

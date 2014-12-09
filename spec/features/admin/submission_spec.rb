@@ -29,7 +29,7 @@ feature 'Submissions' do
           click_button 'Add'
 
           product = Product.find_by_sku("B003CTE1LU")
-          expect(product.categories.map { |category| category.category }).to include(@submission.category.capitalize)
+          expect(product.categories.map { |category| category.name }).to include(@submission.category.capitalize)
 
           visit admin_submissions_path
 

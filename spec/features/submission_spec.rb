@@ -6,7 +6,7 @@ feature 'Submit an SKU and category' do
     visit '/'
     click_on 'Suggest a product'
     fill_in 'submission[sku]', with: 'B0031JK96C'
-    select category.category, from: 'submission[category]'
+    select category.name, from: 'submission[category]'
     click_on 'Suggest product'
 
     expect(page).to have_content('Thank you for your submission, it will be reviewed shortly')
@@ -18,7 +18,7 @@ feature 'Submit an SKU and category' do
     visit '/'
     click_on 'Suggest a product'
     fill_in 'submission[sku]', with: 'stuff'
-    select category.category, from: 'submission[category]'
+    select category.name, from: 'submission[category]'
     click_on 'Suggest product'
 
     expect(page).to have_content 'Invalid SKU'

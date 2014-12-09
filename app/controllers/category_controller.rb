@@ -8,7 +8,7 @@ class CategoryController < ApplicationController
       false
     )
     # @categories = Category.category_list
-    @categories = Category.all.map {|category| category.category}.uniq
+    @categories = Category.all.map {|category| category.name}.uniq
     @products = Product.top_products_with_logs(10, 30)
   end
 
@@ -21,7 +21,7 @@ class CategoryController < ApplicationController
       false
     )
     # @categories = Category.category_list
-    @categories = Category.all.map {|category| category.category}.uniq
+    @categories = Category.all.map {|category| category.name}.uniq
     @products = Product.category_discounts(@category)
   end
 end

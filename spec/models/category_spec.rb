@@ -8,7 +8,7 @@ describe Category do
     ObjectCreation.create_price_log(product: product1)
     ProductCategory.create(product_id: product1.id, category_id: protein.id)
 
-    ObjectCreation.create_product_with_category({category: 'Pre-workout'}, {sku: 'product2'})
+    ObjectCreation.create_product_with_category({name: 'Pre-workout'}, {sku: 'product2'})
     product2 = Product.find_by_sku('product2')
     ObjectCreation.create_price_log(product: product2)
 
@@ -16,17 +16,17 @@ describe Category do
     ProductCategory.create(product_id: product3.id, category_id: protein.id)
     ObjectCreation.create_price_log(product: product3)
 
-    category_array = Category.all.map{|cat|cat.category}
+    category_array = Category.all.map{|cat|cat.name}
 
     expect(category_array).to match_array(['Protein', 'Pre-workout'])
   end
 
   it 'makes first letter of each word capital before creation' do
-    protein = Category.create(category: 'protein')
+    protein = Category.create(name: 'protein')
 
-    expect(protein.category).to eq('Protein')
+    expect(protein.name).to eq('Protein')
 
-    pre_workout = Category.create(category: 'pre workout')
-    expect(pre_workout.category).to eq('Pre Workout')
+    pre_workout = Category.create(name: 'pre workout')
+    expect(pre_workout.name).to eq('Pre Workout')
   end
 end
