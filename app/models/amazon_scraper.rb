@@ -2,7 +2,16 @@ require 'nokogiri'
 require 'open-uri'
 class AmazonScraper
   def initialize(url)
-    @page = Nokogiri::HTML(open(url, 'User-Agent' => 'ruby'))
+    tries = 0
+    begin
+      @page = Nokogiri::HTML(open(url, 'User-Agent' => 'ruby'))
+    rescue OpenURI::HTTPError => error
+      puts "Error is #{error.io.status}"
+      tries += 1
+      if tries <= 10
+        retry
+      end
+    end
   end
 
   def price

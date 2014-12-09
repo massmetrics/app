@@ -7,8 +7,8 @@ describe ItemLookup do
       VCR.use_cassette('models/item_lookup') do
         item = ItemLookup.new('B0047Y6I24')
 
-        expect(item.detail_page_url).to eq('http://www.amazon.com/Myotein-Chocolate-Protein-Tasting-Offered/dp/B0047Y6I24%3FSubscriptionId%3DAKIAJKOQZSKA7MQNOSZA%26tag%3Dmassmetr-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0047Y6I24')
-        expect(item.review_url).to eq('http://www.amazon.com/review/product/B0047Y6I24%3FSubscriptionId%3DAKIAJKOQZSKA7MQNOSZA%26tag%3Dmassmetr-20%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0047Y6I24')
+        expect(item.detail_page_url).to eq('http://www.amazon.com/Myotein-Chocolate-Protein-Tasting-Offered/dp/B0047Y6I24?SubscriptionId=AKIAJKOQZSKA7MQNOSZA&tag=massmetr-20&linkCode=xm2&camp=2025&creative=165953&creativeASIN=B0047Y6I24')
+        expect(item.review_url).to eq('http://www.amazon.com/review/product/B0047Y6I24?SubscriptionId=AKIAJKOQZSKA7MQNOSZA&tag=massmetr-20&linkCode=xm2&camp=2025&creative=386001&creativeASIN=B0047Y6I24')
         expect(item.title).to eq('Myotein (Chocolate) - Best Whey Protein Powder - Best Tasting Protein Powder for Weight Loss and Muscle Growth - Best Protein Shake That\'s Offered')
         expect(item.features).to eq(["This Premium Protein Blend Features 6 Types of Proteins to Enhance Protein Absorption", "Contains L-Glutamine, Aminogen, 20-Hydroxyecdysterone, Coleus Forskohlii, & Mucuna Pruriens to Support Recovery and Maximize Muscle Growth", "Sweetened With Honey", "26 Grams of Protein Per Serving", "Chef-Approved Best Tasting Milk Chocolate Flavor"])
         expect(item.current_price).to eq('4995')

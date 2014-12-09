@@ -32,6 +32,12 @@ class Product < ActiveRecord::Base
       includes(:price_logs).sort_by { |product| product.percent_off(days) }.reverse[0...items].compact
     end
 
+    def top_products_with_logs(items = 10, days = 30)
+      percent_discounts(items, days).map do |product|
+        [product, product.price_log_hash, product.percent_discount]
+      end
+    end
+
     def get_products_for(category)
       joins(:categories).where('categories.category = ?', category)
     end
@@ -39,7 +45,16 @@ class Product < ActiveRecord::Base
     def category_discounts(category, days = 30, items = 10)
       products = get_products_for(category).includes(:price_logs).references(:price_logs)
       products = products.where("price_logs.created_at >= ? ", days.days.ago)
-      products.percent_discounts(items, days)
+      products.top_products_with_logs(items, days)
+    end
+
+    def update_urls
+      all.each do |product|
+        product.update(
+          detail_page_url: PostRank::URI.clean(product.detail_page_url),
+          review_url: PostRank::URI.clean(product.review_url)
+        )
+      end
     end
   end
 
@@ -66,7 +81,7 @@ class Product < ActiveRecord::Base
   end
 
   def get_price_logs(days = 30)
-    price_logs.order('created_at asc').select do |log|
+    price_logs.sort_by { |log| log.created_at }.select do |log|
       log.created_at >= days.day.ago
     end
   end

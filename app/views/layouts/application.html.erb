@@ -11,7 +11,11 @@
 <body>
 <div class="container">
   <%= render partial: "layouts/nav" %>
-  <%= flash[:notice] %>
+  <% if flash[:notice] %>
+    <div class="alert alert-danger">
+      <p class="text-center"><%= flash[:notice] %></p>
+    </div>
+  <% end %>
   <%= yield %>
   <%= render partial: "layouts/footer" %>
 </div>

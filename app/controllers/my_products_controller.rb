@@ -18,6 +18,6 @@ class MyProductsController < ApplicationController
   end
 
   def verify_logged_in
-    redirect_back_or_to(:back, notice: 'You must log in to track products') unless logged_in?
+    redirect_back_or_to(:back, notice: "You must log in to track products") unless logged_in?
   end
 end
