@@ -3,7 +3,8 @@ require 'rails_helper'
 feature 'Products' do
   before do
     @p1 = ObjectCreation.create_product(sku: '2345', title: 'p1')
-    @category1 = Category.create(product: @p1, category: 'protein')
+    @category1 = Category.create(category: 'protein')
+    @category1 = Category.create(category: 'something else')
     @p2 = ObjectCreation.create_product(sku: '23456', title: 'p2')
     @p3 = ObjectCreation.create_product(sku: '234567', title: 'p3')
     @p4 = ObjectCreation.create_product(sku: '2345678', title: 'p4')
@@ -11,6 +12,7 @@ feature 'Products' do
   end
   context 'viewing products' do
     scenario 'admin views a list of all products in database' do
+      ProductCategory.create(product_id: @p1.id, category_id: @category1.id)
       click_link 'Products'
       expect(page).to have_content(@p1.title)
       expect(page).to have_content(@p2.title)
@@ -28,19 +30,19 @@ feature 'Products' do
       within("##{@p1.sku}") do
         click_on 'Edit'
       end
-      fill_in 'categories', with: 'protein, something else'
+      fill_in 'categories', with: 'Protein, Something Else'
       click_on 'Update'
       @p1.reload
       categories = @p1.categories.map { |c| c.category }.sort.join(',')
       expect(categories).to eq('Protein,Something Else')
-      expect(find_field('categories').value).to eq(categories)
+      expect(find_field('categories').value).to eq("Protein Something Else")
     end
     scenario 'admin deletes a category from a product' do
       click_link 'Products'
       within("##{@p1.sku}") do
         click_on 'Edit'
       end
-      fill_in 'categories', with: 'something else'
+      fill_in 'categories', with: 'Something Else'
       click_on 'Update'
       @p1.reload
       categories = @p1.categories.map { |c| c.category }.join(',')
@@ -64,7 +66,7 @@ feature 'Products' do
           click_link 'Products'
           click_link 'Add New Product'
           fill_in 'sku', with: 'B0057RKQ4Q'
-          fill_in 'category', with: 'Creatine'
+          fill_in 'category', with: 'Protein'
           click_on 'Add Product'
 
           expect(page).to have_content 'Product successfully added'

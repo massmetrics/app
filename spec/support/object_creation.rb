@@ -30,16 +30,17 @@ module ObjectCreation
   end
 
   def self.create_category(attributes = {})
-    default = {category: "Protein", product: Product.last}
+    default = {category: "Protein"}
     default.merge!(attributes)
-    Category.create(
-      default
-    )
+    Category.create!(default)
   end
 
-  def self.create_product_with_category(category, product = {})
-    new_product = self.create_product(product)
-    self.create_category(category.merge!(product: new_product))
+
+  def self.create_product_with_category(category  , product = {})
+    product = self.create_product(product)
+    new_category = self.create_category(category)
+
+    ProductCategory.create(product_id: product.id, category_id: new_category.id)
   end
 
   def self.create_user(attributes = {})

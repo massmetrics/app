@@ -2,8 +2,11 @@ class Product < ActiveRecord::Base
   serialize :features
   validates_uniqueness_of :sku
   has_many :price_logs
-  has_many :categories
+  has_many :product_categories
+  has_many :categories, through: :product_categories
   has_many :my_products
+
+
 
   class << self
     def create_from_sku(sku)
@@ -36,11 +39,11 @@ class Product < ActiveRecord::Base
     end
 
     def get_products_for(category)
-      includes(:categories).where(categories: {category: category})
+      joins(:categories).where('categories.category = ?', category)
     end
 
     def category_discounts(category, days = 30, items = 10)
-      products = get_products_for(category).includes(:price_logs)
+      products = get_products_for(category).includes(:price_logs).references(:price_logs)
       products = products.where("price_logs.created_at >= ? ", days.days.ago)
       products.top_products_with_logs(items, days)
     end
@@ -93,16 +96,18 @@ class Product < ActiveRecord::Base
   def add_categories(category_array)
     category_array.each do |category|
       self.reload
-      categories = self.categories.map { |c| c.category.downcase }
-      unless categories.include?(category.downcase.strip)
-        Category.create(product: self, category: category)
+      capitalized_category = category.split(' ').map(&:capitalize).join(' ')
+      categories = self.categories.map { |c| c.category }
+      unless categories.include?(category) || categories.include?(capitalized_category)
+        added_category = Category.find_by(category: category)
+        ProductCategory.create(product_id: self.id, category_id: added_category.id)
+
       end
     end
   end
 
-  def
-  update_categories(category_array)
-    self.categories.destroy_all
+  def update_categories(category_array)
+    self.product_categories.destroy_all
     self.add_categories(category_array)
   end
 end

@@ -2,7 +2,8 @@ require 'rails_helper'
 
 feature 'Submissions' do
   before do
-    @submission = Submission.create(sku: 'B003CTE1LU', category: 'category')
+    ObjectCreation.create_category
+    @submission = Submission.create(sku: 'B003CTE1LU', category: 'Protein')
     FeatureSupport.create_and_login_admin
   end
   context 'viewing submissions' do
