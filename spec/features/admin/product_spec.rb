@@ -58,7 +58,7 @@ feature 'Products' do
 
   context 'managing products' do
     scenario 'admin adds a product' do
-      new_time = '2014-07-28T23:25:27Z'
+      new_time = '2014-12-09T08:21:25Z'
       Timecop.freeze(new_time) do
         VCR.use_cassette('admin/new_products') do
           click_link 'Products'
