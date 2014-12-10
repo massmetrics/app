@@ -95,12 +95,16 @@ class Product < ActiveRecord::Base
 
   def add_categories(category_array)
     category_array.each do |category|
-      self.reload
-      capitalized_category = category.split(' ').map(&:capitalize).join(' ')
-      categories = self.categories.map { |c| c.name }
-      unless categories.include?(category) || categories.include?(capitalized_category)
-        added_category = Category.find_by(name: category)
-        ProductCategory.create(product_id: self.id, category_id: added_category.id)
+      category = category.split(' ').map(&:capitalize).join(' ')
+
+      unless Category.find_by(name: category)
+        Category.create(name: category)
+      end
+
+      category_in_db = Category.find_by(name: category)
+
+      unless categories.include?(category_in_db)
+        ProductCategory.create(product_id: self.id, category_id: category_in_db.id)
       end
     end
   end
