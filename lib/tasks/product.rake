@@ -34,14 +34,13 @@ namespace :product do
       end
     end
 
-    Category.destroy_all
+    Category.delete_all
 
     ProductCategory.all.each do |pc|
       category = Category.where(name: pc.name).first_or_create(name: pc.name)
 
       pc.update(category: category)
     end
-
   end
 
   desc('fetch updated product information')
