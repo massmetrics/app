@@ -4,6 +4,7 @@
       <%= render partial: 'side_nav', locals: {categories: categories} %>
     </div>
     <div class="col-xs-10" id="category-cards">
+      <%= paginate products %>
       <div class="col-xs-12 text-center page-header text-danger" id="category-header">
         <h1 class="category-header"><%= header %></h1>
       </div>
@@ -12,6 +13,7 @@
           <%= render partial: 'category/category_card', collection: products, as: :product %>
         </div>
       </div>
+      <%= paginate products %>
     </div>
   </div>
 </div>

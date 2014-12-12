@@ -32,11 +32,11 @@ module ObjectCreation
   def self.create_category(attributes = {})
     default = {name: "Protein"}
     default.merge!(attributes)
-    Category.create!(default)
+    Category.find_or_create_by!(default)
   end
 
 
-  def self.create_product_with_category(category  , product = {})
+  def self.create_product_with_category(category, product = {})
     product = self.create_product(product)
     new_category = self.create_category(category)
 
@@ -67,5 +67,12 @@ module ObjectCreation
       default = {my_product: my_product, discount: 10.0}
       default.merge!(attributes)
       MyProductsNotification.create(default)
+  end
+
+  def self.create_product_with_product_category(attributes = {product: {}, category: {}})
+    product = create_product(attributes[:product])
+    category = create_category(attributes[:category])
+
+    ProductCategory.create(product: product, category: category)
   end
 end

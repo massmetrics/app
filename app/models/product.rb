@@ -42,7 +42,7 @@ class Product < ActiveRecord::Base
       joins(:categories).where('categories.name = ?', category)
     end
 
-    def category_discounts(category, days = 30, items = 10)
+    def category_discounts(category, days = 30, items = 100)
       products = get_products_for(category).includes(:price_logs).references(:price_logs)
       products = products.where("price_logs.created_at >= ? ", days.days.ago)
       products.top_products_with_logs(items, days)
