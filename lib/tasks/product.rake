@@ -16,12 +16,31 @@ def fetch_product (item)
   end
 end
 
+
+
 namespace :product do
   desc('add new product to system')
   task :add_product, [:skus, :categories] => :environment do |t, args|
     category_array = args[:categories].split(' ')
     sku_array = args[:skus].split(' ')
     ProductAdder.add(sku_array, category_array)
+  end
+
+  desc('update categories to new product category')
+  task :update_categories => :environment do
+    Product.all.each do |product|
+      product.categories.each do |category|
+        ProductCategory.find_or_create_by(product: product, category: category, name: category.name)
+      end
+    end
+
+    Category.delete_all
+
+    ProductCategory.all.each do |pc|
+      category = Category.where(name: pc.name).first_or_create(name: pc.name)
+
+      pc.update(category: category)
+    end
   end
 
   desc('fetch updated product information')

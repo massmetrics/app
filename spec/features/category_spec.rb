@@ -9,7 +9,6 @@ feature 'Index' do
     product2 = Product.find_by_sku('product2')
     ObjectCreation.create_price_log(product: product2)
 
-
     visit category_index_path
     click_link 'Browse'
 
@@ -27,7 +26,7 @@ feature 'Index' do
 
     expect(page).to have_content product.title
 
-    click_on product.title
+    first(:link, product.title).click
 
     expect(page).to have_content('Features:')
   end
@@ -43,15 +42,55 @@ feature 'Index' do
     expect(page).to have_link 'Buy now!'
   end
 
-    scenario 'It shows the price of each item and the percent discount' do
-      product = ObjectCreation.create_product(current_price: '1000')
-      ObjectCreation.create_price_log(product: product, price: '2000')
-      ObjectCreation.create_price_log(product: product, price: '1000')
+  scenario 'It shows the price of each item and the percent discount' do
+    product = ObjectCreation.create_product(current_price: '1000')
+    ObjectCreation.create_price_log(product: product, price: '2000')
+    ObjectCreation.create_price_log(product: product, price: '1000')
 
-      visit category_index_path
+    visit category_index_path
 
-      expect(page).to have_content(ProductCurrency.format_money(product.current_price))
-      expect(page).to have_content NumberFormatter.format_percentage(product.percent_discount)[0]
+    expect(page).to have_content(ProductCurrency.format_money(product.current_price))
+    expect(page).to have_content NumberFormatter.format_percentage(product.percent_discount)[0]
+  end
+
+  context 'pagination' do
+    feature 'when there are more than 10 products' do
+      before do
+        11.times do
+          ObjectCreation.create_product_with_product_category({category: {name: "Protein"}, product: {sku: rand(1000000)}})
+          ObjectCreation.create_price_log
+        end
+      end
+      context 'on the home page' do
+        scenario 'i can click on the next button to see more products' do
+          visit root_path
+          first(:link, "Next ›").click
+          expect(page).to have_link('‹ Prev')
+          expect(page).to have_link('« First')
+          first(:link, "1").click
+          expect(page).to have_link("Next ›")
+          expect(page).to have_link("Last »")
+          first(:link, "Last »").click
+          expect(page).to have_link('‹ Prev')
+          expect(page).to have_link('« First')
+        end
+      end
+
+      context 'on a category page' do
+        scenario 'i can click on the next button to see more products' do
+          visit category_path('Protein')
+          first(:link, "Next ›").click
+          expect(page).to have_link('‹ Prev')
+          expect(page).to have_link('« First')
+          first(:link, "1").click
+          expect(page).to have_link("Next ›")
+          expect(page).to have_link("Last »")
+          first(:link, "Last »").click
+          expect(page).to have_link('‹ Prev')
+          expect(page).to have_link('« First')
+        end
+      end
     end
+  end
 
 end
