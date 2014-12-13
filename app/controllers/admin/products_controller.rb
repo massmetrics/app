@@ -23,12 +23,16 @@ module Admin
     end
 
     def edit
-
+      if @product.categories.count > 0
+        @selection = @product.categories.first.id
+      else
+        @selection = 0
+      end
     end
 
     def update
-      categories = SubmissionHelper.split_categories(params[:categories])
-      @product.add_categories(categories)
+      category = Category.find(params[:category])
+      ProductCategory.find_or_create_by(product: @product, category: category)
       redirect_to edit_admin_product_path(@product)
     end
 

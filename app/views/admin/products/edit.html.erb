@@ -1,6 +1,6 @@
 <%= "Categories for: #{@product.title}" %>
 
 <%= form_tag(admin_product_path(@product), method: :patch) do %>
-  <%= text_field_tag :categories, @categories.map{|cat| cat.category.name} %>
+  <%= select_tag(:category, options_from_collection_for_select(Category.all, 'id', 'name', @selection), prompt: "Select something") %>
   <%= submit_tag 'Update' %>
 <% end -%>
