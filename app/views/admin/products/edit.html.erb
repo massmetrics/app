@@ -1,4 +1,4 @@
-<%= "Categories for: #{@product.title}" %>
+<%= link_to(@product.title, @product) %>
 
 <%= form_tag(admin_product_path(@product), method: :patch) do %>
   <%= select_tag(:category, options_from_collection_for_select(Category.all, 'id', 'name', @selection), prompt: "Select something") %>

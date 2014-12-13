@@ -25,8 +25,7 @@ ActiveRecord::Schema.define(version: 20141212230304) do
   end
 
   create_table "categories", force: true do |t|
-    t.string  "name"
-    t.integer "product_id"
+    t.string "name"
   end
 
   create_table "my_products", force: true do |t|
