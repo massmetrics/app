@@ -1,12 +1,9 @@
-# Product.all.each do |item|
-#   item.add_categories(["protein", "protein powder"])
-# end
 
-# categories = ['Protein Powder', 'Pre Workout', 'Post Workout', 'Protein Bar','Vitamin', 'Fat Burner' 'Creatine', 'CLA', 'Nootropics']
-#
-# categories.each do |category|
-#   Category.create!(name: category)
-# end
+categories = ['Protein Powder', 'Pre Workout', 'Post Workout', 'Protein Bar','Vitamin', 'Fat Burner' 'Creatine', 'CLA', 'Nootropics']
+
+categories.each do |category|
+  Category.create!(name: category)
+end
 #
 powders = ["B00ARJN2TK", "B00BEOHFKO", "B000GOY7FO", "B000GOY6Z0", "B002DYJ0OI", "B00FFDSER8", "B002QZORGK", "B000GIPJ0M", "B00HQNNS6C", "B002DYJ0K2", "B002DUD6QU"]
 
@@ -25,12 +22,6 @@ creatine = ["B002RWJQMC", "B002DYIZEO", "B0056XU7K4", "B00F9CHC2I", "B0051ZH17E"
 cla = ['B008E77A0O', 'B000Z8Z93K', 'B00EVMVU0W', 'B00HFF23RQ', 'B002DYJ0CU', 'B00G6H03NA', 'B00D62KG26', 'B00005317T', 'B00166BCAY']
 
 
-# powders.each do |p|
-#   product = Product.find_by_sku(p)
-#   category = Category.find_by_name('Protein Powder')
-#   ProductCategory.create(product: product, category: category)
-# end
-
 
   ProductAdder.add(powders, ['Protein Powder'])
 
@@ -48,22 +39,22 @@ cla = ['B008E77A0O', 'B000Z8Z93K', 'B00EVMVU0W', 'B00HFF23RQ', 'B002DYJ0CU', 'B0
 
   ProductAdder.add(cla, ['CLA'])
 
-# def make_price_logs(item)
-#   [
-#     [product: item, created_at: 1.day.ago, price: rand(100000).to_s],
-#     [product: item, created_at: 2.day.ago, price: rand(100000).to_s],
-#     [product: item, created_at: 3.day.ago, price: rand(100000).to_s],
-#     [product: item, created_at: 4.day.ago, price: rand(100000).to_s],
-#     [product: item, created_at: 5.day.ago, price: rand(100000).to_s],
-#     [product: item, created_at: 6.day.ago, price: rand(100000).to_s],
-#     [product: item, created_at: 7.day.ago, price: rand(100000).to_s],
-#     [product: item, created_at: 8.day.ago, price: rand(100000).to_s],
-#     [product: item, created_at: 9.day.ago, price: rand(100000).to_s]
-#   ]
-# end
-#
-# Product.all.each do |item|
-#   make_price_logs(item).each do |log|
-#     PriceLog.create(log)
-#   end
-# end
+def make_price_logs(item)
+  [
+    [product: item, created_at: 1.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 2.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 3.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 4.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 5.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 6.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 7.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 8.day.ago, price: rand(100000).to_s],
+    [product: item, created_at: 9.day.ago, price: rand(100000).to_s]
+  ]
+end
+
+Product.all.each do |item|
+  make_price_logs(item).each do |log|
+    PriceLog.create(log)
+  end
+end
