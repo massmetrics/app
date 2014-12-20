@@ -13,5 +13,6 @@ class PriceLog < ActiveRecord::Base
   private
   def update_current_average_price
     product.update(current_average_price: product.average_price)
+    product.reload
   end
 end
