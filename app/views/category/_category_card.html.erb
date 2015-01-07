@@ -10,7 +10,7 @@
         <div class="col-xs-4 category-pricing">
           <%= link_to(image_tag(product[0].small_image_url, class: "img-responsive category-image"), product[0]) %>
           <ul class="list-inline mrg-0 btm-mrg-10 clr-535353">
-            <li>Average: <strong><%= ProductCurrency.format_money(product[0].average_price) %></strong></li>
+            <li>Average: <strong><%= ProductCurrency.format_money(product[0].current_average_price) %></strong></li>
             <br/>
             <li>Current: <strong><%= ProductCurrency.format_money(product[0].current_price) %></strong></li>
             <br/>

@@ -15,6 +15,12 @@ feature 'Submissions' do
     end
   end
 
+  context 'notification' do
+    scenario 'admin sees a notification with the number of active submissions in parentheses' do
+      expect(page).to have_link('Admin (1)')
+    end
+  end
+
   context 'managing submissions' do
     scenario 'Admin adds submission to database' do
       new_time = '2014-12-09T08:21:28Z'

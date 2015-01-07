@@ -16,7 +16,13 @@
         <li><%= link_to current_user.email, '#', class: 'user-email' %></li>
         <li><%= link_to 'Logout', user_session_path(current_user.id), method: :delete %></li>
         <% if current_user.role?(:admin) %>
-          <li><%= link_to 'Admin', admin_base_index_path %></li>
+          <li>
+            <% if new_submissions > 0 %>
+              <%= link_to "Admin (#{new_submissions})", admin_base_index_path %>
+            <% else %>
+              <%= link_to 'Admin', admin_base_index_path %>
+            <% end %>
+          </li>
         <% end %>
       <% else %>
         <li><%= link_to 'Register', new_user_path %></li>
