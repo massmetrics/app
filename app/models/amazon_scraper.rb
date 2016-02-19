@@ -6,7 +6,7 @@ class AmazonScraper
     begin
       @page = Nokogiri::HTML(open(url, 'User-Agent' => 'ruby'))
     rescue OpenURI::HTTPError => error
-      puts "Error is #{error.io.status}"
+      puts "Error is #{error.io.status.join(', ')}"
       tries += 1
       if tries <= 10
         retry
