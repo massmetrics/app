@@ -12,7 +12,7 @@ describe ItemLookup do
         expect(item.review_url).to eq('http://www.amazon.com/review/product/B0047Y6I24?SubscriptionId=AKIAJ7SLZLSJ62QB353Q&tag=massm0e-20&linkCode=xm2&camp=2025&creative=386001&creativeASIN=B0047Y6I24')
         expect(item.title).to eq('Myotein (Chocolate) - Best Whey Protein Powder / Shake - Great Tasting Protein Powder for Weight Loss & Muscle Growth - Hydrolysate, Isolate, Concentrate & Micellar Casein')
         expect(item.features).to eq(["This Premium Protein Blend Features 6 Types of Proteins", "Contains L-Glutamine, Aminogen, 20-Hydroxyecdysterone, Coleus Forskohlii, & Mucuna Pruriens to Support Recovery and Maximize Muscle Growth", "Time-Released Proteins For Sustained Protein Delivery", "26 Grams of Protein Per Serving", "Chef-Approved Best Tasting Milk Chocolate Flavor"])
-        expect(item.current_price).to eq('3971')
+        expect(item.current_price.class).to eq(REXMLUtiliyNodeString)
         expect(item.large_image_url).to eq('http://ecx.images-amazon.com/images/I/51u70wtsjOL.jpg')
         expect(item.small_image_url).to eq('http://ecx.images-amazon.com/images/I/51u70wtsjOL._SL75_.jpg')
         expect(item.medium_image_url).to eq('http://ecx.images-amazon.com/images/I/51u70wtsjOL._SL160_.jpg')

@@ -2,11 +2,12 @@ require 'rails_helper'
 
 describe ProductAdder do
   it 'Adds a product and a category at the same time' do
-    new_time = "2016-02-19T13:54:10.287455"
-    Timecop.freeze(new_time) do
-      VCR.use_cassette('/models/product_adder/B000QSNYGI', :match_requests_on => [:method, :uri]) do
-        ProductAdder.add(['B000QSNYGI'], ['Protein'])
-        expect(Product.last.current_price).to eq('5799')
+    VCR.use_cassette('features/admin/submission/add_submission', record: :new_episodes) do |cassette|
+      new_time = cassette.originally_recorded_at || Time.now
+      Timecop.freeze(new_time) do
+        ProductAdder.add(['B00ARJN2TK'], ['Protein'])
+
+        expect(Product.last.current_price.class).to eq(String)
         expect(Product.last.categories.first.name).to eq('Protein')
       end
     end

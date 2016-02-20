@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=<ASIN_KEY>&AssociateTag=<ASIN_TAG>&ItemId=B000GIPJ0M&Operation=ItemLookup&ResponseGroup=Medium&Service=AWSECommerceService&Signature=ukCylNXB4NyhaNJLfzRf7UibZ9Nao87pJcGhKPXUQCM=&Timestamp=2016-02-20T02:30:58Z&Version=2011-08-01
+    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=<ASIN_KEY>&AssociateTag=<ASIN_TAG>&ItemId=B000GIPJ0M&Operation=ItemLookup&ResponseGroup=Medium&Service=AWSECommerceService&Signature=qGiu8u2qQjcrY%2Bgkf/m%2BCXv9/iwImyu7eqEVfj8x3U4=&Timestamp=2016-02-20T02:55:37Z&Version=2011-08-01
     body:
       encoding: US-ASCII
       string: ''
@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 20 Feb 2016 02:31:02 GMT
+      - Sat, 20 Feb 2016 02:55:42 GMT
       Server:
       - Apache-Coyote/1.1
       Content-Type:
@@ -24,20 +24,20 @@ http_interactions:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: '<?xml version="1.0" ?><ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><RequestId>54b9056e-c99c-40b7-9ce1-aa5c476e058a</RequestId><Arguments><Argument
+      string: '<?xml version="1.0" ?><ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><RequestId>037b18bb-b529-480d-8b1f-c3d4beab86c1</RequestId><Arguments><Argument
         Name="AWSAccessKeyId" Value="<ASIN_KEY>"></Argument><Argument Name="AssociateTag"
         Value="<ASIN_TAG>"></Argument><Argument Name="ItemId" Value="B000GIPJ0M"></Argument><Argument
         Name="Operation" Value="ItemLookup"></Argument><Argument Name="ResponseGroup"
         Value="Medium"></Argument><Argument Name="Service" Value="AWSECommerceService"></Argument><Argument
-        Name="Timestamp" Value="2016-02-20T02:30:58Z"></Argument><Argument Name="Version"
-        Value="2011-08-01"></Argument><Argument Name="Signature" Value="ukCylNXB4NyhaNJLfzRf7UibZ9Nao87pJcGhKPXUQCM="></Argument></Arguments><RequestProcessingTime>0.0173520000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemLookupRequest><IdType>ASIN</IdType><ItemId>B000GIPJ0M</ItemId><ResponseGroup>Medium</ResponseGroup><VariationPage>All</VariationPage></ItemLookupRequest></Request><Item><ASIN>B000GIPJ0M</ASIN><ParentASIN>B00466JY10</ParentASIN><DetailPageURL>http://www.amazon.com/Optimum-Nutrition-Serious-Chocolate-Pound/dp/B000GIPJ0M%3Fpsc%3D1%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000GIPJ0M</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Name="Timestamp" Value="2016-02-20T02:55:37Z"></Argument><Argument Name="Version"
+        Value="2011-08-01"></Argument><Argument Name="Signature" Value="qGiu8u2qQjcrY+gkf/m+CXv9/iwImyu7eqEVfj8x3U4="></Argument></Arguments><RequestProcessingTime>0.0166660000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemLookupRequest><IdType>ASIN</IdType><ItemId>B000GIPJ0M</ItemId><ResponseGroup>Medium</ResponseGroup><VariationPage>All</VariationPage></ItemLookupRequest></Request><Item><ASIN>B000GIPJ0M</ASIN><ParentASIN>B00466JY10</ParentASIN><DetailPageURL>http://www.amazon.com/Optimum-Nutrition-Serious-Chocolate-Pound/dp/B000GIPJ0M%3Fpsc%3D1%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000GIPJ0M</DetailPageURL><ItemLinks><ItemLink><Description>Technical
         Details</Description><URL>http://www.amazon.com/Optimum-Nutrition-Serious-Chocolate-Pound/dp/tech-data/B000GIPJ0M%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink><ItemLink><Description>Add
         To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB000GIPJ0M%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink><ItemLink><Description>Add
         To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB000GIPJ0M%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink><ItemLink><Description>Add
         To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB000GIPJ0M%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink><ItemLink><Description>Tell
         A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B000GIPJ0M%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink><ItemLink><Description>All
         Customer Reviews</Description><URL>http://www.amazon.com/review/product/B000GIPJ0M%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B000GIPJ0M%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink></ItemLinks><SalesRank>278</SalesRank><SmallImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL._SL75_.jpg</URL><Height
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B000GIPJ0M%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink></ItemLinks><SalesRank>236</SalesRank><SmallImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL._SL75_.jpg</URL><Height
         Units="pixels">75</Height><Width Units="pixels">50</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL._SL160_.jpg</URL><Height
         Units="pixels">160</Height><Width Units="pixels">107</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL.jpg</URL><Height
         Units="pixels">500</Height><Width Units="pixels">333</Width></LargeImage><ImageSets><ImageSet
@@ -119,5 +119,5 @@ http_interactions:
         to keep our information accurate we cannot guarantee it is an accurate representation
         of the latest formulation of the product.</Content><IsLinkSuppressed>0</IsLinkSuppressed></EditorialReview></EditorialReviews></Item></Items></ItemLookupResponse>'
     http_version: 
-  recorded_at: Sat, 20 Feb 2016 02:30:58 GMT
+  recorded_at: Sat, 20 Feb 2016 02:55:37 GMT
 recorded_with: VCR 2.9.3

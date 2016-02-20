@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=<ASIN_KEY>&AssociateTag=<ASIN_TAG>&ItemId=B00CTUIS12&Operation=ItemLookup&ResponseGroup=Medium&Service=AWSECommerceService&Signature=eelmA4CQp0S9fCcehwvrF2va3dNvSi/V%2BMp6ImPPah0=&Timestamp=2016-02-20T02:30:57Z&Version=2011-08-01
+    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=<ASIN_KEY>&AssociateTag=<ASIN_TAG>&ItemId=B00CTUIS12&Operation=ItemLookup&ResponseGroup=Medium&Service=AWSECommerceService&Signature=jBQwoIwPfLf2aSj5BEIRbA9bx9WVYecmoMnUlaIMDlk=&Timestamp=2016-02-20T02:55:37Z&Version=2011-08-01
     body:
       encoding: US-ASCII
       string: ''
@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Sat, 20 Feb 2016 02:31:02 GMT
+      - Sat, 20 Feb 2016 02:55:42 GMT
       Server:
       - Apache-Coyote/1.1
       Content-Type:
@@ -24,20 +24,20 @@ http_interactions:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: <?xml version="1.0" ?><ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><RequestId>27a6e378-91ee-4d80-b3df-7e4171c16dbe</RequestId><Arguments><Argument
+      string: <?xml version="1.0" ?><ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><RequestId>39bd6f09-0abe-4792-a469-2297c95728f7</RequestId><Arguments><Argument
         Name="AWSAccessKeyId" Value="<ASIN_KEY>"></Argument><Argument Name="AssociateTag"
         Value="<ASIN_TAG>"></Argument><Argument Name="ItemId" Value="B00CTUIS12"></Argument><Argument
         Name="Operation" Value="ItemLookup"></Argument><Argument Name="ResponseGroup"
         Value="Medium"></Argument><Argument Name="Service" Value="AWSECommerceService"></Argument><Argument
-        Name="Timestamp" Value="2016-02-20T02:30:57Z"></Argument><Argument Name="Version"
-        Value="2011-08-01"></Argument><Argument Name="Signature" Value="eelmA4CQp0S9fCcehwvrF2va3dNvSi/V+Mp6ImPPah0="></Argument></Arguments><RequestProcessingTime>0.1192880000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemLookupRequest><IdType>ASIN</IdType><ItemId>B00CTUIS12</ItemId><ResponseGroup>Medium</ResponseGroup><VariationPage>All</VariationPage></ItemLookupRequest></Request><Item><ASIN>B00CTUIS12</ASIN><DetailPageURL>http://www.amazon.com/OhYeah-Victory-Chocolate-Cookie-2-29oz/dp/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB00CTUIS12</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Name="Timestamp" Value="2016-02-20T02:55:37Z"></Argument><Argument Name="Version"
+        Value="2011-08-01"></Argument><Argument Name="Signature" Value="jBQwoIwPfLf2aSj5BEIRbA9bx9WVYecmoMnUlaIMDlk="></Argument></Arguments><RequestProcessingTime>0.0297220000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemLookupRequest><IdType>ASIN</IdType><ItemId>B00CTUIS12</ItemId><ResponseGroup>Medium</ResponseGroup><VariationPage>All</VariationPage></ItemLookupRequest></Request><Item><ASIN>B00CTUIS12</ASIN><DetailPageURL>http://www.amazon.com/OhYeah-Victory-Chocolate-Cookie-2-29oz/dp/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB00CTUIS12</DetailPageURL><ItemLinks><ItemLink><Description>Technical
         Details</Description><URL>http://www.amazon.com/OhYeah-Victory-Chocolate-Cookie-2-29oz/dp/tech-data/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>Add
         To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB00CTUIS12%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>Add
         To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB00CTUIS12%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>Add
         To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB00CTUIS12%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>Tell
         A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>All
         Customer Reviews</Description><URL>http://www.amazon.com/review/product/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink></ItemLinks><SalesRank>5794</SalesRank><ImageSets><ImageSet
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink></ItemLinks><SalesRank>5700</SalesRank><ImageSets><ImageSet
         Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41ywby6M42L._SL30_.jpg</URL><Height
         Units="pixels">30</Height><Width Units="pixels">8</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41ywby6M42L._SL75_.jpg</URL><Height
         Units="pixels">75</Height><Width Units="pixels">20</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41ywby6M42L._SL75_.jpg</URL><Height
@@ -86,5 +86,5 @@ http_interactions:
         No sugar alcohols. Great taste, convenience and balanced nutrition make ohyeah.
         Victory bars the perfect on-the-go energy treat.</Content><IsLinkSuppressed>0</IsLinkSuppressed></EditorialReview></EditorialReviews></Item></Items></ItemLookupResponse>
     http_version: 
-  recorded_at: Sat, 20 Feb 2016 02:30:57 GMT
+  recorded_at: Sat, 20 Feb 2016 02:55:37 GMT
 recorded_with: VCR 2.9.3
