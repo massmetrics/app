@@ -20,10 +20,10 @@ class Product < ActiveRecord::Base
           review_url: item.review_url,
           title: item.title.truncate(254),
           current_price: NumberFormatter.format_price_string(current_price),
-          large_image_url: item.large_image_url,
-          medium_image_url: item.medium_image_url,
-          small_image_url: item.small_image_url,
-          brand: item.brand
+          large_image_url: item.large_image_url || nil,
+          medium_image_url: item.medium_image_url || nil,
+          small_image_url: item.small_image_url || nil,
+          brand: item.brand || nil
         )
       end
     end

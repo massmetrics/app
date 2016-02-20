@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=<ASIN_KEY>&AssociateTag=<ASIN_TAG>&ItemId=B002NU6FC2&Operation=ItemLookup&ResponseGroup=Medium&Service=AWSECommerceService&Signature=1/sJsgYlYUmBYTO7e/tYTHj2DHufGbG3HG1DI1GWYsM=&Timestamp=2014-07-25T05:48:56Z&Version=2011-08-01
+    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=<ASIN_KEY>&AssociateTag=<ASIN_TAG>&ItemId=B000GIPJ0M&Operation=ItemLookup&ResponseGroup=Medium&Service=AWSECommerceService&Signature=qGiu8u2qQjcrY%2Bgkf/m%2BCXv9/iwImyu7eqEVfj8x3U4=&Timestamp=2016-02-20T02:55:37Z&Version=2011-08-01
     body:
       encoding: US-ASCII
       string: ''
@@ -13,115 +13,111 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 25 Jul 2014 05:48:56 GMT
+      - Sat, 20 Feb 2016 02:55:42 GMT
       Server:
-      - Server
+      - Apache-Coyote/1.1
       Content-Type:
       - text/xml;charset=UTF-8
       Vary:
       - Accept-Encoding,User-Agent
-      Nncoection:
-      - close
       Transfer-Encoding:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: '<?xml version="1.0" ?><ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><RequestId>968119bb-ffe5-47ad-8f93-7857d3656b1d</RequestId><Arguments><Argument
-        Name="Operation" Value="ItemLookup"></Argument><Argument Name="Service" Value="AWSECommerceService"></Argument><Argument
-        Name="AssociateTag" Value="<ASIN_TAG>"></Argument><Argument Name="Version"
-        Value="2011-08-01"></Argument><Argument Name="Signature" Value="1/sJsgYlYUmBYTO7e/tYTHj2DHufGbG3HG1DI1GWYsM="></Argument><Argument
-        Name="ItemId" Value="B002NU6FC2"></Argument><Argument Name="AWSAccessKeyId"
-        Value="<ASIN_KEY>"></Argument><Argument Name="Timestamp" Value="2014-07-25T05:48:56Z"></Argument><Argument
-        Name="ResponseGroup" Value="Medium"></Argument></Arguments><RequestProcessingTime>0.0181120000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemLookupRequest><IdType>ASIN</IdType><ItemId>B002NU6FC2</ItemId><ResponseGroup>Medium</ResponseGroup><VariationPage>All</VariationPage></ItemLookupRequest></Request><Item><ASIN>B002NU6FC2</ASIN><ParentASIN>B00BEODEHC</ParentASIN><DetailPageURL>http://www.amazon.com/Betancourt-Nutrition-Bullnox-Androrush-35/dp/B002NU6FC2%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB002NU6FC2</DetailPageURL><ItemLinks><ItemLink><Description>Technical
-        Details</Description><URL>http://www.amazon.com/Betancourt-Nutrition-Bullnox-Androrush-35/dp/tech-data/B002NU6FC2%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB002NU6FC2</URL></ItemLink><ItemLink><Description>Add
-        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB002NU6FC2%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB002NU6FC2</URL></ItemLink><ItemLink><Description>Add
-        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB002NU6FC2%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB002NU6FC2</URL></ItemLink><ItemLink><Description>Add
-        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB002NU6FC2%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB002NU6FC2</URL></ItemLink><ItemLink><Description>Tell
-        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B002NU6FC2%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB002NU6FC2</URL></ItemLink><ItemLink><Description>All
-        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B002NU6FC2%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB002NU6FC2</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B002NU6FC2%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB002NU6FC2</URL></ItemLink></ItemLinks><SalesRank>7952</SalesRank><SmallImage><URL>http://ecx.images-amazon.com/images/I/51Hh4sykowL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51Hh4sykowL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">130</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51Hh4sykowL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">406</Width></LargeImage><ImageSets><ImageSet
-        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51Hh4sykowL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">24</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51Hh4sykowL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51Hh4sykowL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51Hh4sykowL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">89</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51Hh4sykowL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">130</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51Hh4sykowL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">406</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51GWquv1t4L._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">14</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51GWquv1t4L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">36</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51GWquv1t4L._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">36</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51GWquv1t4L._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">53</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51GWquv1t4L._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">77</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51GWquv1t4L.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">241</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41le3sYapQL._SL30_.jpg</URL><Height
-        Units="pixels">7</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41le3sYapQL._SL75_.jpg</URL><Height
-        Units="pixels">19</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41le3sYapQL._SL75_.jpg</URL><Height
-        Units="pixels">19</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41le3sYapQL._SL110_.jpg</URL><Height
-        Units="pixels">27</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41le3sYapQL._SL160_.jpg</URL><Height
-        Units="pixels">40</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41le3sYapQL.jpg</URL><Height
-        Units="pixels">124</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/511sI4oolxL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">24</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/511sI4oolxL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/511sI4oolxL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/511sI4oolxL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">90</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/511sI4oolxL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">131</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/511sI4oolxL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">408</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51ympUXrXUL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">24</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51ympUXrXUL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51ympUXrXUL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51ympUXrXUL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">90</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51ympUXrXUL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">130</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51ympUXrXUL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">407</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41hjGO650YL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">24</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41hjGO650YL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41hjGO650YL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41hjGO650YL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">90</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41hjGO650YL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">131</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41hjGO650YL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">408</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51Yk6ZAUulL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">24</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51Yk6ZAUulL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51Yk6ZAUulL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51Yk6ZAUulL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">89</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51Yk6ZAUulL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">130</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51Yk6ZAUulL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">406</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/511TmXNo-ZL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">24</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/511TmXNo-ZL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/511TmXNo-ZL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">61</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/511TmXNo-ZL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">89</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/511TmXNo-ZL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">130</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/511TmXNo-ZL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">406</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51sYenhyjaL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">23</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51sYenhyjaL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">57</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51sYenhyjaL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">57</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51sYenhyjaL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">83</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51sYenhyjaL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">121</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51sYenhyjaL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">378</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
-        and Beauty</Binding><Brand>Betancourt Nutrition</Brand><CatalogNumberList><CatalogNumberListElement>ITEM-004438</CatalogNumberListElement><CatalogNumberListElement>5662620</CatalogNumberListElement><CatalogNumberListElement>4270041</CatalogNumberListElement><CatalogNumberListElement>ITEM-001173</CatalogNumberListElement><CatalogNumberListElement>BETABULL35SVPUNCPW</CatalogNumberListElement><CatalogNumberListElement>WSS116803SBB</CatalogNumberListElement></CatalogNumberList><Department>unisex-adult</Department><EAN>0857487000333</EAN><EANList><EANListElement>0857487000333</EANListElement><EANListElement>0811439012973</EANListElement></EANList><Feature>22.33
-        oz (633 g) Weight: 1.7 lbs H x W x D: 5.875" x 5.125" x 5.125"</Feature><IsAdultProduct>0</IsAdultProduct><ItemDimensions><Height
-        Units="hundredths-inches">400</Height><Length Units="hundredths-inches">600</Length><Weight
-        Units="hundredths-pounds">170</Weight><Width Units="hundredths-inches">500</Width></ItemDimensions><Label>Betancourt
-        Nutrition</Label><LegalDisclaimer>* These statements have not been evaluated
-        by the Food and Drug Administration. This product is not intended to diagnose,
-        treat, cure or prevent any disease. ** Always refer to the manufacturer''s
-        label on the product for description, recommended dose and precautions.</LegalDisclaimer><ListPrice><Amount>5499</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$54.99</FormattedPrice></ListPrice><Manufacturer>Betancourt
-        Nutrition</Manufacturer><Model>Bullnox Watermelon 35 serv</Model><MPN>4270041</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
-        Units="hundredths-inches">540</Height><Length Units="hundredths-inches">610</Length><Weight
-        Units="hundredths-pounds">180</Weight><Width Units="hundredths-inches">590</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>4270041</PartNumber><ProductGroup>Health
-        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><Publisher>Betancourt
-        Nutrition</Publisher><Size>22.33 oz (633 g)</Size><Studio>Betancourt Nutrition</Studio><Title>Betancourt
-        Nutrition Bullnox Androrush, Fruit Punch, 35 Servings, 22.33  Ounce bottle</Title><UPC>857487000333</UPC><UPCList><UPCListElement>857487000333</UPCListElement><UPCListElement>811439012973</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>3344</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$33.44</FormattedPrice></LowestNewPrice><TotalNew>12</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary><EditorialReviews><EditorialReview><Source>Product
-        Description</Source><Content>Bullnox Androrush, Fruit - 22.4 oz,(Betancourt
-        Nutrition)</Content><IsLinkSuppressed>0</IsLinkSuppressed></EditorialReview></EditorialReviews></Item></Items></ItemLookupResponse>'
+      string: '<?xml version="1.0" ?><ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><RequestId>037b18bb-b529-480d-8b1f-c3d4beab86c1</RequestId><Arguments><Argument
+        Name="AWSAccessKeyId" Value="<ASIN_KEY>"></Argument><Argument Name="AssociateTag"
+        Value="<ASIN_TAG>"></Argument><Argument Name="ItemId" Value="B000GIPJ0M"></Argument><Argument
+        Name="Operation" Value="ItemLookup"></Argument><Argument Name="ResponseGroup"
+        Value="Medium"></Argument><Argument Name="Service" Value="AWSECommerceService"></Argument><Argument
+        Name="Timestamp" Value="2016-02-20T02:55:37Z"></Argument><Argument Name="Version"
+        Value="2011-08-01"></Argument><Argument Name="Signature" Value="qGiu8u2qQjcrY+gkf/m+CXv9/iwImyu7eqEVfj8x3U4="></Argument></Arguments><RequestProcessingTime>0.0166660000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemLookupRequest><IdType>ASIN</IdType><ItemId>B000GIPJ0M</ItemId><ResponseGroup>Medium</ResponseGroup><VariationPage>All</VariationPage></ItemLookupRequest></Request><Item><ASIN>B000GIPJ0M</ASIN><ParentASIN>B00466JY10</ParentASIN><DetailPageURL>http://www.amazon.com/Optimum-Nutrition-Serious-Chocolate-Pound/dp/B000GIPJ0M%3Fpsc%3D1%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB000GIPJ0M</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Details</Description><URL>http://www.amazon.com/Optimum-Nutrition-Serious-Chocolate-Pound/dp/tech-data/B000GIPJ0M%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink><ItemLink><Description>Add
+        To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB000GIPJ0M%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink><ItemLink><Description>Add
+        To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB000GIPJ0M%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink><ItemLink><Description>Add
+        To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB000GIPJ0M%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink><ItemLink><Description>Tell
+        A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B000GIPJ0M%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink><ItemLink><Description>All
+        Customer Reviews</Description><URL>http://www.amazon.com/review/product/B000GIPJ0M%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink><ItemLink><Description>All
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B000GIPJ0M%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB000GIPJ0M</URL></ItemLink></ItemLinks><SalesRank>236</SalesRank><SmallImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">50</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">107</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">333</Width></LargeImage><ImageSets><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/61ClELCTahL._SL30_.jpg</URL><Height
+        Units="pixels">26</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/61ClELCTahL._SL75_.jpg</URL><Height
+        Units="pixels">64</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/61ClELCTahL._SL75_.jpg</URL><Height
+        Units="pixels">64</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/61ClELCTahL._SL110_.jpg</URL><Height
+        Units="pixels">95</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/61ClELCTahL._SL160_.jpg</URL><Height
+        Units="pixels">138</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/61ClELCTahL.jpg</URL><Height
+        Units="pixels">430</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41-fRDmQ%2BUL._SL30_.jpg</URL><Height
+        Units="pixels">8</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41-fRDmQ%2BUL._SL75_.jpg</URL><Height
+        Units="pixels">19</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41-fRDmQ%2BUL._SL75_.jpg</URL><Height
+        Units="pixels">19</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41-fRDmQ%2BUL._SL110_.jpg</URL><Height
+        Units="pixels">28</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41-fRDmQ%2BUL._SL160_.jpg</URL><Height
+        Units="pixels">41</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41-fRDmQ%2BUL.jpg</URL><Height
+        Units="pixels">127</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51z1SonCY%2BL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">23</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51z1SonCY%2BL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">57</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51z1SonCY%2BL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">57</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51z1SonCY%2BL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">84</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51z1SonCY%2BL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">122</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51z1SonCY%2BL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">380</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51gBLpnJcAL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">19</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51gBLpnJcAL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">47</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51gBLpnJcAL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">47</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51gBLpnJcAL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">70</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51gBLpnJcAL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">101</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51gBLpnJcAL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">316</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41o0bRvLg-L._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">11</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41o0bRvLg-L._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">28</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41o0bRvLg-L._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">28</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41o0bRvLg-L._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">41</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41o0bRvLg-L._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">59</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41o0bRvLg-L.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">185</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/412alnU23bL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">22</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/412alnU23bL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">56</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/412alnU23bL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">56</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/412alnU23bL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">82</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/412alnU23bL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">120</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/412alnU23bL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">375</Width></LargeImage></ImageSet><ImageSet
+        Category="primary"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">20</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">50</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">50</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">73</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">107</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41IlrMtlONL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">333</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Health
+        and Beauty</Binding><Brand>Optimum Nutrition</Brand><CatalogNumberList><CatalogNumberListElement>01-2730098</CatalogNumberListElement><CatalogNumberListElement>EUR-2730098</CatalogNumberListElement><CatalogNumberListElement>1031914</CatalogNumberListElement><CatalogNumberListElement>OPTIMASS0012CHOCPW</CatalogNumberListElement><CatalogNumberListElement>2730098</CatalogNumberListElement><CatalogNumberListElement>22516</CatalogNumberListElement><CatalogNumberListElement>OPT0-00037
+        CHOCOLATE</CatalogNumberListElement><CatalogNumberListElement>WSS106356SBB</CatalogNumberListElement><CatalogNumberListElement>SPO-2730098</CatalogNumberListElement></CatalogNumberList><Department>unisex-adult</Department><EAN>0885260286797</EAN><EANList><EANListElement>0885260286797</EANListElement><EANListElement>5060245600453</EANListElement><EANListElement>0885259970843</EANListElement><EANListElement>0748927023800</EANListElement><EANListElement>0885810154354</EANListElement><EANListElement>6030290000781</EANListElement><EANListElement>0049022329256</EANListElement><EANListElement>0885810220578</EANListElement><EANListElement>0885656185734</EANListElement><EANListElement>0053163740887</EANListElement><EANListElement>0885260235924</EANListElement></EANList><Feature>Optimum
+        Nutrition</Feature><IsAdultProduct>0</IsAdultProduct><IsAutographed>0</IsAutographed><IsMemorabilia>0</IsMemorabilia><ItemDimensions><Height
+        Units="hundredths-inches">1832</Height><Length Units="hundredths-inches">607</Length><Weight
+        Units="hundredths-pounds">1202</Weight><Width Units="hundredths-inches">1118</Width></ItemDimensions><Label>Optimum
+        Nutrition</Label><LegalDisclaimer>CAUTION: KEEP OUT OF REACH OF CHILDREN.
+        Do not take this product if you are pregnant or nursing a baby. Check wit
+        a qualified healthcare professional before using this product if you are under
+        18 years of age or if you have any known or suspected medical condition(s)
+        including diabetes or hypoglycemia and/or if you are taking any prescription
+        or OTC medication(s). ALLERGEN INFORMATION: Contains milk, egg, wheat (glutamine
+        peptides) and soy (lecithin) ingredients.</LegalDisclaimer><ListPrice><Amount>6739</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$67.39</FormattedPrice></ListPrice><Manufacturer>Optimum
+        Nutrition</Manufacturer><Model>1031735</Model><MPN>1031735</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
+        Units="hundredths-inches">535</Height><Length Units="hundredths-inches">1441</Length><Weight
+        Units="hundredths-pounds">1235</Weight><Width Units="hundredths-inches">1173</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>1031735</PartNumber><ProductGroup>Health
+        and Beauty</ProductGroup><ProductTypeName>HEALTH_PERSONAL_CARE</ProductTypeName><Publisher>Optimum
+        Nutrition</Publisher><ReleaseDate>2006-06-28</ReleaseDate><Size>12-Pounds</Size><Studio>Optimum
+        Nutrition</Studio><Title>Optimum Nutrition Serious Mass, Chocolate, 12 Pound</Title><UPC>748927023800</UPC><UPCList><UPCListElement>748927023800</UPCListElement><UPCListElement>885810154354</UPCListElement><UPCListElement>885810220578</UPCListElement><UPCListElement>885656185734</UPCListElement><UPCListElement>053163740887</UPCListElement><UPCListElement>885260286797</UPCListElement><UPCListElement>885259970843</UPCListElement><UPCListElement>885260235924</UPCListElement><UPCListElement>049022329256</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>4798</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$47.98</FormattedPrice></LowestNewPrice><TotalNew>33</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary><EditorialReviews><EditorialReview><Source>Product
+        Description</Source><Content>Serious Mass - Chocolate SF by Optimum Nutrition
+        12 lbs Powder SERIOUS MASS Serious Mass the ULTIMATE in weight gain formulas.
+        Serious Mass supplies you with the tools you need to pack on the pounds and
+        develop the physique you''ve always wanted. Beyond The Basics Adding Calories
+        Has Never Been This Easy or Tasted So Good 1 250 CALORIES 50 g of BLENDED
+        PROTEIN Over 250 g of Carbohydrates with NO ADDED SUGAR Enhanced with Creatine
+        Glutamine and Glutamine Peptides 25 Vitamins and Essential Minerals PLEASE
+        NOTE The information above is intended for reference only. While we attempt
+        to keep our information accurate we cannot guarantee it is an accurate representation
+        of the latest formulation of the product.</Content><IsLinkSuppressed>0</IsLinkSuppressed></EditorialReview></EditorialReviews></Item></Items></ItemLookupResponse>'
     http_version: 
-  recorded_at: Fri, 25 Jul 2014 05:48:56 GMT
-recorded_with: VCR 2.9.2
+  recorded_at: Sat, 20 Feb 2016 02:55:37 GMT
+recorded_with: VCR 2.9.3

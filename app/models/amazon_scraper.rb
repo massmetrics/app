@@ -6,7 +6,7 @@ class AmazonScraper
     begin
       @page = Nokogiri::HTML(open(url, 'User-Agent' => 'ruby'))
     rescue OpenURI::HTTPError => error
-      puts "Error is #{error.io.status}"
+      puts "Error is #{error.io.status.join(', ')}"
       tries += 1
       if tries <= 10
         retry
@@ -15,6 +15,7 @@ class AmazonScraper
   end
 
   def price
+    return "$00.00" unless @page.present?
     if @page.css('#priceblock_ourprice').length > 0
       @page.css('#priceblock_ourprice').text
     elsif @page.css('#priceblock_saleprice').length > 0

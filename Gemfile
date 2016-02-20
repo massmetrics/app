@@ -33,7 +33,6 @@ group :test, :development do
   gem 'capybara'
   gem 'launchy'
   gem 'timecop'
-  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
   gem 'mailcatcher'
   gem 'fuubar'

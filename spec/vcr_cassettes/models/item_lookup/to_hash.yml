@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=<ASIN_KEY>&AssociateTag=<ASIN_TAG>&ItemId=B00CTUIS12&Operation=ItemLookup&ResponseGroup=Medium&Service=AWSECommerceService&Signature=Ara/pqJtdqUGmlTLlK5mYsYNqtZKYunKpBZCqyISRrc=&Timestamp=2014-07-24T20:42:46Z&Version=2011-08-01
+    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=<ASIN_KEY>&AssociateTag=<ASIN_TAG>&ItemId=B00CTUIS12&Operation=ItemLookup&ResponseGroup=Medium&Service=AWSECommerceService&Signature=jBQwoIwPfLf2aSj5BEIRbA9bx9WVYecmoMnUlaIMDlk=&Timestamp=2016-02-20T02:55:37Z&Version=2011-08-01
     body:
       encoding: US-ASCII
       string: ''
@@ -13,70 +13,72 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Thu, 24 Jul 2014 20:42:46 GMT
+      - Sat, 20 Feb 2016 02:55:42 GMT
       Server:
-      - Server
+      - Apache-Coyote/1.1
       Content-Type:
       - text/xml;charset=UTF-8
       Vary:
       - Accept-Encoding,User-Agent
-      Nncoection:
-      - close
       Transfer-Encoding:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: <?xml version="1.0" ?><ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><RequestId>cbfed873-77fd-4889-af3c-6aba30537b6a</RequestId><Arguments><Argument
-        Name="Operation" Value="ItemLookup"></Argument><Argument Name="Service" Value="AWSECommerceService"></Argument><Argument
-        Name="AssociateTag" Value="<ASIN_TAG>"></Argument><Argument Name="Version"
-        Value="2011-08-01"></Argument><Argument Name="Signature" Value="Ara/pqJtdqUGmlTLlK5mYsYNqtZKYunKpBZCqyISRrc="></Argument><Argument
-        Name="ItemId" Value="B00CTUIS12"></Argument><Argument Name="AWSAccessKeyId"
-        Value="<ASIN_KEY>"></Argument><Argument Name="Timestamp" Value="2014-07-24T20:42:46Z"></Argument><Argument
-        Name="ResponseGroup" Value="Medium"></Argument></Arguments><RequestProcessingTime>0.0117280000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemLookupRequest><IdType>ASIN</IdType><ItemId>B00CTUIS12</ItemId><ResponseGroup>Medium</ResponseGroup><VariationPage>All</VariationPage></ItemLookupRequest></Request><Item><ASIN>B00CTUIS12</ASIN><DetailPageURL>http://www.amazon.com/ISS-Research-OhYeah-Victory-Chocolate/dp/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB00CTUIS12</DetailPageURL><ItemLinks><ItemLink><Description>Technical
-        Details</Description><URL>http://www.amazon.com/ISS-Research-OhYeah-Victory-Chocolate/dp/tech-data/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>Add
+      string: <?xml version="1.0" ?><ItemLookupResponse xmlns="http://webservices.amazon.com/AWSECommerceService/2011-08-01"><OperationRequest><RequestId>39bd6f09-0abe-4792-a469-2297c95728f7</RequestId><Arguments><Argument
+        Name="AWSAccessKeyId" Value="<ASIN_KEY>"></Argument><Argument Name="AssociateTag"
+        Value="<ASIN_TAG>"></Argument><Argument Name="ItemId" Value="B00CTUIS12"></Argument><Argument
+        Name="Operation" Value="ItemLookup"></Argument><Argument Name="ResponseGroup"
+        Value="Medium"></Argument><Argument Name="Service" Value="AWSECommerceService"></Argument><Argument
+        Name="Timestamp" Value="2016-02-20T02:55:37Z"></Argument><Argument Name="Version"
+        Value="2011-08-01"></Argument><Argument Name="Signature" Value="jBQwoIwPfLf2aSj5BEIRbA9bx9WVYecmoMnUlaIMDlk="></Argument></Arguments><RequestProcessingTime>0.0297220000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemLookupRequest><IdType>ASIN</IdType><ItemId>B00CTUIS12</ItemId><ResponseGroup>Medium</ResponseGroup><VariationPage>All</VariationPage></ItemLookupRequest></Request><Item><ASIN>B00CTUIS12</ASIN><DetailPageURL>http://www.amazon.com/OhYeah-Victory-Chocolate-Cookie-2-29oz/dp/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB00CTUIS12</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Details</Description><URL>http://www.amazon.com/OhYeah-Victory-Chocolate-Cookie-2-29oz/dp/tech-data/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>Add
         To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB00CTUIS12%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>Add
         To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB00CTUIS12%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>Add
         To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB00CTUIS12%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>Tell
         A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>All
         Customer Reviews</Description><URL>http://www.amazon.com/review/product/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink></ItemLinks><SalesRank>11421</SalesRank><ImageSets><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41Lw1Bu18nL._SL30_.jpg</URL><Height
-        Units="pixels">30</Height><Width Units="pixels">9</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41Lw1Bu18nL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">22</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41Lw1Bu18nL._SL75_.jpg</URL><Height
-        Units="pixels">75</Height><Width Units="pixels">22</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41Lw1Bu18nL._SL110_.jpg</URL><Height
-        Units="pixels">110</Height><Width Units="pixels">33</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41Lw1Bu18nL._SL160_.jpg</URL><Height
-        Units="pixels">160</Height><Width Units="pixels">48</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41Lw1Bu18nL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">149</Width></LargeImage></ImageSet><ImageSet
-        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/518C4XKChYL._SL30_.jpg</URL><Height
-        Units="pixels">16</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/518C4XKChYL._SL75_.jpg</URL><Height
-        Units="pixels">41</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/518C4XKChYL._SL75_.jpg</URL><Height
-        Units="pixels">41</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/518C4XKChYL._SL110_.jpg</URL><Height
-        Units="pixels">60</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/518C4XKChYL._SL160_.jpg</URL><Height
-        Units="pixels">87</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/518C4XKChYL.jpg</URL><Height
-        Units="pixels">271</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B00CTUIS12%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB00CTUIS12</URL></ItemLink></ItemLinks><SalesRank>5700</SalesRank><ImageSets><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41ywby6M42L._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">8</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41ywby6M42L._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">20</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41ywby6M42L._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">20</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41ywby6M42L._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">29</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41ywby6M42L._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">42</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41ywby6M42L.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">132</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/51TfKcWhRZL._SL30_.jpg</URL><Height
+        Units="pixels">17</Height><Width Units="pixels">30</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/51TfKcWhRZL._SL75_.jpg</URL><Height
+        Units="pixels">41</Height><Width Units="pixels">75</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/51TfKcWhRZL._SL75_.jpg</URL><Height
+        Units="pixels">41</Height><Width Units="pixels">75</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/51TfKcWhRZL._SL110_.jpg</URL><Height
+        Units="pixels">61</Height><Width Units="pixels">110</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51TfKcWhRZL._SL160_.jpg</URL><Height
+        Units="pixels">88</Height><Width Units="pixels">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51TfKcWhRZL.jpg</URL><Height
+        Units="pixels">276</Height><Width Units="pixels">500</Width></LargeImage></ImageSet><ImageSet
         Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/41WSYn%2BhTdL._SL30_.jpg</URL><Height
         Units="pixels">30</Height><Width Units="pixels">8</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/41WSYn%2BhTdL._SL75_.jpg</URL><Height
         Units="pixels">75</Height><Width Units="pixels">20</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/41WSYn%2BhTdL._SL75_.jpg</URL><Height
         Units="pixels">75</Height><Width Units="pixels">20</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/41WSYn%2BhTdL._SL110_.jpg</URL><Height
         Units="pixels">110</Height><Width Units="pixels">29</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/41WSYn%2BhTdL._SL160_.jpg</URL><Height
         Units="pixels">160</Height><Width Units="pixels">42</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/41WSYn%2BhTdL.jpg</URL><Height
-        Units="pixels">500</Height><Width Units="pixels">130</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Grocery</Binding><Brand>ISS
-        Research</Brand><CatalogNumberList><CatalogNumberListElement>IS-1058</CatalogNumberListElement><CatalogNumberListElement>100299EUR</CatalogNumberListElement><CatalogNumberListElement>100299</CatalogNumberListElement></CatalogNumberList><EAN>0788434110365</EAN><EANList><EANListElement>0788434110365</EANListElement></EANList><Feature>High
+        Units="pixels">500</Height><Width Units="pixels">130</Width></LargeImage></ImageSet><ImageSet
+        Category="variant"><SwatchImage><URL>http://ecx.images-amazon.com/images/I/31eCwJzecCL._SL30_.jpg</URL><Height
+        Units="pixels">30</Height><Width Units="pixels">22</Width></SwatchImage><SmallImage><URL>http://ecx.images-amazon.com/images/I/31eCwJzecCL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">56</Width></SmallImage><ThumbnailImage><URL>http://ecx.images-amazon.com/images/I/31eCwJzecCL._SL75_.jpg</URL><Height
+        Units="pixels">75</Height><Width Units="pixels">56</Width></ThumbnailImage><TinyImage><URL>http://ecx.images-amazon.com/images/I/31eCwJzecCL._SL110_.jpg</URL><Height
+        Units="pixels">110</Height><Width Units="pixels">82</Width></TinyImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/31eCwJzecCL._SL160_.jpg</URL><Height
+        Units="pixels">160</Height><Width Units="pixels">120</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/31eCwJzecCL.jpg</URL><Height
+        Units="pixels">500</Height><Width Units="pixels">375</Width></LargeImage></ImageSet></ImageSets><ItemAttributes><Binding>Grocery</Binding><Brand>ISS
+        Research</Brand><CatalogNumberList><CatalogNumberListElement>100299EUR</CatalogNumberListElement><CatalogNumberListElement>100299</CatalogNumberListElement><CatalogNumberListElement>IS-1058</CatalogNumberListElement><CatalogNumberListElement>2360</CatalogNumberListElement><CatalogNumberListElement>025277</CatalogNumberListElement></CatalogNumberList><EAN>0788434110365</EAN><EANList><EANListElement>0788434110365</EANListElement></EANList><Feature>High
         fiber</Feature><Feature>No artificial flavors or sweeteners</Feature><Feature>Nutrient-dense
         protein bars</Feature><Feature>High in protein</Feature><Feature>Gluten-free</Feature><IsAdultProduct>0</IsAdultProduct><ItemDimensions><Height
         Units="hundredths-inches">210</Height><Length Units="hundredths-inches">700</Length><Weight
         Units="hundredths-pounds">180</Weight><Width Units="hundredths-inches">680</Width></ItemDimensions><Label>ISS
-        Research</Label><LegalDisclaimer>The products and the claims made about specific
-        products on or through this site have not been evaluated by the United States
-        Food and Drug Administration and are not approved to diagnose, treat, cure
-        or prevent disease.</LegalDisclaimer><ListPrice><Amount>3495</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$34.95</FormattedPrice></ListPrice><Manufacturer>ISS
+        Research</Label><ListPrice><Amount>3495</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$34.95</FormattedPrice></ListPrice><Manufacturer>ISS
         Research</Manufacturer><Model>IS03</Model><MPN>IS03</MPN><NumberOfItems>1</NumberOfItems><PackageDimensions><Height
-        Units="hundredths-inches">210</Height><Length Units="hundredths-inches">680</Length><Weight
-        Units="hundredths-pounds">185</Weight><Width Units="hundredths-inches">680</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>IS03</PartNumber><ProductGroup>Health
+        Units="hundredths-inches">630</Height><Length Units="hundredths-inches">830</Length><Weight
+        Units="hundredths-pounds">180</Weight><Width Units="hundredths-inches">650</Width></PackageDimensions><PackageQuantity>1</PackageQuantity><PartNumber>IS03</PartNumber><ProductGroup>Health
         and Beauty</ProductGroup><ProductTypeName>GROCERY</ProductTypeName><PublicationDate>2013-06-29</PublicationDate><Publisher>ISS
         Research</Publisher><ReleaseDate>2013-06-26</ReleaseDate><Size>12</Size><Studio>ISS
-        Research</Studio><Title>ISS Research OhYeah! Victory Bars, Chocolate Chip
-        Cookie Dough, 12 Count</Title><UPC>788434110365</UPC><UPCList><UPCListElement>788434110365</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>1925</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$19.25</FormattedPrice></LowestNewPrice><TotalNew>6</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary><EditorialReviews><EditorialReview><Source>Product
+        Research</Studio><Title>OhYeah! Victory Bars, Chocolate Chip Cookie Dough,
+        12 Count,2.29oz bars</Title><UPC>788434110365</UPC><UPCList><UPCListElement>788434110365</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>1741</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$17.41</FormattedPrice></LowestNewPrice><TotalNew>25</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary><EditorialReviews><EditorialReview><Source>Product
         Description</Source><Content>High fiber. No artificial flavors. No artificial
         sweeteners. Nourishing bodies. Empowering dreams. Ohyeah. Victory bars are
         wholesome, nutrient-dense protein bars developed by the brand you have grown
@@ -84,5 +86,5 @@ http_interactions:
         No sugar alcohols. Great taste, convenience and balanced nutrition make ohyeah.
         Victory bars the perfect on-the-go energy treat.</Content><IsLinkSuppressed>0</IsLinkSuppressed></EditorialReview></EditorialReviews></Item></Items></ItemLookupResponse>
     http_version: 
-  recorded_at: Thu, 24 Jul 2014 20:42:46 GMT
-recorded_with: VCR 2.9.2
+  recorded_at: Sat, 20 Feb 2016 02:55:37 GMT
+recorded_with: VCR 2.9.3

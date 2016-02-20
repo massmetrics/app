@@ -50,9 +50,9 @@ feature 'Products' do
 
   context 'managing products' do
     scenario 'admin adds a product' do
-      new_time = '2014-12-09T08:21:25Z'
-      Timecop.freeze(new_time) do
-        VCR.use_cassette('admin/new_products') do
+      VCR.use_cassette('admin/new_products') do |cassette|
+        new_time = cassette.originally_recorded_at || Time.now
+        Timecop.freeze(new_time) do
           click_link 'Products'
           click_link 'Add New Product'
           fill_in 'sku', with: 'B0057RKQ4Q'
