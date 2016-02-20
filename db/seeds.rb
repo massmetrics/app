@@ -59,8 +59,8 @@ def make_price_logs(item)
   ]
 end
 
-# Product.all.each do |item|
-#     make_price_logs(item).each do |log|
-#       PriceLog.create(log)
-#     end
-# end
+Product.all.each do |item|
+    make_price_logs(item).each do |log|
+      PriceLog.create(log)
+    end
+end
