@@ -37,7 +37,8 @@ class ItemLookup
   end
 
   def current_price
-    lowest_new_price = item["offer_summary"]["lowest_new_price"]
+    lowest_new_price = item["offer_summary"]["lowest_new_price"] || item["item_attributes"]["list_price"]["formatted_price"]
+    return "$00.00" unless lowest_new_price.present?
     if lowest_new_price.include?("amount")
       lowest_new_price["amount"]
     end

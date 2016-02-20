@@ -15,6 +15,7 @@ class AmazonScraper
   end
 
   def price
+    return "$00.00" unless @page.present?
     if @page.css('#priceblock_ourprice').length > 0
       @page.css('#priceblock_ourprice').text
     elsif @page.css('#priceblock_saleprice').length > 0
