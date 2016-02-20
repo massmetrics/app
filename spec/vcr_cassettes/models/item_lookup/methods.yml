@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=<ASIN_KEY>&AssociateTag=<ASIN_TAG>&ItemId=B0047Y6I24&Operation=ItemLookup&ResponseGroup=Medium&Service=AWSECommerceService&Signature=Zb2POowfYPMuKy9ls4FqOPplV8EfN/iDfrNHK7oRndY=&Timestamp=2016-02-19T21:03:54Z&Version=2011-08-01
+    uri: http://webservices.amazon.com/onca/xml?AWSAccessKeyId=<ASIN_KEY>&AssociateTag=<ASIN_TAG>&ItemId=B0047Y6I24&Operation=ItemLookup&ResponseGroup=Medium&Service=AWSECommerceService&Signature=vYiE%2BYyMMx4PnsCr2C/fq1j1VmRJs8s2MDWVT7JnN3Q=&Timestamp=2016-02-20T02:30:57Z&Version=2011-08-01
     body:
       encoding: US-ASCII
       string: ''
@@ -13,7 +13,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Fri, 19 Feb 2016 21:03:54 GMT
+      - Sat, 20 Feb 2016 02:31:01 GMT
       Server:
       - Apache-Coyote/1.1
       Content-Type:
@@ -24,20 +24,20 @@ http_interactions:
       - chunked
     body:
       encoding: ASCII-8BIT
-      string: "<?xml version=\"1.0\" ?><ItemLookupResponse xmlns=\"http://webservices.amazon.com/AWSECommerceService/2011-08-01\"><OperationRequest><RequestId>16b385d1-ec19-446f-963d-e95897152c21</RequestId><Arguments><Argument
+      string: "<?xml version=\"1.0\" ?><ItemLookupResponse xmlns=\"http://webservices.amazon.com/AWSECommerceService/2011-08-01\"><OperationRequest><RequestId>e6560534-7305-4450-9332-d7f500131dce</RequestId><Arguments><Argument
         Name=\"AWSAccessKeyId\" Value=\"<ASIN_KEY>\"></Argument><Argument Name=\"AssociateTag\"
         Value=\"<ASIN_TAG>\"></Argument><Argument Name=\"ItemId\" Value=\"B0047Y6I24\"></Argument><Argument
         Name=\"Operation\" Value=\"ItemLookup\"></Argument><Argument Name=\"ResponseGroup\"
         Value=\"Medium\"></Argument><Argument Name=\"Service\" Value=\"AWSECommerceService\"></Argument><Argument
-        Name=\"Timestamp\" Value=\"2016-02-19T21:03:54Z\"></Argument><Argument Name=\"Version\"
-        Value=\"2011-08-01\"></Argument><Argument Name=\"Signature\" Value=\"Zb2POowfYPMuKy9ls4FqOPplV8EfN/iDfrNHK7oRndY=\"></Argument></Arguments><RequestProcessingTime>0.0130080000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemLookupRequest><IdType>ASIN</IdType><ItemId>B0047Y6I24</ItemId><ResponseGroup>Medium</ResponseGroup><VariationPage>All</VariationPage></ItemLookupRequest></Request><Item><ASIN>B0047Y6I24</ASIN><ParentASIN>B00LV94DKM</ParentASIN><DetailPageURL>http://www.amazon.com/Myotein-Chocolate-Hydrolysate-Concentrate-Micellar/dp/B0047Y6I24%3Fpsc%3D1%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0047Y6I24</DetailPageURL><ItemLinks><ItemLink><Description>Technical
+        Name=\"Timestamp\" Value=\"2016-02-20T02:30:57Z\"></Argument><Argument Name=\"Version\"
+        Value=\"2011-08-01\"></Argument><Argument Name=\"Signature\" Value=\"vYiE+YyMMx4PnsCr2C/fq1j1VmRJs8s2MDWVT7JnN3Q=\"></Argument></Arguments><RequestProcessingTime>0.0362280000000000</RequestProcessingTime></OperationRequest><Items><Request><IsValid>True</IsValid><ItemLookupRequest><IdType>ASIN</IdType><ItemId>B0047Y6I24</ItemId><ResponseGroup>Medium</ResponseGroup><VariationPage>All</VariationPage></ItemLookupRequest></Request><Item><ASIN>B0047Y6I24</ASIN><ParentASIN>B00LV94DKM</ParentASIN><DetailPageURL>http://www.amazon.com/Myotein-Chocolate-Hydrolysate-Concentrate-Micellar/dp/B0047Y6I24%3Fpsc%3D1%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D165953%26creativeASIN%3DB0047Y6I24</DetailPageURL><ItemLinks><ItemLink><Description>Technical
         Details</Description><URL>http://www.amazon.com/Myotein-Chocolate-Hydrolysate-Concentrate-Micellar/dp/tech-data/B0047Y6I24%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0047Y6I24</URL></ItemLink><ItemLink><Description>Add
         To Baby Registry</Description><URL>http://www.amazon.com/gp/registry/baby/add-item.html%3Fasin.0%3DB0047Y6I24%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0047Y6I24</URL></ItemLink><ItemLink><Description>Add
         To Wedding Registry</Description><URL>http://www.amazon.com/gp/registry/wedding/add-item.html%3Fasin.0%3DB0047Y6I24%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0047Y6I24</URL></ItemLink><ItemLink><Description>Add
         To Wishlist</Description><URL>http://www.amazon.com/gp/registry/wishlist/add-item.html%3Fasin.0%3DB0047Y6I24%26SubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0047Y6I24</URL></ItemLink><ItemLink><Description>Tell
         A Friend</Description><URL>http://www.amazon.com/gp/pdp/taf/B0047Y6I24%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0047Y6I24</URL></ItemLink><ItemLink><Description>All
         Customer Reviews</Description><URL>http://www.amazon.com/review/product/B0047Y6I24%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0047Y6I24</URL></ItemLink><ItemLink><Description>All
-        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B0047Y6I24%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0047Y6I24</URL></ItemLink></ItemLinks><SalesRank>13708</SalesRank><SmallImage><URL>http://ecx.images-amazon.com/images/I/51u70wtsjOL._SL75_.jpg</URL><Height
+        Offers</Description><URL>http://www.amazon.com/gp/offer-listing/B0047Y6I24%3FSubscriptionId%3D<ASIN_KEY>%26tag%3D<ASIN_TAG>%26linkCode%3Dxm2%26camp%3D2025%26creative%3D386001%26creativeASIN%3DB0047Y6I24</URL></ItemLink></ItemLinks><SalesRank>13101</SalesRank><SmallImage><URL>http://ecx.images-amazon.com/images/I/51u70wtsjOL._SL75_.jpg</URL><Height
         Units=\"pixels\">75</Height><Width Units=\"pixels\">75</Width></SmallImage><MediumImage><URL>http://ecx.images-amazon.com/images/I/51u70wtsjOL._SL160_.jpg</URL><Height
         Units=\"pixels\">160</Height><Width Units=\"pixels\">160</Width></MediumImage><LargeImage><URL>http://ecx.images-amazon.com/images/I/51u70wtsjOL.jpg</URL><Height
         Units=\"pixels\">500</Height><Width Units=\"pixels\">500</Width></LargeImage><ImageSets><ImageSet
@@ -113,7 +113,7 @@ http_interactions:
         Supplements</Publisher><Size>1 - 2.2LB Bottle</Size><Studio>XPI Supplements</Studio><Title>Myotein
         (Chocolate) - Best Whey Protein Powder / Shake - Great Tasting Protein Powder
         for Weight Loss &amp; Muscle Growth - Hydrolysate, Isolate, Concentrate &amp;
-        Micellar Casein</Title><UPC>736211963635</UPC><UPCList><UPCListElement>736211963635</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>3991</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$39.91</FormattedPrice></LowestNewPrice><TotalNew>3</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary><EditorialReviews><EditorialReview><Source>Product
+        Micellar Casein</Title><UPC>736211963635</UPC><UPCList><UPCListElement>736211963635</UPCListElement></UPCList></ItemAttributes><OfferSummary><LowestNewPrice><Amount>3971</Amount><CurrencyCode>USD</CurrencyCode><FormattedPrice>$39.71</FormattedPrice></LowestNewPrice><TotalNew>3</TotalNew><TotalUsed>0</TotalUsed><TotalCollectible>0</TotalCollectible><TotalRefurbished>0</TotalRefurbished></OfferSummary><EditorialReviews><EditorialReview><Source>Product
         Description</Source><Content>&lt;b&gt;Myotein - The Premium, Great Tasting,
         Chocolate and Vanilla Protein Powder!&lt;/b&gt; \n&lt;p&gt; Did you know that
         the average protein supplement is loaded with preservatives, fillers, and
@@ -139,5 +139,5 @@ http_interactions:
         powders on the market - it does not just give your body protein, but also
         the parts your body needs to put the protein to use!&lt;/p&gt;</Content><IsLinkSuppressed>0</IsLinkSuppressed></EditorialReview></EditorialReviews></Item></Items></ItemLookupResponse>"
     http_version: 
-  recorded_at: Fri, 19 Feb 2016 21:03:54 GMT
+  recorded_at: Sat, 20 Feb 2016 02:30:57 GMT
 recorded_with: VCR 2.9.3
