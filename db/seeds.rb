@@ -1,4 +1,4 @@
-categories = %w( Protein Powder Pre Workout Post Workout Protein Bar Vitamin Fat Burner Creatine CLA Nootropics )
+categories = ['Protein Powder', 'Pre Workout', 'Post Workout', 'Protein Bar', 'Vitamin', 'Fat Burner' 'Creatine', 'CLA', 'Nootropics']
 
 categories.each do |category|
   Category.find_or_create_by!(name: category)
