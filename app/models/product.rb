@@ -11,7 +11,7 @@ class Product < ActiveRecord::Base
     def create_from_sku(sku)
       item = ItemLookup.new(sku)
       if item.item
-        current_price = AmazonScraper.new(item.detail_page_url).price || item.current_price
+        current_price = item.current_price || AmazonScraper.new(item.detail_page_url).price
         create(
           features: item.features,
           sku: sku,
@@ -71,8 +71,9 @@ class Product < ActiveRecord::Base
 
   def average_price(days = 30)
     price_logs = get_price_logs(days)
+    return 0 if price_logs.length == 0
     sum = price_logs.reduce(0) { |memo, price| memo + price.price.to_i }
-    price_logs.length > 0 ? sum / price_logs.length : 0
+    sum / price_logs.length
   end
 
   def update_from_sku

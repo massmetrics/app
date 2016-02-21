@@ -3,8 +3,15 @@ class ItemLookup
 
   def initialize(sku)
     @client = ASIN::Client.instance
-    @item = client.lookup(sku)
-    @item = @item.first
+    get_item(sku)
+  end
+
+  def get_item(sku)
+    tries = 0
+    while(current_price.nil? && tries < 20)
+      @item = client.lookup(sku).first
+      tries += 1
+    end
   end
 
   def detail_page_url
@@ -37,8 +44,9 @@ class ItemLookup
   end
 
   def current_price
+    return nil unless item.present?
     lowest_new_price = item["offer_summary"]["lowest_new_price"] || item["item_attributes"]["list_price"]["formatted_price"]
-    return "$00.00" unless lowest_new_price.present?
+    return nil unless lowest_new_price.present?
     if lowest_new_price.include?("amount")
       lowest_new_price["amount"]
     end

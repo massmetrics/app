@@ -1,16 +1,18 @@
 def fetch_product (item)
   puts "Updating item with ID: #{item.id} #{Time.now.utc}"
   begin
-    price = NumberFormatter.format_price_string(AmazonScraper.new(item.detail_page_url).price)
+    price = NumberFormatter.format_price_string(ItemLookup.new(item.sku).current_price)
     if price.nil?
       puts "Price is nil for #{item.id}"
     else
+      puts "Price for #{item.id} is #{price}"
       item.update(current_price: price, fetched: true)
     end
 
     item.reload
     PriceLog.create(price: item.current_price, product: item)
   rescue => e
+    puts e
     puts "Failed to fetch item: #{item.id}"
     item.update(fetched: false)
   end
