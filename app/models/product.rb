@@ -7,7 +7,6 @@ class Product < ActiveRecord::Base
   has_many :my_products
 
 
-
   class << self
     def create_from_sku(sku)
       item = ItemLookup.new(sku)
@@ -28,24 +27,24 @@ class Product < ActiveRecord::Base
       end
     end
 
-    def percent_discounts(items = 10, days = 30)
-      includes(:price_logs).sort_by { |product| product.percent_off(days) }.reverse[0...items].compact
+    def percent_discounts(products)
+      products.sort_by { |product| product.percent_off }.compact.reverse
     end
 
-    def top_products_with_logs(items = 10, days = 30)
-      percent_discounts(items, days).map do |product|
+    def top_products_with_logs(products)
+      percent_discounts(products).map do |product|
         [product, product.price_log_hash, product.percent_discount]
       end
     end
 
     def get_products_for(category)
+      return Product.all unless category
       joins(:categories).where('categories.name = ?', category)
     end
 
-    def category_discounts(category, days = 30, items = 100)
-      products = get_products_for(category).includes(:price_logs).references(:price_logs)
-      products = products.where("price_logs.created_at >= ? ", days.days.ago)
-      products.top_products_with_logs(items, days)
+    def category_discounts(category = nil, days = 30, items = 100)
+      products = get_products_for(category).includes(:price_logs).references(:price_logs).where("price_logs.created_at >= ? ", days.days.ago).limit(items)
+      top_products_with_logs(products)
     end
 
     def update_urls
@@ -58,7 +57,7 @@ class Product < ActiveRecord::Base
     end
   end
 
-  def percent_off(days = 30)
+  def percent_off
     NumberConverter.percent_off(self.current_average_price.to_i, self.current_price)
   end
 
