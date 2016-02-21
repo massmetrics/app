@@ -9,7 +9,7 @@ class CategoryController < ApplicationController
     )
     # @categories = Category.category_list
     @categories = Category.all.map { |category| category.name }.uniq
-    products = Product.top_products_with_logs(20, 30)
+    products = Product.category_discounts(nil, 20, 30)
     @products = Kaminari.paginate_array(products).page(params[:page]).per(10)
   end
 

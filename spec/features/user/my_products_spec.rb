@@ -40,6 +40,7 @@ feature 'My Products' do
 
   scenario 'User is redirected back if he doesn\'t exist' do
     ObjectCreation.create_product
+    ObjectCreation.create_price_log
 
     visit category_index_path
     click_on 'Track-it'
@@ -50,6 +51,7 @@ feature 'My Products' do
   scenario 'User is redirected to user show page after tracking a product' do
     FeatureSupport.create_and_login_user
     ObjectCreation.create_product
+    ObjectCreation.create_price_log
 
     visit category_index_path
     click_on 'Track-it'

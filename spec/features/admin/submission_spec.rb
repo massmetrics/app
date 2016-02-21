@@ -23,7 +23,7 @@ feature 'Submissions' do
 
   context 'managing submissions' do
     scenario 'Admin adds submission to database' do
-      VCR.use_cassette('features/admin/submission/add_submission', record: :new_episodes) do |cassette|
+      VCR.use_cassette('features/admin/submission/add_submission') do |cassette|
         new_time = cassette.originally_recorded_at || Time.now
         Timecop.freeze(new_time) do
           click_link 'Submissions'
