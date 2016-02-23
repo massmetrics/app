@@ -8,11 +8,17 @@ class ItemLookup
 
   def get_item(sku)
     tries = 0
-    while(current_price.nil? && tries < 20)
-      @item = client.lookup(sku).first
-      tries += 1
+    while current_price.nil?
+      begin
+        @item = client.lookup(sku).first
+      rescue => e
+        puts "Error is #{e.message}, #{e.backtrace}"
+        tries += 1
+        retry unless tries >= 20
+      end
     end
   end
+
 
   def detail_page_url
     PostRank::URI.clean(item["detail_page_url"])
@@ -73,15 +79,15 @@ class ItemLookup
   def to_hash
     current_price = AmazonScraper.new(detail_page_url).price || self.current_price
     {
-        features: features,
-        detail_page_url: detail_page_url,
-        review_url: review_url,
-        title: title,
-        current_price: NumberFormatter.format_price_string(current_price),
-        large_image_url: large_image_url,
-        medium_image_url: medium_image_url,
-        small_image_url: small_image_url,
-        brand: brand
+      features: features,
+      detail_page_url: detail_page_url,
+      review_url: review_url,
+      title: title,
+      current_price: NumberFormatter.format_price_string(current_price),
+      large_image_url: large_image_url,
+      medium_image_url: medium_image_url,
+      small_image_url: small_image_url,
+      brand: brand
     }
   end
 
