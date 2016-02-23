@@ -15,13 +15,12 @@ class User < ActiveRecord::Base
   end
 
   def tracked?(product)
-    truthy = false
     my_products.each do |my_product|
       if my_product.product == product
-        truthy = true
+        return true
       end
     end
-    truthy
+    false
   end
 
   def notifications
