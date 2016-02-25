@@ -1,7 +1,7 @@
 def fetch_product (item)
   puts "Updating item with ID: #{item.id} #{Time.now.utc}"
   begin
-    price = NumberFormatter.format_price_string(ItemLookup.new(item.sku).current_price)
+    price = NumberFormatter.format_price_string(ItemLookup.new(item.sku).items.first[:current_price])
     if price.nil?
       puts "Price is nil for #{item.id}"
     else
@@ -18,6 +18,28 @@ def fetch_product (item)
   end
 end
 
+def fetch_products(skus)
+  lookup = ItemLookup.new(skus)
+  items = lookup.items
+  items.map do |item|
+    product = Product.find_by_sku(item[:sku])
+    price = NumberFormatter.format_price_string(item[:current_price])
+    begin
+      if price.nil?
+        puts "Price is nil for Product: #{item[:sku]}"
+      else
+        puts "Price for #{item[:sku]} is #{price}"
+        product.update(current_price: price, fetched: true)
+      end
+      product.reload
+      PriceLog.create(price: product.current_price, product: product)
+    rescue => e
+      puts e
+      puts "Failed to fetch item: #{product.sku}"
+      product.update(fetched: false)
+    end
+  end
+end
 
 
 namespace :product do
@@ -48,10 +70,8 @@ namespace :product do
 
   desc('fetch updated product information')
   task :update_products => :environment do
-    Product.all.each do |product|
-      product.update(fetched: false)
-      fetch_product(product)
-    end
+    Product.update_all(fetched: false)
+    Product.all.pluck(:sku).each_slice(10) { |slice| fetch_products(slice) }
   end
 
   desc('refetch unfetched items')
