@@ -6,19 +6,6 @@ class ItemLookup
     get_items(sku_array)
   end
 
-  # def get_item(sku_array)
-  #   tries = 0
-  #   while current_price.nil?
-  #     begin
-  #       @item = client.lookup(sku_array).first
-  #     rescue => e
-  #       puts "Error is #{e.message}, #{e.backtrace}"
-  #       tries += 1
-  #       retry unless tries >= 20
-  #     end
-  #   end
-  # end
-
   def get_items(sku_array)
     tries = 0
     while @items.nil?

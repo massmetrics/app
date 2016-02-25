@@ -1,3 +1,6 @@
+# TODO move these out of this file and test them
+# TODO make another method to diff other attributes
+
 def fetch_product (item)
   puts "Updating item with ID: #{item.id} #{Time.now.utc}"
   begin
@@ -44,7 +47,7 @@ end
 
 namespace :product do
   desc('add new product to system')
-  task :add_product, [:skus, :categories] => :environment do |t, args|
+  task :add_product, [:skus, :categories] => :environment do |_, args|
     category_array = args[:categories].split(' ')
     sku_array = args[:skus].split(' ')
     Product.create_multiple(sku_array)
@@ -76,9 +79,8 @@ namespace :product do
 
   desc('refetch unfetched items')
   task :refetch_products => :environment do
-    Product.where(fetched: false).each do |product|
-      fetch_product(product)
-    end
+    product_skus = Product.where(fetched: false).pluck(:sku)
+    product_skus.each_slice(10) { |slice| fetch_products(slice) }
   end
 
   desc('send users emails')
