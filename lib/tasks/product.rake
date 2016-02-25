@@ -24,7 +24,7 @@ end
 def fetch_products(skus)
   lookup = ItemLookup.new(skus)
   items = lookup.items
-  items.map do |item|
+  items.each do |item|
     product = Product.find_by_sku(item[:sku])
     price = NumberFormatter.format_price_string(item[:current_price])
     begin
