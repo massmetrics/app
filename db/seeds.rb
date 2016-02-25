@@ -7,7 +7,7 @@ end
 #commented out old asins.
 #"B00A7D1TSW",B00F46JJGG, "B00F108EQQ""B007JUOM8A","B00I0BR3XS", "B00KY9OAJ4 "B00ENQ3ANQ","B00E4VE3AE","B002NU6FC2","B005DEMQLE",B001RD6L98,"B00CSJMH8E","B0097BZJXG", B000Z8Z93K, "B00FE6FJ7O", "B00JQ3WXS4","B000GOO00Q","B0051ZH17E""B00E7ZKE0U"B00104I5TS, "B00HM9OJFY",
 
-powders = %w( B00ARJN2TK B00BEOHFKO B000GOY7FO B000GOY6Z0 B002DYJ0OI B002QZORGK B000GIPJ0M B00HQNNS6C B002DYJ0K2 B002DUD6QU B00BEOHFKO B000GOY7FO B000GOY6Z0 B002DYJ0OI B00FFDSER8 B002QZORGK B00ARJN2TK B002FK37M6 B002DYJ0K2 B00FAYLDXY B002DUD6QU B00HQNNS6C )
+powders = %w( B00ARJN2TK B00BEOHFKO B000GOY7FO B000GOY6Z0 B002DYJ0OI B002QZORGK B000GIPJ0M B00HQNNS6C B002DYJ0K2 B002DUD6QU B00BEOHFKO B000GOY7FO B000GOY6Z0 B002DYJ0OI B00FFDSER8 B002QZORGK B00ARJN2TK B002DYJ0K2 B00FAYLDXY B002DUD6QU B00HQNNS6C )
 
 pre_workouts = %w(B00E7ZKE0U B006R76WK2 B00EOA2686 B002FK37M6 B00FAYLDXY B00HT2H1LI B00FE6FJ7O B009AOI86K B00FE6FJ7O B00EOA2686 )
 
@@ -50,31 +50,6 @@ ProductAdder.add_category(cla, ['CLA'])
 
 ProductAdder.add_category(bcaa, ['Bcaa'])
 
-
-def make_price_logs(item)
-  [
-    [product: item, created_at: 1.day.ago, price: rand(100000).to_s],
-    [product: item, created_at: 2.day.ago, price: rand(100000).to_s],
-    [product: item, created_at: 3.day.ago, price: rand(100000).to_s],
-    [product: item, created_at: 4.day.ago, price: rand(100000).to_s],
-    [product: item, created_at: 5.day.ago, price: rand(100000).to_s],
-    [product: item, created_at: 6.day.ago, price: rand(100000).to_s],
-    [product: item, created_at: 7.day.ago, price: rand(100000).to_s],
-    [product: item, created_at: 8.day.ago, price: rand(100000).to_s],
-    [product: item, created_at: 9.day.ago, price: rand(100000).to_s]
-  ]
-end
-
-if Rails.env == "development"
-  Product.all.each do |item|
-    make_price_logs(item).each do |log|
-      PriceLog.create(log)
-    end
-  end
-end
-
-if Rails.env.production?
-  Product.all.each do |product|
-    PriceLog.create(price: product.current_price, product: product)
-  end
+Product.all.each do |product|
+  PriceLog.create(price: product.current_price, product: product)
 end
