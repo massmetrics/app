@@ -32,7 +32,7 @@ class Product < ActiveRecord::Base
       if lookup.items
         lookup.items.map do |item|
           begin
-            create!(item)
+            create(item)
           rescue => e
 
           end
