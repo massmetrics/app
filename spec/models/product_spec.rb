@@ -3,8 +3,8 @@ require 'rails_helper'
 describe Product do
 
   context 'validations' do
+    let(:product) {ObjectCreation.create_product(sku: 'B0047Y6I24') }
     it 'wont create an item if sku is already in db' do
-      product = ObjectCreation.create_product(sku: 'B0047Y6I24')
       invalid_item = ObjectCreation.create_product(sku: product.sku)
 
       expect(invalid_item.valid?).to eq(false)

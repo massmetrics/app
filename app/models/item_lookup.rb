@@ -76,11 +76,7 @@ class ItemLookup
   def features(item)
     if item["item_attributes"].include?("feature")
       features = item["item_attributes"]["feature"]
-      if features.class == Array
-        features
-      else
-        [features]
-      end
+      features.is_a?(Array) ? features : [features]
     end
   end
 
@@ -109,21 +105,6 @@ class ItemLookup
     if item["item_attributes"].include?("brand")
       item["item_attributes"]["brand"]
     end
-  end
-
-  def to_hash
-    current_price = AmazonScraper.new(detail_page_url).price || self.current_price
-    {
-      features: features,
-      detail_page_url: detail_page_url,
-      review_url: review_url,
-      title: title,
-      current_price: NumberFormatter.format_price_string(current_price),
-      large_image_url: large_image_url,
-      medium_image_url: medium_image_url,
-      small_image_url: small_image_url,
-      brand: brand
-    }
   end
 
   private

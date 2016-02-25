@@ -91,7 +91,7 @@ class Product < ActiveRecord::Base
   end
 
   def update_from_sku
-    self.update(ItemLookup.new(self.sku).to_hash)
+    self.update(ItemLookup.new(self.sku).items.first)
   end
 
   def get_price_logs(days = 30)
