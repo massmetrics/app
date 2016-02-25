@@ -26,10 +26,10 @@ cla = %w( B008E77A0O B00EVMVU0W B00HFF23RQ B002DYJ0CU B00G6H03NA B00D62KG26 B000
 bcaa= %w( B00B2OK1K2 B00IA9QS8G B00HX02IGO B000SOXALE B006R76WK2 B0093NRL6Q B0056XU5XS B0055BYD66)
 
 # ["B0035J3XC0", "B000QH5JSU", "B004JRQ3DS", "B0015R3AAO", "B000GOT54C", "B000GIQRW6", "B0056XU6W8", "B00FDP658I", "B00KY9OAJ4", "B003ENHSI2"]
-all_skus = [ powders, pre_workouts, post_workouts, protein_bars, multi_vitamins, fat_burners, creatine, cla, bcaa ].flatten!.uniq!
+all_skus = [powders, pre_workouts, post_workouts, protein_bars, multi_vitamins, fat_burners, creatine, cla, bcaa].flatten!.uniq!
 
 all_skus.each_slice(10) do |sku_array|
- Product.create_multiple(sku_array)
+  Product.create_multiple(sku_array)
 end
 
 ProductAdder.add_category(powders, ['Protein Powder'])
@@ -50,6 +50,7 @@ ProductAdder.add_category(cla, ['CLA'])
 
 ProductAdder.add_category(bcaa, ['Bcaa'])
 
+
 def make_price_logs(item)
   [
     [product: item, created_at: 1.day.ago, price: rand(100000).to_s],
@@ -69,5 +70,11 @@ if Rails.env == "development"
     make_price_logs(item).each do |log|
       PriceLog.create(log)
     end
+  end
+end
+
+if Rails.env.production?
+  Product.all.each do |product|
+    PriceLog.create(price: product.current_price, product: product)
   end
 end
