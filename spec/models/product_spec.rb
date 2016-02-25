@@ -155,8 +155,8 @@ describe Product do
     expect(new_item.average_price).to eq(0)
   end
 
-  describe 'gets the highest percentage off products along with the price log hash' do
-    it '#top_products_with_logs' do
+  context 'Price logs' do
+    it 'gets the highest percentage off products along with the price log hash' do
       new_item = ObjectCreation.create_product(current_price: '1700', sku: 'item_2')
       ObjectCreation.create_price_log(product: new_item, price: '2000')
       ObjectCreation.create_price_log(product: new_item, price: '1000')

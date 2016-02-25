@@ -9,22 +9,22 @@ class Product < ActiveRecord::Base
 
   class << self
     def create_from_sku(sku)
-      item = ItemLookup.new(sku)
-      if item.items
-        current_price = item.current_price || AmazonScraper.new(item.detail_page_url).price
-        create(
-          features: item.features,
-          sku: sku,
-          detail_page_url: item.detail_page_url,
-          review_url: item.review_url,
-          title: item.title.truncate(254),
-          current_price: NumberFormatter.format_price_string(current_price),
-          large_image_url: item.large_image_url,
-          medium_image_url: item.medium_image_url,
-          small_image_url: item.small_image_url,
-          brand: item.brand
-        )
-      end
+      lookup = ItemLookup.new(sku)
+      return unless lookup.items
+      item = lookup.items.first
+      current_price = item[:current_price] || AmazonScraper.new(item[:detail_page_url]).price
+      create(
+        features: item[:features],
+        sku: item[:sku],
+        detail_page_url: item[:detail_page_url],
+        review_url: item[:review_url],
+        title: item[:title].truncate(254),
+        current_price: NumberFormatter.format_price_string(current_price),
+        large_image_url: item[:large_image_url],
+        medium_image_url: item[:medium_image_url],
+        small_image_url: item[:small_image_url],
+        brand: item[:brand]
+      )
     end
 
     def create_multiple(sku_array)
@@ -34,7 +34,7 @@ class Product < ActiveRecord::Base
           begin
             create!(item)
           rescue => e
-            binding.pry
+
           end
         end
       end

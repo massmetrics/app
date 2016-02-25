@@ -3,7 +3,6 @@ categories = ['Protein Powder', 'Pre Workout', 'Post Workout', 'Protein Bar', 'V
 categories.each do |category|
   Category.find_or_create_by!(name: category)
 end
-
 # Product.create_multiple(['B00ARJN2TK', 'B00BEOHFKO', 'B000GOY7FO'])
 #commented out old asins.
 #"B00A7D1TSW",B00F46JJGG, "B00F108EQQ""B007JUOM8A","B00I0BR3XS", "B00KY9OAJ4 "B00ENQ3ANQ","B00E4VE3AE","B002NU6FC2","B005DEMQLE",B001RD6L98,"B00CSJMH8E","B0097BZJXG", B000Z8Z93K, "B00FE6FJ7O", "B00JQ3WXS4","B000GOO00Q","B0051ZH17E""B00E7ZKE0U"B00104I5TS, "B00HM9OJFY",

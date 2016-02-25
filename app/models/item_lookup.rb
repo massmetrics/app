@@ -20,36 +20,38 @@ class ItemLookup
   # end
 
   def get_items(sku_array)
-    continue = true
     tries = 0
-    while continue
+    while @items.nil?
       begin
         items = client.lookup(sku_array)
-        continue = false
         @items = items.map { |item| hashify(item) }
       rescue => e
         puts "Error is #{e.message}, #{e.backtrace}"
         tries += 1
-        sleep (tries * 2)
         retry unless tries >= 20
       end
     end
   end
 
   def hashify(item)
-    price = current_price(item) || AmazonScraper.new(detail_page_url(item)).price
-    {
-      features: features(item),
-      sku: item.asin,
-      detail_page_url: detail_page_url(item),
-      review_url: review_url(item),
-      title: title(item).truncate(254),
-      current_price: NumberFormatter.format_price_string(price),
-      large_image_url: large_image_url(item),
-      medium_image_url: medium_image_url(item),
-      small_image_url: small_image_url(item),
-      brand: brand(item)
-    }
+    begin
+      price = current_price(item) || AmazonScraper.new(detail_page_url(item)).price
+      {
+        features: features(item),
+        sku: item.asin,
+        detail_page_url: detail_page_url(item),
+        review_url: review_url(item),
+        title: title(item).truncate(254),
+        current_price: NumberFormatter.format_price_string(price),
+        large_image_url: large_image_url(item),
+        medium_image_url: medium_image_url(item),
+        small_image_url: small_image_url(item),
+        brand: brand(item)
+      }
+    rescue => e
+      puts "SKU: #{item.sku} failed to update due to #{e.message}"
+      puts e.backtrace
+    end
   end
 
 
