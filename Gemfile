@@ -47,3 +47,4 @@ gem "codeclimate-test-reporter", group: :test, require: nil
 gem 'sitemap_generator'
 gem 'postrank-uri', '~> 1.0.18'
 gem 'kaminari'
+gem 'skylight'

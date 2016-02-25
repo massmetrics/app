@@ -1,7 +1,10 @@
+# TODO move these out of this file and test them
+# TODO make another method to diff other attributes
+
 def fetch_product (item)
   puts "Updating item with ID: #{item.id} #{Time.now.utc}"
   begin
-    price = NumberFormatter.format_price_string(ItemLookup.new(item.sku).current_price)
+    price = NumberFormatter.format_price_string(ItemLookup.new(item.sku).items.first[:current_price])
     if price.nil?
       puts "Price is nil for #{item.id}"
     else
@@ -18,14 +21,37 @@ def fetch_product (item)
   end
 end
 
+def fetch_products(skus)
+  lookup = ItemLookup.new(skus)
+  items = lookup.items
+  items.each do |item|
+    product = Product.find_by_sku(item[:sku])
+    price = NumberFormatter.format_price_string(item[:current_price])
+    begin
+      if price.nil?
+        puts "Price is nil for Product: #{item[:sku]}"
+      else
+        puts "Price for #{item[:sku]} is #{price}"
+        product.update(current_price: price, fetched: true)
+      end
+      product.reload
+      PriceLog.create(price: product.current_price, product: product)
+    rescue => e
+      puts e
+      puts "Failed to fetch item: #{product.sku}"
+      product.update(fetched: false)
+    end
+  end
+end
 
 
 namespace :product do
   desc('add new product to system')
-  task :add_product, [:skus, :categories] => :environment do |t, args|
+  task :add_product, [:skus, :categories] => :environment do |_, args|
     category_array = args[:categories].split(' ')
     sku_array = args[:skus].split(' ')
-    ProductAdder.add(sku_array, category_array)
+    Product.create_multiple(sku_array)
+    ProductAdder.add_category(sku_array, category_array)
   end
 
   desc('update categories to new product category')
@@ -47,17 +73,14 @@ namespace :product do
 
   desc('fetch updated product information')
   task :update_products => :environment do
-    Product.all.each do |product|
-      product.update(fetched: false)
-      fetch_product(product)
-    end
+    Product.update_all(fetched: false)
+    Product.all.pluck(:sku).each_slice(10) { |slice| fetch_products(slice) }
   end
 
   desc('refetch unfetched items')
   task :refetch_products => :environment do
-    Product.where(fetched: false).each do |product|
-      fetch_product(product)
-    end
+    product_skus = Product.where(fetched: false).pluck(:sku)
+    product_skus.each_slice(10) { |slice| fetch_products(slice) }
   end
 
   desc('send users emails')

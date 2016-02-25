@@ -231,6 +231,8 @@ GEM
     skinny (0.2.3)
       eventmachine (~> 1.0.0)
       thin (~> 1.5.0)
+    skylight (0.10.3)
+      activesupport (>= 3.0.0)
     slop (3.6.0)
     sorcery (0.8.6)
       bcrypt (~> 3.1)
@@ -313,6 +315,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   simple_enum
   sitemap_generator
+  skylight
   sorcery (~> 0.8.6)
   spring
   sucker_punch

@@ -9,23 +9,37 @@ class Product < ActiveRecord::Base
 
   class << self
     def create_from_sku(sku)
-      item = ItemLookup.new(sku)
-      if item.item
-        current_price = item.current_price || AmazonScraper.new(item.detail_page_url).price
-        create(
-          features: item.features,
-          sku: sku,
-          detail_page_url: item.detail_page_url,
-          review_url: item.review_url,
-          title: item.title.truncate(254),
-          current_price: NumberFormatter.format_price_string(current_price),
-          large_image_url: item.large_image_url,
-          medium_image_url: item.medium_image_url,
-          small_image_url: item.small_image_url,
-          brand: item.brand
-        )
+      lookup = ItemLookup.new(sku)
+      return unless lookup.items
+      item = lookup.items.first
+      current_price = item[:current_price] || AmazonScraper.new(item[:detail_page_url]).price
+      create(
+        features: item[:features],
+        sku: item[:sku],
+        detail_page_url: item[:detail_page_url],
+        review_url: item[:review_url],
+        title: item[:title].truncate(254),
+        current_price: NumberFormatter.format_price_string(current_price),
+        large_image_url: item[:large_image_url],
+        medium_image_url: item[:medium_image_url],
+        small_image_url: item[:small_image_url],
+        brand: item[:brand]
+      )
+    end
+
+    def create_multiple(sku_array)
+      lookup = ItemLookup.new(sku_array)
+      if lookup.items
+        lookup.items.map do |item|
+          begin
+            create(item)
+          rescue => e
+
+          end
+        end
       end
     end
+
 
     def percent_discounts(products)
       products.sort_by { |product| product.percent_off }.compact.reverse
@@ -77,7 +91,7 @@ class Product < ActiveRecord::Base
   end
 
   def update_from_sku
-    self.update(ItemLookup.new(self.sku).to_hash)
+    self.update(ItemLookup.new(self.sku).items.first)
   end
 
   def get_price_logs(days = 30)
