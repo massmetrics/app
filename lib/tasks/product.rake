@@ -25,7 +25,8 @@ namespace :product do
   task :add_product, [:skus, :categories] => :environment do |t, args|
     category_array = args[:categories].split(' ')
     sku_array = args[:skus].split(' ')
-    ProductAdder.add(sku_array, category_array)
+    Product.create_multiple(sku_array)
+    ProductAdder.add_category(sku_array, category_array)
   end
 
   desc('update categories to new product category')

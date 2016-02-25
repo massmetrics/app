@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'Submissions' do
   before do
-    ObjectCreation.create_category
-    @submission = Submission.create(sku: 'B003CTE1LU', category: 'Protein')
+    category = ObjectCreation.create_category
+    @submission = Submission.create(sku: 'B003CTE1LU', category: category.name )
     FeatureSupport.create_and_login_admin
   end
   context 'viewing submissions' do
@@ -33,8 +33,7 @@ feature 'Submissions' do
           expect(find_field('submission[category]').value).to eq(@submission.category)
           expect(page.has_xpath?("//a[@href='http://www.amazon.com/gp/product/#{@submission.sku}/']")).to eq(true)
           click_button 'Add'
-
-          product = Product.find_by_sku("B003CTE1LU")
+          product = Product.find_by_sku(@submission.sku)
           expect(product.categories.map { |category| category.name }).to include(@submission.category.capitalize)
 
           visit admin_submissions_path

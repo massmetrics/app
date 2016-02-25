@@ -13,7 +13,7 @@ module Admin
       if new_params_set?
         sku = params[:sku]
         categories = SubmissionHelper.split_categories(params[:category])
-        ProductAdder.add([sku], categories)
+        ProductAdder.add_category([sku], categories)
         flash[:notice] = "Product successfully added"
         redirect_to admin_products_path
       else

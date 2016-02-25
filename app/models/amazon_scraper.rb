@@ -4,7 +4,7 @@ class AmazonScraper
   def initialize(url)
     tries = 0
     begin
-      @page = Nokogiri::HTML(open(url, 'User-Agent' => 'ruby'))
+      @page = Nokogiri::HTML(open(url, 'User-Agent' => 'Mozilla/5.0 (Windows; U; Windows NT 5.1; en-GB; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6'))
     rescue OpenURI::HTTPError => error
       puts "Error is #{error.io.status.join(', ')}"
       puts "Retrying #{url}"

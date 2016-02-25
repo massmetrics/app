@@ -10,7 +10,7 @@ class Product < ActiveRecord::Base
   class << self
     def create_from_sku(sku)
       item = ItemLookup.new(sku)
-      if item.item
+      if item.items
         current_price = item.current_price || AmazonScraper.new(item.detail_page_url).price
         create(
           features: item.features,
@@ -26,6 +26,20 @@ class Product < ActiveRecord::Base
         )
       end
     end
+
+    def create_multiple(sku_array)
+      lookup = ItemLookup.new(sku_array)
+      if lookup.items
+        lookup.items.map do |item|
+          begin
+            create!(item)
+          rescue => e
+            binding.pry
+          end
+        end
+      end
+    end
+
 
     def percent_discounts(products)
       products.sort_by { |product| product.percent_off }.compact.reverse
