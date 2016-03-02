@@ -69,6 +69,15 @@ class Product < ActiveRecord::Base
         )
       end
     end
+
+    def update_asin_tag(old_asin)
+      all.each do |product|
+        product.update(
+                 detail_page_url: product.detail_page_url.gsub(old_asin, ENV['ASIN_TAG']),
+                 review_url: product.review_url.gsub(old_asin, ENV['ASIN_TAG'])
+        )
+      end
+    end
   end
 
   def percent_off
