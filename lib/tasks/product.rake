@@ -22,6 +22,7 @@ def fetch_product (item)
 end
 
 def fetch_products(skus)
+  bad_skus = []
   lookup = ItemLookup.new(skus)
   items = lookup.items
   items.each do |item|
@@ -30,6 +31,7 @@ def fetch_products(skus)
     begin
       if price.nil?
         puts "Price is nil for Product: #{item[:sku]}"
+        bad_skus << item[:sku]
       else
         puts "Price for #{item[:sku]} is #{price}"
         product.update(current_price: price, fetched: true)
@@ -42,6 +44,8 @@ def fetch_products(skus)
       product.update(fetched: false)
     end
   end
+
+  bad_skus
 end
 
 
@@ -73,8 +77,15 @@ namespace :product do
 
   desc('fetch updated product information')
   task :update_products => :environment do
+    bad_skus = []
     Product.update_all(fetched: false)
-    Product.all.pluck(:sku).each_slice(10) { |slice| fetch_products(slice) }
+    Product.all.pluck(:sku).each_slice(10) { |slice| bad_skus << fetch_products(slice) }
+    if bad_skus.length > 0
+      puts "Check on the following SKUs for issues: "
+      bad_skus.each do |sku|
+        puts sku
+      end
+    end
   end
 
   desc('refetch unfetched items')
