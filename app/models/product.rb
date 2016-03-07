@@ -42,7 +42,10 @@ class Product < ActiveRecord::Base
 
 
     def percent_discounts(products)
-      products.sort_by { |product| product.percent_off }.compact.reverse
+      good_products = products.select {|product|
+        product.current_average_price.present? && product.current_average_price > 0
+      }
+      good_products.sort_by { |product| product.percent_off }.compact.reverse
     end
 
     def top_products_with_logs(products)
