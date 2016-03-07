@@ -19,7 +19,7 @@ class CategoryController < ApplicationController
         "#{@category}",
         'Best discounts for health and beauty products',
         "#{@category}," + key_words,
-        false
+        true
     )
     # @categories = Category.category_list
     @categories = Category.all.map { |category| category.name }.uniq

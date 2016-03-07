@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
       "#{@product.title}",
       'Best discounts for health and beauty products',
       "#{@product.title}," + key_words,
-      false
+      true
     )
     @chart_hash = @product.price_log_hash
   end
