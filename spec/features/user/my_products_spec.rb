@@ -16,9 +16,12 @@ feature 'My Products' do
 
     scenario 'User adds pricing threshold' do
       visit user_path(@user)
-      fill_in 'my_products_notification[discount]', with: '15'
+      fill_in 'my_products_notification[discount]', with: '15%'
       click_on 'Save notification'
-      expect(find_field('my_products_notification[discount]').value).to eq('15.0')
+      expect(page).to have_content(@product.title)
+
+
+
     end
 
     scenario 'User adds invalid discount' do
@@ -30,11 +33,9 @@ feature 'My Products' do
 
     scenario 'User can remove a notification' do
       visit user_path(@user)
-      fill_in 'my_products_notification[discount]', with: '15'
-      click_on 'Save notification'
-      click_on 'Remove'
+      click_on 'Untrack'
 
-      expect(find_field('my_products_notification[discount]').value).to eq('')
+      expect(page).to_not have_content(@product.title)
     end
   end
 
